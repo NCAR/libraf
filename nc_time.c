@@ -66,7 +66,7 @@ time_t InitFlightTime(int ncid)
     size_t s = 0;
     nc_get_var1_long(ncid, id, &s, &l);
     _start_t = (time_t)l;
-printf("base_time: %d\n", _start_t);
+printf("base_time: %ld\n", _start_t);
   }
 
   if (_start_t <= 0)
