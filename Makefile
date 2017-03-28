@@ -10,6 +10,8 @@ LIBNAME=	raf
 
 DEFINES=	-DPNG
 
+CC=	gcc
+CXX=	g++
 INCLUDES=	-I${JLOCAL}/include
 CFLAGS=		-Wall -g -O2 ${INCLUDES}
 CXXFLAGS=	-Wall -g -O2 ${INCLUDES} ${DEFINES}
@@ -18,7 +20,7 @@ FFLAGS=		-O
 OBJS=	strupr.o tapeIO.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 	util.o raf_queue.o chost.o date.o portable.o ac.o get_ac_name.o \
 	nc_time.o ACconfig.o adsIO.o adsIOrt.o Application.o Canvas.o Cursor.o\
-        hdrAPI.o gettext.o ntohf.o PixMap.o PMSspex.o PostScript.o\
+        hdrAPI.o gettext.o ntohf.o PixMap.o PMSspex.o PostScript.o tapeIO++.o\
         Printer.o Queue.o TextWindow.o Time.o validate.o pms_specs.o\
         Window.o XFonts.o XPen.o XmError.o XmFile.o XmQuery.o XmWarn.o
 
@@ -27,7 +29,7 @@ OBJS=	strupr.o tapeIO.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 SRCS=	strupr.c tapeIO.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
 	util.c raf_queue.c chost.c date.c portable.c ac.c get_ac_name.c \
 	nc_time.c ACconfig.cc adsIO.cc adsIOrt.cc Application.cc Canvas.cc Cursor.cc\
-        hdrAPI.cc gettext.cc ntohf.cc PixMap.cc PMSspex.cc PostScript.o\
+        hdrAPI.cc gettext.cc ntohf.cc PixMap.cc PMSspex.cc PostScript.o tapeIO++.cc\
         Printer.cc Queue.cc TextWindow.o Time.cc validate.cc pms_specs.c\
         Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc
 
