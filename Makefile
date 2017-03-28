@@ -13,8 +13,8 @@ DEFINES=	-DPNG
 CC=	gcc
 CXX=	g++
 INCLUDES=	-I${JLOCAL}/include
-CFLAGS=		-Wall -g -O2 ${INCLUDES}
-CXXFLAGS=	-Wall -g -O2 ${INCLUDES} ${DEFINES}
+CFLAGS=		-Wall -g -O2 -Wstrict-aliasing ${INCLUDES}
+CXXFLAGS=	-Wall -g -O2 -Wstrict-aliasing ${INCLUDES} ${DEFINES}
 FFLAGS=		-O
 
 OBJS=	strupr.o tapeIO.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \

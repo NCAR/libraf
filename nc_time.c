@@ -13,6 +13,8 @@
 #include <string.h>
 #include <time.h>
 
+char *strptime(const char *s, const char *format, struct tm *tm);
+
 /* Given an open netCDF file (ncid), return the Unix time (seconds since
  * 01/01/1970) of Time::units.  Subsequent values from 'Time' should be added
  * to this return value.

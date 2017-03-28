@@ -91,8 +91,7 @@ char *substring(char *s, char c)
 }
  
 /************************************************************************/
-char *ReplaceStringWithChar(string,target,substitute)
-char *string,*target,substitute;
+char *ReplaceStringWithChar(char *string,char *target,char substitute)
 {
  int posn,posn2,targetlen;
 
@@ -1012,9 +1011,7 @@ void ListLimits()
 
 /********************************************************************/
  
-void LeftJustify(string,target,fieldlen)
-char *string,*target;
-int fieldlen;
+void LeftJustify(char *string,char *target,int fieldlen)
 {
  int c;
 
@@ -1026,9 +1023,7 @@ int fieldlen;
 
 /***********************  PadWithBlanks()  **************************/
  
-void PadWithBlanks(string,length)
-char *string;
-int length;
+void PadWithBlanks(char *string,int length)
 {
  int c;
  for (c=0; c<length; c++)
