@@ -1,6 +1,6 @@
 /*
 -------------------------------------------------------------------------
-OBJECT NAME:	Time.cc
+OBJECT NAME:	rafTime.cc
 
 FULL NAME:	Generic Time Class
 
@@ -16,7 +16,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
 */
 
-#include "Time.h"
+#include "rafTime.h"
 #include <cstdio>
 
 

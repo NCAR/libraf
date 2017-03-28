@@ -21,7 +21,7 @@ OBJS=	strupr.o tapeIO.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 	util.o raf_queue.o chost.o date.o portable.o ac.o get_ac_name.o \
 	nc_time.o ACconfig.o adsIO.o adsIOrt.o Application.o Canvas.o Cursor.o\
         hdrAPI.o gettext.o ntohf.o PixMap.o PMSspex.o PostScript.o tapeIO++.o\
-        Printer.o Queue.o TextWindow.o Time.o validate.o pms_specs.o\
+        Printer.o Queue.o TextWindow.o rafTime.o validate.o pms_specs.o\
         Window.o XFonts.o XPen.o XmError.o XmFile.o XmQuery.o XmWarn.o
 
 # cio.o flote.o sendhc.o sendpr.o 
@@ -30,7 +30,7 @@ SRCS=	strupr.c tapeIO.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
 	util.c raf_queue.c chost.c date.c portable.c ac.c get_ac_name.c \
 	nc_time.c ACconfig.cc adsIO.cc adsIOrt.cc Application.cc Canvas.cc Cursor.cc\
         hdrAPI.cc gettext.cc ntohf.cc PixMap.cc PMSspex.cc PostScript.o tapeIO++.cc\
-        Printer.cc Queue.cc TextWindow.o Time.cc validate.cc pms_specs.c\
+        Printer.cc Queue.cc TextWindow.o rafTime.cc validate.cc pms_specs.c\
         Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc
 
 # cio.c flote.f sendhc.f sendpr.f 
@@ -51,7 +51,7 @@ PMSspex.o:      PMSspex.h
 ntohf.o:        ntohf.h
 
 Queue.o:        Queue.h
-Time.o:         Time.h
+rafTime.o:      rafTime.h
 
 # X-window classes.
 Application.o:  Application.h

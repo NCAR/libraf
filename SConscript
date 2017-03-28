@@ -13,7 +13,7 @@ PostScript.cc
 Printer.cc
 Queue.cc
 TextWindow.cc
-Time.cc
+rafTime.cc
 Window.cc
 XFonts.cc
 XPen.cc
