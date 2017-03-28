@@ -25,7 +25,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1995-2005
 
 static char	**ACfile = 0;
 
-char	*GetMemory();
+char	*GetMemory(size_t);
 
 /* -------------------------------------------------------------------- */
 void InitAircraftSpecs(const char fileName[])
@@ -73,7 +73,7 @@ void InitAircraftSpecs(const char fileName[])
 
     if ( isspace(ACbuffer[0]) )	/* Belongs to previous line		*/
       {
-      p = realloc(file[cnt-1], strlen(file[cnt-1]) + strlen(ACbuffer)+1);
+      p = (char *)realloc(file[cnt-1], strlen(file[cnt-1]) + strlen(ACbuffer)+1);
 
       if (p == NULL)
         {
@@ -95,7 +95,7 @@ void InitAircraftSpecs(const char fileName[])
   fclose(fp);
 
 
-  if ((ACfile = calloc((size_t)cnt+1, sizeof(char *))) == NULL)
+  if ((ACfile = (char **)calloc((size_t)cnt+1, sizeof(char *))) == NULL)
     {
     fprintf(stderr, "InitAircraft: out of memory.\n");
     exit(1);

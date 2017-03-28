@@ -27,7 +27,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1995
 
 static char	**PMSfile = NULL;
 
-char	*GetMemory();
+char	*GetMemory(size_t);
 
 /* -------------------------------------------------------------------- */
 void InitPMSspecs(const char fileName[])

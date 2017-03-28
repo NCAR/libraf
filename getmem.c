@@ -6,15 +6,7 @@ FULL NAME:	Get Memory
 
 ENTRY POINTS:	GetMemory()
 
-STATIC FNS:	none
-
 DESCRIPTION:	malloc data space, report error and exit if necassary
-
-INPUT:		unsigned	nbytes_to_malloc
-
-OUTPUT:		char *
-
-REFERENCES:	malloc
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1992
 -------------------------------------------------------------------------
@@ -27,7 +19,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1992
 /* -------------------------------------------------------------------- */
 void *GetMemory(size_t nbytes)
 {
-  char	*p;
+  void	*p;
 
   if ((p = malloc(nbytes)) == NULL)
     {

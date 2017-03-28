@@ -89,13 +89,13 @@ static void read_time_variable(int ncid)
 
   if (_file_nc_version >= 3 && nc_inq_varid(ncid, "Time", &varid) == NC_NOERR)
   {
-    _time_variable = malloc(sizeof(int) * _timeLength);
+    _time_variable = (int *)malloc(sizeof(int) * _timeLength);
     nc_get_var_int(ncid, varid, _time_variable);
   }
 
   if (_file_nc_version < 2 && nc_inq_varid(ncid, "time_offset", &varid) == NC_NOERR)
   {
-    _time_variable = malloc(sizeof(int) * _timeLength);
+    _time_variable = (int *)malloc(sizeof(int) * _timeLength);
     nc_get_var_int(ncid, varid, _time_variable);
   }
 

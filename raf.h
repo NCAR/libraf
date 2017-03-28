@@ -70,7 +70,7 @@ types of data records, sizes
 extern "C" {
 #endif
 
-void *GetMemory(unsigned nbytes);
+void *GetMemory(size_t nbytes);
 char *strupr(char s[]), TrimTrailingBlanks(char s[]);
 
 int	TapeAssign(int fd), TapeOpen(char name[]), TapeRead(char *record),

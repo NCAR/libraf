@@ -63,14 +63,15 @@ get_month()
 
 /*****************************************************************************/
 
-int GetMonthNum(month)
-char *month;
+int GetMonthNum(char *month)
 {
  int m;
  
  for (m=0; m<NUM_MONTHS; m++)
   if (!(strcmp(month,months[m])))
-   return m;
+    break;
+
+ return m;
 }
 
 /****************************  GET_MONTH_NUM()  ******************************/
@@ -83,7 +84,9 @@ char *month;
  month=get_month();
  for (m=0; m<NUM_MONTHS; m++)
   if (!(strcmp(month,months[m])))
-   return m+1;
+    break;
+
+ return m+1;
 }
 
 /****************************  GET_DAY()  **********************************/
@@ -133,8 +136,7 @@ get_date()
 
 /************************* GetYYMMDDfromBase() ****************************/
 
-char *GetYYMMDDfromBase(basetime)
-long basetime;
+char *GetYYMMDDfromBase(long basetime)
 /*
 given a base time, return a string formatted as YYMMDD representing the
 year-month-day, with leading zero if needed
@@ -152,8 +154,7 @@ static char base_date[9];
 /************************  GET_DATE_FROM_BASE()  ******************************/
 
 char *
-get_date_from_base(base)
-long base;
+get_date_from_base(long base)
 /*
 given a base time since the epoch, initialize a tm struct with
 integers representing date and time and return a string with formatted date
@@ -213,8 +214,7 @@ static char TZstring[16];
  
 /*******************************************************************/
 
-int GetBaseFromMDYHMS(month,day,year,hr,min,sec)
-int month,day,year,hr,min,sec;
+int GetBaseFromMDYHMS(int month,int day,int year,int hr,int min,int sec)
 {
  struct tm time_info;
  int basetime;
@@ -234,8 +234,7 @@ int month,day,year,hr,min,sec;
 /************************  HMS2SEC()  ******************************/
 
 int
-hms2sec(hr,minut,sec)
-int hr,minut,sec;
+hms2sec(int hr,int minut,int sec)
 
 /* convert integer hour,minutes,seconds to total seconds
 */
@@ -248,9 +247,7 @@ int hr,minut,sec;
 }
 
 void
-sec2hms(total,hr,minut,sec)
-int total;
-int *hr,*minut,*sec;
+sec2hms(int total,int *hr,int *minut,int *sec)
 
 /* convert integer total seconds to hour, minutes, and seconds
 */
@@ -270,8 +267,7 @@ int *hr,*minut,*sec;
 }
 
 int
-next_end_period(total,interval)
-int total,interval;
+next_end_period(int total,int interval)
 
 /* given a total seconds (from midnite) and desired interval, return the next
    total seconds that lands "evenly" at the end of a period as prescribed
@@ -283,8 +279,7 @@ int total,interval;
  return (total+(interval-(total%interval)));
 }
 
-int last_start_period(total,rate,interval)
-int total,rate,interval;
+int last_start_period(int total,int rate,int interval)
 
 /* given a total seconds (from midnite), an update rate, and interval, return 
    previous total seconds that lands "evenly" at the start of a period as 

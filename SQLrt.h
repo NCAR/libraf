@@ -28,8 +28,8 @@ public:
 	SQLrt();
 	~SQLrt();
 
-  GetVariable(const char vn[], char st[], char et[], float buff[]);
-  GetSince(const char vn[], char last[], float buff[]);
+  int GetVariable(const char vn[], char st[], char et[], float buff[]);
+  int GetSince(const char vn[], char last[], float buff[]);
 
 
 private:
