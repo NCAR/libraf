@@ -1,2 +1,2 @@
 # libraf
-Library for EOL/RAF.  Used by external projects ncpp &amp; xpms2d.
+Library of C and C++ routines for EOL/RAF projects.  Used by external projects ncpp and xpms2d.
