@@ -31,7 +31,7 @@ public:
 		WinForm(const Widget parent, const char name[], winType wt);
   virtual	~WinForm();
 
-  virtual void	PopUp() const;
+  virtual void	PopUp();
   virtual void	PopDown() const;
 
   void		SetPosition(int x, int y) const;

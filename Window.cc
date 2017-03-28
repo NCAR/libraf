@@ -51,7 +51,7 @@ WinForm::~WinForm()
 }	/* END DESTRUCTOR */
 
 /* -------------------------------------------------------------------- */
-void WinForm::PopUp() const
+void WinForm::PopUp()
 {
   XtManageChild(window);
   XtPopup(XtParent(window), XtGrabNone);
