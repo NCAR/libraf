@@ -17,22 +17,24 @@ CFLAGS=		-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing
 CXXFLAGS=	-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing ${DEFINES}
 FFLAGS=		-O
 
-OBJS=	strupr.o tapeIO.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
-	util.o raf_queue.o chost.o date.o portable.o ac.o get_ac_name.o \
+OBJS=	strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
+	raf_queue.o date.o portable.o ac.o get_ac_name.o \
 	nc_time.o ACconfig.o adsIO.o adsIOrt.o Application.o Canvas.o Cursor.o\
-        hdrAPI.o gettext.o ntohf.o PixMap.o PMSspex.o PostScript.o tapeIO++.o\
+        hdrAPI.o gettext.o ntohf.o PixMap.o PMSspex.o PostScript.o \
         Printer.o Queue.o TextWindow.o rafTime.o validate.o pms_specs.o\
         Window.o XFonts.o XPen.o XmError.o XmFile.o XmQuery.o XmWarn.o
 
+# chost.o util.o tapeIO.o tapeIO++.o
 # cio.o flote.o sendhc.o sendpr.o 
 
-SRCS=	strupr.c tapeIO.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
-	util.c raf_queue.c chost.c date.c portable.c ac.c get_ac_name.c \
+SRCS=	strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
+	raf_queue.c date.c portable.c ac.c get_ac_name.c \
 	nc_time.c ACconfig.cc adsIO.cc adsIOrt.cc Application.cc Canvas.cc Cursor.cc\
-        hdrAPI.cc gettext.cc ntohf.cc PixMap.cc PMSspex.cc PostScript.o tapeIO++.cc\
+        hdrAPI.cc gettext.cc ntohf.cc PixMap.cc PMSspex.cc PostScript.o \
         Printer.cc Queue.cc TextWindow.o rafTime.cc validate.cc pms_specs.c\
         Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc
 
+# chost.c util.c tapeIO.c tapeIO++.c
 # cio.c flote.f sendhc.f sendpr.f 
 
 HDRS=	ac.h

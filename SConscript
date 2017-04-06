@@ -28,7 +28,6 @@ Xwarn.c
 ac.c
 adsIO.cc
 adsIOrt.cc
-chost.c
 date.c
 get_ac_name.c
 getmem.c
@@ -40,11 +39,13 @@ pms_specs.c
 portable.c
 raf_queue.c
 strupr.c
-tapeIO.c
-tapeIO++.cc
-util.c
 validate.cc
 """)
+
+#chost.c
+#tapeIO.c
+#tapeIO++.cc
+#util.c
 
 std = env.StaticLibrary('raf' , sources)
 #env.Default(env.Install('#/lib/', raf))
