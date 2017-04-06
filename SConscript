@@ -39,13 +39,15 @@ pms_specs.c
 portable.c
 raf_queue.c
 strupr.c
+util.c
 validate.cc
 """)
 
-#chost.c
+# No mtio.h on macosx.
 #tapeIO.c
 #tapeIO++.cc
-#util.c
+
+#chost.c
 
 std = env.StaticLibrary('raf' , sources)
 #env.Default(env.Install('#/lib/', raf))
