@@ -17,7 +17,7 @@ CFLAGS=		-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing
 CXXFLAGS=	-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing ${DEFINES}
 FFLAGS=		-O
 
-OBJS=	strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
+OBJS=	chost.o strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 	raf_queue.o date.o portable.o ac.o get_ac_name.o util.o \
 	nc_time.o ACconfig.o adsIO.o adsIOrt.o Application.o Canvas.o Cursor.o\
         hdrAPI.o gettext.o ntohf.o PixMap.o PMSspex.o PostScript.o \
@@ -27,7 +27,7 @@ OBJS=	strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 # chost.o tapeIO.o tapeIO++.o
 # cio.o flote.o sendhc.o sendpr.o 
 
-SRCS=	strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
+SRCS=	chost.c strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
 	raf_queue.c date.c portable.c ac.c get_ac_name.c util.c \
 	nc_time.c ACconfig.cc adsIO.cc adsIOrt.cc Application.cc Canvas.cc Cursor.cc\
         hdrAPI.cc gettext.cc ntohf.cc PixMap.cc PMSspex.cc PostScript.o \

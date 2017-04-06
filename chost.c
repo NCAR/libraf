@@ -7,17 +7,7 @@ FULL NAME:	Compute Host
 ENTRY POINTS:	SetComputeHost()
 		GetComputeHost()
 
-STATIC FNS:	none
-
 DESCRIPTION:	
-
-INPUT:		
-
-OUTPUT:		
-
-REFERENCES:	none
-
-REFERENCED BY:	WINDS/windComm/winput
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1995
 -------------------------------------------------------------------------
@@ -29,7 +19,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1995
 
 #include "constants.h"
 
-static char ComputeHost[SYS_NMLN];	/* name of host running WINDS	*/
+static char ComputeHost[65];	/* name of host running WINDS	*/
  
 /* -------------------------------------------------------------------- */
 int SetComputeHost()

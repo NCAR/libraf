@@ -28,6 +28,7 @@ Xwarn.c
 ac.c
 adsIO.cc
 adsIOrt.cc
+chost.c
 date.c
 get_ac_name.c
 getmem.c
@@ -46,8 +47,6 @@ validate.cc
 # No mtio.h on macosx.
 #tapeIO.c
 #tapeIO++.cc
-
-#chost.c
 
 std = env.StaticLibrary('raf' , sources)
 #env.Default(env.Install('#/lib/', raf))
