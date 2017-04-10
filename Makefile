@@ -13,18 +13,25 @@ DEFINES=	-DPNG
 CC=	gcc
 CXX=	g++
 
+# Linux
 CFLAGS=		-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing
 CXXFLAGS=	-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing ${DEFINES}
-FFLAGS=		-O
+NCH_DEP=	/usr/include/netcdf.h
+
+# macosx
+# mtio.h does not exist on Mac, comment out two tapeIO files below.
+CFLAGS=		-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing -I/opt/X11/include
+CXXFLAGS=	-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing ${DEFINES} -I/opt/X11/include
+NCH_DEP=	/usr/local/include/netcdf.h
 
 OBJS=	chost.o strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 	raf_queue.o date.o portable.o ac.o get_ac_name.o util.o \
 	nc_time.o ACconfig.o adsIO.o adsIOrt.o Application.o Canvas.o Cursor.o\
         hdrAPI.o gettext.o ntohf.o PixMap.o PMSspex.o PostScript.o \
         Printer.o Queue.o TextWindow.o rafTime.o validate.o pms_specs.o\
-        Window.o XFonts.o XPen.o XmError.o XmFile.o XmQuery.o XmWarn.o
+        Window.o XFonts.o XPen.o XmError.o XmFile.o XmQuery.o XmWarn.o \
+	tapeIO.o tapeIO++.o
 
-# chost.o tapeIO.o tapeIO++.o
 # cio.o flote.o sendhc.o sendpr.o 
 
 SRCS=	chost.c strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
@@ -32,9 +39,9 @@ SRCS=	chost.c strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
 	nc_time.c ACconfig.cc adsIO.cc adsIOrt.cc Application.cc Canvas.cc Cursor.cc\
         hdrAPI.cc gettext.cc ntohf.cc PixMap.cc PMSspex.cc PostScript.o \
         Printer.cc Queue.cc TextWindow.o rafTime.cc validate.cc pms_specs.c\
-        Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc
+        Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc \
+	tapeIO.c tapeIO++.c
 
-# chost.c tapeIO.c tapeIO++.c
 # cio.c flote.f sendhc.f sendpr.f 
 
 HDRS=	ac.h
@@ -43,7 +50,7 @@ HDRS=	ac.h
 all: lib${LIBNAME}.a
 
 ac.o: ac.h
-nc_time.o: /usr/include/netcdf.h
+nc_time.o: ${NCH_DEP}
 
 # IO classes.
 hdrAPI.o:       hdrAPI.h ntohf.h
