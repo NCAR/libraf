@@ -2,6 +2,10 @@
 
 Import('env')
 
+env.Append(CPPFLAGS='-g -Wall -Wno-write-strings')
+env.Append(CPPDEFINES=['-DPNG'])
+
+
 sources = Split("""
 ACconfig.cc
 Application.cc
@@ -45,8 +49,8 @@ validate.cc
 """)
 
 # No mtio.h on macosx.
-#tapeIO.c
-#tapeIO++.cc
+if env['PLATFORM'] != 'darwin':
+  sources.append(['tapeIO.c', 'tapeIO++.cc'])
 
 std = env.StaticLibrary('raf' , sources)
 #env.Default(env.Install('#/lib/', raf))
