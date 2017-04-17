@@ -2,8 +2,8 @@
 
 Import('env')
 
-env.Append(CPPFLAGS='-g -Wall -Wno-write-strings')
-env.Append(CPPDEFINES=['-DPNG'])
+env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
+env.Append(CPPDEFINES=['PNG'])
 
 
 sources = Split("""
