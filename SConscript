@@ -1,6 +1,8 @@
 # -*- python -*-
 
-Import('env')
+Import('PREFIX')
+
+env = Environment()
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
 env.Append(CPPDEFINES=['PNG'])
@@ -52,5 +54,5 @@ validate.cc
 if env['PLATFORM'] != 'darwin':
   sources.append(['tapeIO.c', 'tapeIO++.cc'])
 
-std = env.StaticLibrary('raf' , sources)
-#env.Default(env.Install('#/lib/', raf))
+raf = env.StaticLibrary('raf' , sources)
+env.Default(env.Install(PREFIX+'/lib/', raf))

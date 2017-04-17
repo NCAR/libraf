@@ -6,4 +6,6 @@
 # by executing scons in a parent directory
 
 env = Environment()
-SConscript('SConscript', exports = ['env'])
+
+PREFIX='#'
+SConscript('SConscript', exports = ['PREFIX'])
