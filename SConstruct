@@ -5,7 +5,18 @@
 # This dir can be built standalone by executing scons here, or together
 # by executing scons in a parent directory
 
-env = Environment()
+AddOption('--prefix',
+  dest='prefix',
+  type='string',
+  nargs=1,
+  action='store',
+  metavar='DIR',
+  default='#',
+  help='installation prefix')
 
-PREFIX='#'
+env = Environment(PREFIX = GetOption('prefix'))
+
+# Can't figure out how to Export the rhs, so assign it out to local variable.
+PREFIX=env['PREFIX']
+
 SConscript('SConscript', exports = ['PREFIX'])

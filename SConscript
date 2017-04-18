@@ -50,9 +50,21 @@ util.c
 validate.cc
 """)
 
+includes = Split("""
+ACconfig.h     PixMap.h      TextWindow.h  XmFile.h   adsIOrt.h    ntohf.h     rafTime.h
+Application.h  PostScript.h  Window.h      XmQuery.h  constants.h  pgsql.h     raf_queue.h
+Canvas.h       Printer.h     XFonts.h      XmWarn.h   hdrAPI.h     pms.h       tapeIO.h
+Cursor.h       Queue.h       XPen.h        ac.h       header.h     portable.h
+PMSspex.h      SQLrt.h       XmError.h     adsIO.h    libraf.h     raf.h
+""")
+
 # No mtio.h on macosx.
 if env['PLATFORM'] != 'darwin':
   sources.append(['tapeIO.c', 'tapeIO++.cc'])
 
 raf = env.StaticLibrary('raf' , sources)
-env.Default(env.Install(PREFIX+'/lib/', raf))
+env.Install(PREFIX+'/lib', raf)
+env.Install(PREFIX+'/include/raf', includes)
+il = env.Alias('install-lib', PREFIX+'/lib')
+ii = env.Alias('install-inc', PREFIX+'/include/raf')
+env.Alias('install', [il, ii])
