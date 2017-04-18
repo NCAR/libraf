@@ -6,6 +6,8 @@ env = Environment()
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
 env.Append(CPPDEFINES=['PNG'])
+if env['PLATFORM'] == 'darwin':
+  env.Append(CPPPATH=['/opt/X11/include'])
 
 
 sources = Split("""
