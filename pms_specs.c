@@ -91,7 +91,7 @@ void InitPMSspecs(const char fileName[])
     else
       p = &PMSbuffer[strlen(PMSbuffer)];
 
-    while ( isspace(*(--p)) )	/* Strip trailing white-space	*/
+    while ( p > PMSbuffer && isspace(*(--p)) )	/* Strip trailing white-space	*/
       *p = '\0';
 
     if ( isspace(PMSbuffer[0]) )	/* Belongs to previous line	*/
