@@ -56,7 +56,7 @@ void Header::readHeader(const char fileName[])
     {
     gzFile fd;
 
-    if ((fd = gzopen(fileName, "rb")) <= 0)
+    if ( (fd = gzopen(fileName, "rb")) )
       {
       std::cerr << "hdrAPI: can't open " << fileName << ".\n";
       return;
