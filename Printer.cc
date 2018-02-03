@@ -298,7 +298,7 @@ void Printer::GetPrinterList()
 
   printer_list.push_back("Default");
 
-  for (i = 1; fgets(buffer, 256, in) > 0; ++i)
+  for (i = 1; fgets(buffer, 256, in); ++i)
     {
     p = strtok(buffer, " ");
     p = strtok(NULL, " ");
