@@ -1,8 +1,7 @@
 # -*- python -*-
 
-Import('PREFIX')
-
 env = Environment()
+env['INSTALL_PREFIX'] = "../"
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
 env.Append(CPPDEFINES=['PNG'])
@@ -65,8 +64,9 @@ if env['PLATFORM'] != 'darwin':
   sources.append(['tapeIO.c', 'tapeIO++.cc'])
 
 raf = env.StaticLibrary('raf' , sources)
-env.Install(PREFIX+'/lib', raf)
-env.Install(PREFIX+'/include/raf', includes)
-il = env.Alias('install-lib', PREFIX+'/lib')
-ii = env.Alias('install-inc', PREFIX+'/include/raf')
+env.Default(raf)
+env.Install("$INSTALL_PREFIX/lib", raf)
+env.Install("$INSTALL_PREFIX/include/raf", includes)
+il = env.Alias('install-lib', "$INSTALL_PREFIX/lib")
+ii = env.Alias('install-inc', "$INSTALL_PREFIX/include/raf")
 env.Alias('install', [il, ii])
