@@ -1,7 +1,6 @@
 # -*- python -*-
 
 env = Environment()
-env['INSTALL_PREFIX'] = "../"
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
 env.Append(CPPDEFINES=['PNG'])
