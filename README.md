@@ -14,6 +14,8 @@ Functions and subrouties in the libraf library.
 
 ### Environment ###
 
+The raf library requires netCDF.
+
 ### Dependencies ###
 
 ### Installation ####
