@@ -5,9 +5,11 @@
 # This dir can be built standalone by executing scons here, or together
 # by executing scons in a parent directory
 
-def Raf(env):
-    env.Require(['prefixoptions'])
+import eol_scons
 
-env = Environment(GLOBAL_TOOLS = [Raf])
+def RAF_utils(env):
+    env['DEFAULT_INSTALL_PREFIX']="#"
+
+env = Environment(GLOBAL_TOOLS = [RAF_utils])
 
 SConscript('SConscript')

@@ -1,6 +1,6 @@
 # -*- python -*-
 
-env = Environment()
+env = Environment(tools=['default','prefixoptions'])
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
 env.Append(CPPDEFINES=['PNG'])
