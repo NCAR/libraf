@@ -69,3 +69,9 @@ env.Install("$INSTALL_PREFIX/include/raf", includes)
 il = env.Alias('install-lib', "$INSTALL_PREFIX/lib")
 ii = env.Alias('install-inc', "$INSTALL_PREFIX/include/raf")
 env.Alias('install', [il, ii])
+
+def raf(env):
+    env.AppendLibrary('raf')
+    env.Append(CPPPATH=env.Dir('.'))
+
+Export('raf')
