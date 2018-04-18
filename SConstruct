@@ -7,9 +7,9 @@
 
 import eol_scons
 
-def RAF_utils(env):
+def Raf_utils(env):
     env['DEFAULT_INSTALL_PREFIX']="#"
 
-env = Environment(GLOBAL_TOOLS = [RAF_utils])
+env = Environment(GLOBAL_TOOLS = [Raf_utils])
 
 SConscript('SConscript')
