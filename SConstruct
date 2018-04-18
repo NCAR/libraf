@@ -7,9 +7,28 @@
 
 import eol_scons
 
+AddOption('--prefix',
+  dest='prefix',
+  type='string',
+  nargs=1,
+  action='store',
+  metavar='DIR',
+  default='#',
+  help='installation prefix')
+
 def Raf_utils(env):
-    env['DEFAULT_INSTALL_PREFIX']="#"
+    if GetOption('prefix') != "#":
+	env.Replace(INSTALL_PREFIX = GetOption('prefix'))
+	env.Replace(OPT_PREFIX=GetOption('prefix'))
+    else:
+        env['DEFAULT_INSTALL_PREFIX']="#"
+	env.Require(['prefixoptions'])
 
 env = Environment(GLOBAL_TOOLS = [Raf_utils])
 
 SConscript('SConscript')
+
+variables = env.GlobalVariables()
+variables.Update(env)
+Help(variables.GenerateHelpText(env))
+
