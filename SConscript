@@ -1,5 +1,7 @@
 # -*- python -*-
 
+import eol_scons
+
 env = Environment(tools=['default','prefixoptions'])
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
@@ -62,9 +64,9 @@ PMSspex.h      SQLrt.h       XmError.h     adsIO.h    libraf.h     raf.h
 if env['PLATFORM'] != 'darwin':
   sources.append(['tapeIO.c', 'tapeIO++.cc'])
 
-raf = env.StaticLibrary('raf' , sources)
-env.Default(raf)
-env.Install("$INSTALL_PREFIX/lib", raf)
+libraf = env.StaticLibrary('raf' , sources)
+env.Default(libraf)
+env.Install("$INSTALL_PREFIX/lib", libraf)
 env.Install("$INSTALL_PREFIX/include/raf", includes)
 il = env.Alias('install-lib', "$INSTALL_PREFIX/lib")
 ii = env.Alias('install-inc', "$INSTALL_PREFIX/include/raf")
