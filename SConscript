@@ -74,6 +74,6 @@ env.Alias('install', [il, ii])
 
 def raf(env):
     env.AppendLibrary('raf')
-    env.Append(CPPPATH=env.Dir('.'))
+    env.Append(CPPPATH=env.Dir('..'))
 
 Export('raf')
