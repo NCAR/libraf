@@ -14,9 +14,23 @@ Functions and subrouties in the libraf library.
 
 ### Environment ###
 
-The raf library requires netCDF.
+The raf library is written in C. It requires netCDF libraries be installed.
+
+The utilities build and run on any Unix/Linux operating system, including Mac OS X.
 
 ### Dependencies ###
 
+To install these programs on your computer, ensure the following libraries are installed:
+
+* netcdf-cxx-devel (will pull in netcdf-cxx, netcdf-devel, and netcdf)
+
 ### Installation ####
+
+* git clone https://github.com/ncareol/eol_scons
+* git clone --recursive https://github.com/ncar/libraf
+* cd libraf
+* scons --site_dir=../site_scons <- build libraf.a in the libraf dir
+* scons install --site-dir=../site_scons <- install libraf.a under libraf/lib and includes under libraf/include/raf.
+* scons install --site-dir=../site_scons --prefix=<path_to_install_dir> <- installs under <path_to_install_dir>/lib and <path_to_install_dir>/include/raf.
+
 This library may be used by placing a "-lraf" in your compile statement.
