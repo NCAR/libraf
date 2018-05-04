@@ -5,6 +5,13 @@
 # This dir can be built standalone by executing scons here, or together
 # by executing scons in a parent directory
 
+import re 
+
+print GetOption('site_dir')
+if not re.match(r'(.*)site_scons(.*)',str(GetOption('site_dir'))):
+    print "Must include --site-dir=<path-to-site_scons> as a command line option, e.g. --site-dir=../site_scons. Exiting."
+    Exit()
+
 import eol_scons
 
 AddOption('--prefix',
