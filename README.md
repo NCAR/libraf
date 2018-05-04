@@ -26,7 +26,7 @@ To install these programs on your computer, ensure the following libraries are i
 
 ### Installation ####
 
-* git clone https://github.com/ncareol/eol_scons
+* git clone https://github.com/ncareol/eol_scons site_scons
 * git clone https://github.com/ncar/libraf
 * cd libraf
 * scons --site_dir=../site_scons <- build libraf.a in the libraf dir
