@@ -35,8 +35,8 @@ AddOption('--prefix',
 
 def Raf_utils(env):
     if GetOption('prefix') != "#":
-	env.Replace(INSTALL_PREFIX = GetOption('prefix'))
-	env.Replace(OPT_PREFIX=GetOption('prefix'))
+	env.Replace(DEFAULT_INSTALL_PREFIX = GetOption('prefix'))
+	env.Replace(DEFAULT_OPT_PREFIX = GetOption('prefix'))
     else:
         env['DEFAULT_INSTALL_PREFIX']="#"
 	env.Require(['prefixoptions'])
