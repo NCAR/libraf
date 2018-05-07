@@ -1,7 +1,5 @@
 # -*- python -*-
 
-import eol_scons
-
 env = Environment(tools=['default','prefixoptions'])
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
