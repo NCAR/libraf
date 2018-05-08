@@ -38,6 +38,7 @@ To install locally, you will need to download two repositories into a single par
 
 To install in a common area, you first need to install eol_scons (under a dir called site_scons) in either /usr/share/scons or $HOME/.scons. Change to one of the above two dirs and run:
 * git clone https://github.com/ncareol/eol_scons site_scons
+
 Then change to a working area of your choice and run:
 * git clone https://github.com/ncar/libraf
 * cd libraf
