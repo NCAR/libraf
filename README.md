@@ -31,13 +31,13 @@ This code also depends on the eol_scons repo. Ways to handle this are discussed 
 libraf can either be installed locally, or can be installed in a common area (such as /opt/local in a linux system).
 
 To install locally, you will need to download two repositories into a single parent directory. From within this parent dir:
-* git clone https://github.com/ncareol/eol_scons site_scons
+* git clone https://github.com/ncar/eol_scons site_scons
 * git clone https://github.com/ncar/libraf
 * cd libraf
 * scons install <- install libraf.a under libraf/lib and include under libraf/include/raf.
 
 To install in a common area, you first need to install eol_scons (under a dir called site_scons) in either /usr/share/scons or $HOME/.scons. Change to one of the above two dirs and run:
-* git clone https://github.com/ncareol/eol_scons site_scons
+* git clone https://github.com/ncar/eol_scons site_scons
 
 Then change to a working area of your choice and run:
 * git clone https://github.com/ncar/libraf
