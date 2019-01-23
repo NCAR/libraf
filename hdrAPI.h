@@ -32,9 +32,9 @@ public:
 	Header(const std::string fName);
 	~Header();
 
-  void 	readHeader(const char fName[]);
+  void	readHeader(const char fName[]);
 
-  const void 	*HeaderPointer()	{ return((void *)_header); }
+  const void	*HeaderPointer()	{ return((void *)_header); }
 
   const char	*ProjectName();		// May not work if no PROJ_DIR
 

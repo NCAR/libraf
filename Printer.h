@@ -4,11 +4,7 @@ OBJECT NAME:	Printer.h
 
 FULL NAME:	Printer Setup Class
 
-TYPE:		
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------

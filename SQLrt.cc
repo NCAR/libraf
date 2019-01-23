@@ -6,11 +6,7 @@ FULL NAME:	Real-time SQl data retriever.
 
 TYPE:		Concrete
 
-ENTRY POINTS:	
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 2003
 -------------------------------------------------------------------------
@@ -36,7 +32,7 @@ SQLrt::SQLrt()
     PQfinish(conn);
     conn = NULL;
   }
-                                                                                
+
   sprintf(sqlBuff, "LISTEN current");
   res = PQexec(conn, sqlBuff);
   PQerrorMessage(conn);

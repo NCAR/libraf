@@ -4,11 +4,7 @@ OBJECT NAME:	XPen.h
 
 FULL NAME:	Generic X Graphics Context and Font class
 
-TYPE:		
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
@@ -38,7 +34,7 @@ public:
 
   void	SetFunction(int mask)	{ XSetFunction(dpy, gc, mask); }
 
-  
+
   void	DrawText(Drawable canvas, int x, int y, const char str[])
 	{ XDrawString(dpy, canvas, gc, x, y, str, strlen(str)); }
 

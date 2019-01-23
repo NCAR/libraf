@@ -4,13 +4,7 @@ OBJECT NAME:	Application.cc
 
 FULL NAME:	
 
-ENTRY POINTS:	
-
-STATIC FNS:	
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997-8
 -------------------------------------------------------------------------
@@ -25,7 +19,7 @@ Application::Application(const char APP_CLASS[], int *argc, char *argv[],
 {
   shell = XtAppInitialize(&context, APP_CLASS, NULL, 0, argc, argv,
                           fallback_resources, NULL, 0);
- 
+
 }	/* END CONSTRUCTOR */
 
 /* -------------------------------------------------------------------- */

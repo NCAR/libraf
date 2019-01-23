@@ -8,11 +8,7 @@ ENTRY POINTS:	PopUp()
 		SetShape()
 		ApplyParms()
 
-STATIC FNS:	
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
@@ -149,7 +145,7 @@ Printer::Printer(Widget parent) : WinForm(parent, "print", RowColumn)
   XtAddCallback(b[1], XmNactivateCallback, EditPrintParms, NULL);
   XtAddCallback(b[2], XmNactivateCallback, DismissWindow, Window());
   XtManageChildren(b, 3);
- 
+
 
 #ifdef SVR4
   strcpy(lp_command, "lp -o nobanner");
@@ -176,14 +172,14 @@ void Printer::setParms()
 
   sprintf(buffer, "%.3f", height);
   XmTextFieldSetString(parmsText[2], buffer);
- 
+
   switch (shape)
     {
     case LANDSCAPE:
       XmToggleButtonSetState(shapeB[0], false, false);
       XmToggleButtonSetState(shapeB[1], true, false);
       break;
- 
+
     case PORTRAIT:
       XmToggleButtonSetState(shapeB[0], true, false);
       XmToggleButtonSetState(shapeB[1], false, false);
@@ -241,10 +237,10 @@ void Printer::SetShape(layout newShape)
 
     width = height;
     height = tmp;
-    
+
     shape = newShape;
     }
- 
+
   setParms();
 
 }	/* END SETSHAPE */

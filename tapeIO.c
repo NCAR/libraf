@@ -28,9 +28,6 @@ DESCRIPTION:	man tapeIO
 		ensure you have not advanced to the next file.
 
 		TapeTell() returns the Current Physical Record Number.
-INPUT:		
-
-OUTPUT:		ERR/OK
 
 REFERENCES:	open, read, close, ioctl
 

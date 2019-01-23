@@ -1,4 +1,4 @@
-/* raf.h  -- RAF-specific hardwired.  
+/* raf.h  -- RAF-specific hardwired.
 */
 
 #ifndef RAF_H
@@ -17,7 +17,7 @@
 /*
 Define each airplane name and the name of one candidate host that is likely
 to be on the plane. This hostname need NOT be the WINDS server, Control Host,
-NFS server, or anything at all; just installed, running, and on the net. 
+NFS server, or anything at all; just installed, running, and on the net.
 As well define the 1st digit, as implied from above PROJ_<airplane> defines,
 for project numbers associated with given platform, following the hostname.
 
@@ -25,15 +25,15 @@ Scripts using the name of one candidate host for given airplane should also
 deal with that host not being up on the plane (using ping, e.g.) and ask
 user interactively for an alternate name...
 
-PLEASE NOTE: the following lines (including commented line with calcart name 
+PLEASE NOTE: the following lines (including commented line with calcart name
 and #defines using <airplane>_NAME) use a format that other scripts parse
-to get hostname info. Please do not alter without contacting WINDS expert! 
+to get hostname info. Please do not alter without contacting WINDS expert!
 Thank You! (10/21/94)
 */
-/* 
-CALCART_NAME: tonopah 
-WindsMount: /home/local 
-WindsMount: /usr/openwin 
+/*
+CALCART_NAME: tonopah
+WindsMount: /home/local
+WindsMount: /usr/openwin
 */
 #define ELECTRA_NAME	"Electra"	/* ONBOARD: salsa 8	*/
 #define KINGAIR_NAME	"KingAir"	/* ONBOARD: ozone 2	*/
@@ -45,11 +45,11 @@ WindsMount: /usr/openwin
 #define TADS_NAME	"TADS"		/* ONBOARD: frik 6	*/
 #define B57_NAME	"B-57"		/* ONBOARD: phoenix 5	*/
 #define NRL_P3_NAME	"P-3"		/* ONBOARD: orion 3	*/
-/* 
+/*
 types of data records, sizes
 */
 #ifndef MX_PHYS
-#define MX_PHYS    65535              	/* max physical record size, 32768 */
+#define MX_PHYS    65535		/* max physical record size, 32768 */
 #endif
 
 #define PMS2DC1         0x4331

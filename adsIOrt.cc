@@ -6,10 +6,6 @@ FULL NAME:	Real-time ADS Data File Class
 
 DESCRIPTION:	
 
-INPUT:		
-
-OUTPUT:		
-
 COPYRIGHT:	University Corporation for Atmospheric Research, 1999
 -------------------------------------------------------------------------
 */
@@ -41,7 +37,7 @@ ADS_rtFile::ADS_rtFile()
   headOffset = 20 + (2 * hdr->HeaderLength());
 
 }	/* END CONSTRUCTOR */
-  
+
 /* -------------------------------------------------------------------- */
 bool ADS_rtFile::FirstSyncRecord(char buff[])
 {
@@ -68,7 +64,7 @@ bool ADS_rtFile::NextSyncRecord(char buff[])
       return(false);
     }
   while (ntohs(((ushort *)physRecord)[0]) != SDI_WORD);
- 
+
   memcpy((void *)buff, (void *)physRecord, hdr->lrLength());
   return(true);
 
@@ -192,9 +188,9 @@ bool ADS_rtFile::NextPMS2dRecord(P2d_rec *buff)
       }
     }
   while (!done);
- 
+
   memcpy((void *)buff, (void *)physRecord, size);
- 
+
   return(true);
 
 }	/* END NEXTPMS2DRECORD */
@@ -255,9 +251,9 @@ bool ADS_rtFile::NextGreyRecord(char buff[])
       }
     }
   while (!done);
- 
+
   memcpy((void *)buff, (void *)physRecord, size);
- 
+
   return(true);
 
 }	/* END NEXTGREYRECORD */

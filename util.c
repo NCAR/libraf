@@ -30,13 +30,13 @@ static int StringPosn;
 int nindex(char *s, char c)
 {
 int i;
- 
+
  for (i=0; i<strlen(s); i++)
   if ( s[i]==c )
    return i;
  return 0;
-} 
- 
+}
+
 /************************************************************************/
 bool FileIsSymLink(char *filename)
 {
@@ -78,7 +78,7 @@ char *substring(char *s, char c)
 {
  static char *s2=NULL;
  int length;
- 
+
  if (s2)
   (void)free(s2);
  s2=(char *)malloc( (unsigned int)strlen(s));
@@ -89,7 +89,7 @@ char *substring(char *s, char c)
  s2[length]='\0';
  return s2;
 }
- 
+
 /************************************************************************/
 char *ReplaceStringWithChar(char *string,char *target,char substitute)
 {
@@ -111,7 +111,7 @@ int GetNumCharInString(char c, char *s)
 {
  int posn,numchars=0;
  for (posn=0; posn<strlen(s); posn++) {
-  if (s[posn]==c) 
+  if (s[posn]==c)
    numchars++;
  }
  return numchars;
@@ -125,48 +125,48 @@ int posn;
  for (posn=0; posn<strlen(string); posn++) {
   if (string[posn]==target)
    string[posn]=substitute;
- } 
+ }
  return string;
 }
 
 /***************************************************************************/
 char *StripLeadingBlanks(char *s)
 {
- int i; 
+ int i;
  int len;
 
  len=strlen(s);
-  
- for (i=0; i<len; i++) 
-  if (!isspace(s[i])) { 
-   return &s[i]; 
+
+ for (i=0; i<len; i++)
+  if (!isspace(s[i])) {
+   return &s[i];
   }
  return NULL;
 }
 
 /***********************  TrimTrailingBlanks()  **************************/
 char *TrimTrailingBlanks(char s[])
-/* remove trailing blanks from character string 
-*/ 
-{ 
-int i; 
+/* remove trailing blanks from character string
+*/
+{
+int i;
 int len;
 
  len=strlen(s);
-  
- for (i=len-1; i>=0; i--) 
-  if (!(isspace(s[i])) ) { 
+
+ for (i=len-1; i>=0; i--)
+  if (!(isspace(s[i])) ) {
 /*
 with gcc compilation (but not SPARCWorks...), accessing the len'th
 position of s results in SEGV. Don't do it. Assume it's already set to
 the null character if char just before it is first non-space character found.
 */
    if ((i+1)<len)
-    s[i+1]='\0'; 
-   return s; 
+    s[i+1]='\0';
+   return s;
   }
  return NULL;
-} 
+}
 
 /************************  LAST_BLANK()  ***********************************/
 int last_blank(char *s, int maxlen)
@@ -190,7 +190,7 @@ void trim_trailing_blanks(char *s, int len)
 */
 {
 int i;
- 
+
  for (i=len-1; i>0; i--)
   if (!(isspace(s[i])) ) {
    s[i+1]='\0';

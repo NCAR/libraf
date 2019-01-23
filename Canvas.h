@@ -8,8 +8,6 @@ TYPE:		Abstract
 
 DESCRIPTION:	
 
-NOTES:		
-
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
 */

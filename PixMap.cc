@@ -1,19 +1,11 @@
 /*
 -------------------------------------------------------------------------
 OBJECT NAME:    PixMap.cc
- 
+
 FULL NAME:      Generic X Pixmap manipulations
- 
-ENTRY POINTS:
- 
+
 DESCRIPTION:
- 
-REFERENCES:
- 
-REFERENCED BY:
- 
-NOTES:
- 
+
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
 */

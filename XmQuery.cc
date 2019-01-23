@@ -27,7 +27,7 @@ static void DismissQuery(Widget w, XtPointer client, XtPointer call)
   XtUnmanageChild((Widget)client);
   XtRemoveGrab((Widget)client);
 }
- 
+
 /* -------------------------------------------------------------------- */
 void XmQuery::QueryUser(const char str[], int maxlen, void (*callBack)())
 {

@@ -1,14 +1,10 @@
 /*
 -------------------------------------------------------------------------
 OBJECT NAME:    PostScript.h
- 
+
 FULL NAME:      Printing/PostScript header include file.
- 
-TYPE:		
 
 DESCRIPTION:	Postscript version of class PlotX
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2005
 -------------------------------------------------------------------------

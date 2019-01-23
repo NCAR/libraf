@@ -4,8 +4,6 @@ OBJECT NAME:	SQLrt.h
 
 FULL NAME:	Class for reading SQL database (PostGreS).
 
-ENTRY POINTS:	
-
 DESCRIPTION:	
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 2003

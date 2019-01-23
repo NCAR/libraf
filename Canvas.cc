@@ -1,19 +1,11 @@
 /*
 -------------------------------------------------------------------------
 OBJECT NAME:    Canvas.cc
- 
+
 FULL NAME:      Generic X canvas manipulations
- 
-ENTRY POINTS:
- 
+
 DESCRIPTION:
- 
-REFERENCES:
- 
-REFERENCED BY:
- 
-NOTES:
- 
+
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
 */
@@ -63,7 +55,7 @@ void Canvas::ExposeAll() const
   XCopyArea(dpy, pixMap, win, defaultGC, 0, 0, width, height, 0, 0);
 
 }       /* END EXPOSEALL */
- 
+
 /* -------------------------------------------------------------------- */
 void Canvas::ExposeArea(XmDrawingAreaCallbackStruct *call) const
 {
@@ -73,7 +65,7 @@ void Canvas::ExposeArea(XmDrawingAreaCallbackStruct *call) const
             evt->x, evt->y, evt->width, evt->height, evt->x, evt->y);
 
 }       /* END EXPOSEAREA */
- 
+
 /* -------------------------------------------------------------------- */
 void Canvas::Resize()
 {

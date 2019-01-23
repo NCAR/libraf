@@ -3,10 +3,10 @@
 /*  copen
     bnread
     bnwrit
-    cclose  
+    cclose
     rewtap
     eoftap
-    fsftap 
+    fsftap
     bsftap
     bsrtap
     bsrfil */
@@ -18,22 +18,22 @@
 #include <sys/types.h>
 #include <sys/mtio.h>
 #include <sys/ioctl.h>
-#include <sys/uio.h> 
+#include <sys/uio.h>
 #include <tapeerr.h>
 
 /* ****************************************************************** */
- 
+
  copen_ (unit, nunit, name, mode, err, oflag)
    int *unit, *nunit, *mode, *err, *oflag;
-   char name[40]; 
- 
+   char name[40];
+
  /* unit = Fortran unit number
     nunit = UNIX file descriptor associated with 'unit'
     name  = UNIX file name
     mode = 0 : write only - file will be created if it doesn't exist
                           - otherwise will be rewritten
          = 1 : read  only
-         = 2 : read/write 
+         = 2 : read/write
     oflag = 0 : no notification if file opened OK
           = 1 : file name and unit number printed */
   {
@@ -49,12 +49,12 @@
      fname[i] = name[i];
    fname[i] = '\0';
 
-/* if (*mode == 0)    WRITE ONLY 
+/* if (*mode == 0)    WRITE ONLY
    printf ("UNIX File descriptor: %d\n", fd = open (fname, O_WRONLY));
      printf ("UNIX File descriptor: %d\n", fd = creat (fname, 0777));
-   else if (*mode == 1)   READ ONLY 
+   else if (*mode == 1)   READ ONLY
      printf ("UNIX File descriptor: %d\n", fd = open (fname, O_RDONLY));
-   else   READ/WRITE 
+   else   READ/WRITE
      printf ("UNIX File descriptor: %d\n", fd = open (fname, O_RDWR));*/
 /*
    brkuptp(fname,&drive,&dens);
@@ -69,7 +69,7 @@
       fd = open (fname, O_RDWR);
    if (*oflag != 0)
       printf ("UNIX File descriptor: %d\n", fd);
- 
+
    *err = 0;
    if (fd == -1)           /* error opening file */
      {
@@ -85,12 +85,12 @@
 /* ****************************************************************** */
 
  bnread_ (fd, buf, nbuf, bread, ios, idiag)
-   int *fd, *nbuf, buf[], *bread, *ios, *idiag; 
+   int *fd, *nbuf, buf[], *bread, *ios, *idiag;
   /* fd = UNIX file descriptor number (NOT a Fortran unit)
      buf = area into which to read
      nbuf = number of bytes to read from fd
-     bread = number actually read 
-     ios = error number returned to Fortran 
+     bread = number actually read
+     ios = error number returned to Fortran
      idiag : if non-zero, error and EOF messages will be printed */
 
   {
@@ -98,9 +98,9 @@
    struct mtget tape_stat;
 
    /* printf ("BNREAD Fd = %d Nbuf = %d\n", *fd, *nbuf); */
-   bytesread = read (*fd, buf, *nbuf);  
+   bytesread = read (*fd, buf, *nbuf);
    idum=ioctl(*fd,MTIOCGET,&tape_stat);
-   
+
    /* printf ("Bytes %d   stat %d\n", bytesread, errno);  */
 
    if (bytesread == -1)           /* error reading file */
@@ -143,10 +143,10 @@
    struct mtget tape_stat;
 
  /* printf ("BNWRIT Fd = %d Nbuf = %d   Buf = %d %d %d\n",
-      *fd, *nbuf, buf[0], buf[1], buf[2]);*/ 
-   byteswritten = write (*fd, buf, *nbuf);  
+      *fd, *nbuf, buf[0], buf[1], buf[2]);*/
+   byteswritten = write (*fd, buf, *nbuf);
    idum=ioctl(*fd,MTIOCGET,&tape_stat);
- /*   printf ("Bytes %d   stat %d\n", byteswritten, errno);*/  
+ /*   printf ("Bytes %d   stat %d\n", byteswritten, errno);*/
 
    *err = 0;
    if (byteswritten == -1)           /* error writing file */
@@ -162,7 +162,7 @@
   }
 
 /* ****************************************************************** */
- 
+
  cclose_ (nunit, stat, err)
    int *nunit, *stat, *err;
   {
@@ -194,7 +194,7 @@
   }
 
 /* ****************************************************************** */
- 
+
  rewtap_ (fd, stat, err)
    int *fd, *stat, *err;
   {
@@ -206,7 +206,7 @@
    mtsetup.mt_count = 1;
    mtsetup.mt_op    = MTREW;
    if (ioctl (*fd, MTIOCTOP, &mtsetup))
-     { 
+     {
        printf (" Tape error on rewind: %d, %s\n",
                  errno, sys_errlist[errno]);
        exit (1);
@@ -216,9 +216,9 @@
 
    return;
   }
- 
+
 /* ****************************************************************** */
- 
+
  eoftap_ (fd, stat, err)
    int *fd, *stat, *err;
   {
@@ -230,7 +230,7 @@
    mtsetup.mt_count = 1;
    mtsetup.mt_op    = MTWEOF;
    if (ioctl (*fd, MTIOCTOP, &mtsetup))
-     { 
+     {
        printf (" Tape error on writing EOF to fd %d: %d, %s\n",
                  *fd, errno, sys_errlist[errno]);
        exit (1);
@@ -238,9 +238,9 @@
 
    return;
    }
- 
+
 /* ****************************************************************** */
- 
+
  fsftap_ (fd, stat, err)
    int *fd, *stat, *err;  /* FORWARD SPACE FILE ON TAPE UNIT */
   {
@@ -252,7 +252,7 @@
    mtsetup.mt_count = 1;
    mtsetup.mt_op    = MTFSF;
    if (ioctl (*fd, MTIOCTOP, &mtsetup))
-     { 
+     {
        printf (" Tape error on FSF: %d, %s\n",
                  errno, sys_errlist[errno]);
        exit (1);
@@ -262,7 +262,7 @@
    }
 
 /* ****************************************************************** */
- 
+
  bsftap_ (fd, stat, err)
    int *fd, *stat, *err;  /* BACKWARD SPACE FILE ON TAPE UNIT */
   {
@@ -274,7 +274,7 @@
    mtsetup.mt_count = 1;
    mtsetup.mt_op    = MTBSF;
    if (ioctl (*fd, MTIOCTOP, &mtsetup))
-     { 
+     {
        printf (" Tape error on BSF: %d, %s\n",
                  errno, sys_errlist[errno]);
        exit (1);
@@ -284,7 +284,7 @@
    }
 
 /* ****************************************************************** */
- 
+
  bsrtap_ (fd, stat, err)
   int *fd, *stat, *err;  /* BACK SPACE RECORD ON TAPE UNIT */
   {
@@ -296,7 +296,7 @@
    mtsetup.mt_count = 1;
    mtsetup.mt_op    = MTBSR;
    if (ioctl (*fd, MTIOCTOP, &mtsetup))
-     { 
+     {
        printf (" Tape error on BSR: %d, %s\n",
                  errno, sys_errlist[errno]);
        exit (1);
@@ -306,7 +306,7 @@
    }
 
 /* ****************************************************************** */
- 
+
  bsrfil_ (fd, reclen, stat, err)
   int *fd, *reclen, *stat, *err;  /* BACK SPACE RECORD ON FILE */
   {
@@ -320,7 +320,7 @@
    printf (" bsrfil: irec = %d   mode = %d\n", irec, mode);
    printf ("File position = %d\n", fp = (lseek (*fd, irec, 1L)));
    if (fp < 0)
-     { 
+     {
        printf (" File error on BSR: %d, %s\n",
                  errno, sys_errlist[errno]);
        exit (1);

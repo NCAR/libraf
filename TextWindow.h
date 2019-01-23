@@ -8,8 +8,6 @@ TYPE:		Base class
 
 DESCRIPTION:	
 
-NOTES:		
-
 COPYRIGHT:	University Corporation for Atmospheric Research, 1998
 -------------------------------------------------------------------------
 */

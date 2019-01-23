@@ -4,11 +4,7 @@ OBJECT NAME:	XFonts.h
 
 FULL NAME:	Load X fonts
 
-TYPE:		
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------

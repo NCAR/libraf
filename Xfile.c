@@ -31,12 +31,12 @@ void QueryFile(char *prompt, char *directory, XtCallbackProc callBack)
   if (prompt)
     {
     xmprompt = XmStringCreateLocalized(prompt);
- 
+
     XtSetArg(args[n], XmNselectionLabelString, xmprompt); ++n;
     XtSetValues(fileBox, args, n);
     XmStringFree(xmprompt);
     }
- 
+
   if (directory)
     {
     xmdir = XmStringCreateLocalized(directory);

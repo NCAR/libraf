@@ -4,8 +4,6 @@ OBJECT NAME:	tapeIO.h
 
 FULL NAME:	Tape IO class
 
-ENTRY POINTS:	
-
 DESCRIPTION:	
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1998

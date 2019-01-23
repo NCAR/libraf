@@ -40,7 +40,7 @@ time_t InitFlightTime(int ncid)
   else
     fprintf(stderr, "libraf: InitFlightTime: No global attribute Version.\nAre you sure this netCDF file meets conventions?\n");
 
-  
+
   if (_file_nc_version >= 3 && nc_inq_varid(ncid, "Time", &id) == NC_NOERR)
   {
     struct tm StartFlight;

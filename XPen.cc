@@ -1,19 +1,11 @@
 /*
 -------------------------------------------------------------------------
 OBJECT NAME:    XPen.cc
- 
+
 FULL NAME:      Plot canvas
- 
-ENTRY POINTS:
- 
+
 DESCRIPTION:
- 
-REFERENCES:
- 
-REFERENCED BY:
- 
-NOTES:
- 
+
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
 */
@@ -37,17 +29,17 @@ XPen::XPen(Widget w)
   XtGetValues(w, args, n);
 
   valuemask = GCForeground | GCBackground;
- 
+
   gc = XCreateGC(dpy, RootWindowOfScreen(XtScreen(w)), valuemask, &values);
   lineWidth = 1;
- 
+
 }       /* END CONSTRUCTOR */
 
 /* -------------------------------------------------------------------- */
 void XPen::SetClipping(int x, int y, int h, int w)
 {
   XRectangle  clip_area[1];
- 
+
   /* Set clipping so that graph data cannot exceed box boundries
    */
   clip_area[0].x = x;

@@ -43,7 +43,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1998
 // SPEC 3V-CPI (2DS data)
 #define TWODS_H		0x3348
 #define TWODS_V		0x3356
- 
+
 #define PMS2_SIZE	sizeof(P2d_rec)
 #define PMS2_LRPPR	(0x8000 / PMS2_SIZE)
 #define PMS2_RECSIZE	((0x8000 / PMS2_SIZE) * PMS2_SIZE)

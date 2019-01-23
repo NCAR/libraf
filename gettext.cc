@@ -12,10 +12,6 @@ STATIC FNS:	none
 
 DESCRIPTION:	
 
-INPUT:		
-
-OUTPUT:		
-
 COPYRIGHT:	University Corporation for Atmospheric Research, 1998
 -------------------------------------------------------------------------
 */

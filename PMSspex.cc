@@ -8,11 +8,7 @@ ENTRY POINTS:	InitPMSspecs()
 		GetParameter()
 		GetList()
 
-STATIC FNS:	none
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1995-2014
 -------------------------------------------------------------------------

@@ -20,13 +20,13 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1995
 #include "constants.h"
 
 static char ComputeHost[65];	/* name of host running WINDS	*/
- 
+
 /* -------------------------------------------------------------------- */
 int SetComputeHost()
 {
   int rc;
   struct utsname name;
- 
+
   ComputeHost[0] = '\0';
 
   if ((rc = uname(&name)) == ERROR)
@@ -40,7 +40,7 @@ int SetComputeHost()
 
   return rc;
 }
- 
+
 /* -------------------------------------------------------------------- */
 char *GetComputeHost()
 {

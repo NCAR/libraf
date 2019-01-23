@@ -2,13 +2,9 @@
 -------------------------------------------------------------------------
 OBJECT NAME:	XmWarn.h
 
-FULL NAME:	Motif Warn dialog.
-
-TYPE:		
+FULL NAME:	Motif Warning dialog.
 
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------

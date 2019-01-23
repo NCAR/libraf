@@ -4,11 +4,7 @@ OBJECT NAME:	XmError.h
 
 FULL NAME:	Motif Error dialog.
 
-TYPE:		
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------

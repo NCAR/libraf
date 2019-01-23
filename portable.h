@@ -11,9 +11,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-                                                                                          
+
 float   ntohf(float);
-                                                                                          
+
 #ifdef __cplusplus
 }
 #endif

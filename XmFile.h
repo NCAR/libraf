@@ -4,11 +4,7 @@ OBJECT NAME:	XmFile.h
 
 FULL NAME:	Motif File Selection Box
 
-TYPE:		
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------

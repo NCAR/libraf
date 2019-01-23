@@ -62,7 +62,7 @@ void PostScript::PSheader(const char progName[], const string& title, float scal
 
   user = (getpwuid(getuid()))->pw_gecos;
   date = ctime(&printTime);
- 
+
   /* Print standard header info, and convert to 100 dpi.
    */
   fprintf(fp, "%%!PS-Adobe-3.0 EPSF-3.0\n");
@@ -78,11 +78,11 @@ void PostScript::PSheader(const char progName[], const string& title, float scal
       printerSetup->Shape() == Printer::PORTRAIT ? "Portrait" : "Landscape");
   fprintf(fp, "%%%%DocumentNeededResources: font Times-Roman\n");
   fprintf(fp, "%%%%EndComments\n");
- 
+
   fprintf(fp, "%%%%BeginDefaults\n");
   fprintf(fp, "%%%%PageResources: font Times-Roman\n");
   fprintf(fp, "%%%%EndDefaults\n");
- 
+
   fprintf(fp, "%%%%BeginProlog\n");
   fprintf(fp, "/rm /rmoveto load def\n");
   fprintf(fp, "/rl /rlineto load def\n");
@@ -92,14 +92,14 @@ void PostScript::PSheader(const char progName[], const string& title, float scal
   fprintf(fp, "/rs {dup stringwidth pop 120 exch sub 0 rmoveto show");
   fprintf(fp, "} bind def\n");
   fprintf(fp, "%%%%EndProlog\n");
- 
+
   fprintf(fp, "%%%%BeginSetup\n");
   fprintf(fp, "%%%%IncludeResource: font Times-Roman\n");
   fprintf(fp, "save\n");
 
   fprintf(fp, "%g %g scale\n", scale, scale);
   fprintf(fp, "%%%%EndSetup\n");
- 
+
   fprintf(fp, "%%%%Page: 1 1\n");
 
   if (printerSetup->Shape() == Printer::LANDSCAPE)
@@ -182,7 +182,7 @@ PostScript::~PostScript()
   fprintf(fp, "%%%%Trailer\n");
   fprintf(fp, "restore\n");
   fprintf(fp, "%%EOF\n");
- 
+
   if (file)
     fclose(fp);
   else

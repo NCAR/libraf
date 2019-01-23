@@ -4,13 +4,7 @@ OBJECT NAME:	XFonts.cc
 
 FULL NAME:	
 
-ENTRY POINTS:	
-
-STATIC FNS:	
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
@@ -30,7 +24,7 @@ char XtNfont12[] = "font12";
 char XtCFont12[] = "Font12";
 char XtNfont10[] = "font10";
 char XtCFont10[] = "Font10";
- 
+
 typedef struct _insRec
         {
         const char    *font24;

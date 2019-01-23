@@ -37,7 +37,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1999
 #define PMS2DH2		0x4832
 #define PMS2DP1		0x5031
 #define PMS2DP2		0x5032
- 
+
 #define PMS2_SIZE	sizeof(P2d_rec)
 #define PMS2_LRPPR	(0x8000 / PMS2_SIZE)
 #define PMS2_RECSIZE	((0x8000 / PMS2_SIZE) * PMS2_SIZE)

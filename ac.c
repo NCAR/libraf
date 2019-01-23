@@ -229,7 +229,7 @@ main()
 char *GetAircraftFullyQualifiedName(const char tailNumber[], char * result)
 {
   char * model = GetAircraftParameter(tailNumber, "MODEL");
-  
+
   if (model)
   {
     strcpy(result, model);

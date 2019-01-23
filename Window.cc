@@ -39,7 +39,7 @@ WinForm::WinForm(Widget parent, const char name[], winType wt)
     strcat(buff, "Form");
     window = XmCreateForm(shell, buff, NULL, 0);
     }
- 
+
 }	/* END CONSTRUCTOR */
 
 /* -------------------------------------------------------------------- */

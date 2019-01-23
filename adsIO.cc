@@ -6,10 +6,6 @@ FULL NAME:	ADS Data File Class
 
 DESCRIPTION:	
 
-INPUT:		
-
-OUTPUT:		
-
 COPYRIGHT:	University Corporation for Atmospheric Research, 1998
 -------------------------------------------------------------------------
 */
@@ -58,7 +54,7 @@ bool ADS_DataFile::NextSyncRecord(char buff[])
         return(false);
       }
     while (ntohs(((ushort *)physRecord)[0]) != SDI_WORD);
- 
+
     memcpy(syncPhysRecord, physRecord, hdr->lrLength() * hdr->lrPpr());
     currSyncLR = 0;
     }
@@ -130,13 +126,13 @@ bool ADS_DataFile::NextPMS2dRecord(P2d_rec *buff)
         }
       }
     while (!done);
- 
+
     memcpy((void *)twoDPhysRecord, (void *)physRecord, PMS2_SIZE * PMS2_LRPPR);
     curr2dLR = 0;
     }
 
   memcpy((void *)buff, (void *)&twoDPhysRecord[curr2dLR*PMS2_SIZE], PMS2_SIZE);
- 
+
   return(true);
 
 }	/* END NEXTPMS2DRECORD */

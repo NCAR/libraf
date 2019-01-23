@@ -4,13 +4,7 @@ OBJECT NAME:	TextWindow.cc
 
 FULL NAME:	
 
-ENTRY POINTS:	
-
-STATIC FNS:	
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1998-2001
 -------------------------------------------------------------------------
@@ -39,24 +33,24 @@ TextWindow::TextWindow(const Widget parent, const char name[]) : WinForm(parent,
   XtSetArg(args[n], XmNrightAttachment, XmATTACH_FORM); n++;
   drFrame = XmCreateFrame(Window(), (char *)"buttonFrame", args, n);
   XtManageChild(drFrame);
- 
+
   n = 0;
   drRC = XmCreateRowColumn(drFrame, (char *)"buttonRC", args, n);
   XtManageChild(drRC);
- 
+
   n = 0;
   b[0] = XmCreatePushButton(drRC, (char *)"dismissButton", args, n);
   b[1] = XmCreatePushButton(drRC, (char *)"printButton", args, n);
   b[2] = XmCreatePushButton(drRC, (char *)"saveButton", args, n);
   b[3] = XmCreatePushButton(drRC, (char *)"searchButton", args, n);
- 
+
   XtManageChildren(b, 4);
- 
+
   n = 0;
   searchTxt = XmCreateTextField(drRC, (char *)"searchTxt", args, n);
   XtManageChild(searchTxt);
 
- 
+
   n = 0;
   XtSetArg(args[n], XmNtopAttachment, XmATTACH_WIDGET); n++;
   XtSetArg(args[n], XmNtopWidget, drFrame); n++;

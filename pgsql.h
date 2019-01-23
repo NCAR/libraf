@@ -4,8 +4,6 @@ OBJECT NAME:	adsIOrt.h
 
 FULL NAME:	Class for reading real-time ADS images.
 
-ENTRY POINTS:	
-
 DESCRIPTION:	This class will allow forward scanning of ADS files.
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1999

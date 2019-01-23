@@ -6,10 +6,6 @@ FULL NAME:	Time Class
 
 TYPE:		Concrete
 
-DESCRIPTION:	
-
-NOTES:		
-
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------
 */

@@ -28,7 +28,7 @@ static int date_init=0;
 /****************************  INIT_DATE()  **********************************/
 
 void init_date()
-{ 
+{
 long clock;
 struct timeval *tp;
 struct timezone *tzp;
@@ -66,7 +66,7 @@ get_month()
 int GetMonthNum(char *month)
 {
  int m;
- 
+
  for (m=0; m<NUM_MONTHS; m++)
   if (!(strcmp(month,months[m])))
     break;
@@ -80,7 +80,7 @@ int get_month_num()
 {
 int m;
 char *month;
- 
+
  month=get_month();
  for (m=0; m<NUM_MONTHS; m++)
   if (!(strcmp(month,months[m])))
@@ -126,7 +126,7 @@ GetTime()
 
 char *
 get_date()
-/* since this returns the current time, always call init_date() first to 
+/* since this returns the current time, always call init_date() first to
    get current time
 */
 {
@@ -211,15 +211,15 @@ struct tm *time_info;
 }
 
 static char TZstring[16];
- 
+
 /*******************************************************************/
 
 int GetBaseFromMDYHMS(int month,int day,int year,int hr,int min,int sec)
 {
  struct tm time_info;
  int basetime;
- 
- time_info.tm_mon=month; 
+
+ time_info.tm_mon=month;
  time_info.tm_mday=day;
  time_info.tm_year=year;
  time_info.tm_hour=hr;
@@ -252,7 +252,7 @@ sec2hms(int total,int *hr,int *minut,int *sec)
 /* convert integer total seconds to hour, minutes, and seconds
 */
 {
- if (total<0) 
+ if (total<0)
 
 /* midnite crossover
 */

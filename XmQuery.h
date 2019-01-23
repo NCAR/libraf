@@ -4,11 +4,7 @@ OBJECT NAME:	XmQuery.h
 
 FULL NAME:	Motif Query Dialog
 
-TYPE:		
-
 DESCRIPTION:	
-
-NOTES:		
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 -------------------------------------------------------------------------

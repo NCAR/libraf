@@ -8,10 +8,10 @@
 typedef unsigned char   bool;
 #endif
 
-#define ERROR 		-1
+#define ERROR		-1
 #define NONE		-1
 #define BYTE_LEN	8
-#define BYTESPERWORD 	4
+#define BYTESPERWORD	4
 #define BITSPERWORD	(BYTESPERWORD * BYTE_LEN)
 #define NAMLEN		13
 
@@ -26,9 +26,9 @@ typedef unsigned char   bool;
 #endif
 
 #define COMMENT		'#'	/* Comment character for textfiles	*/
- 
-#define FULL_CIRCLE		360.0
-#define TWO_PI        		(2.0 * 3.14159265358979323846)
+
+#define FULL_CIRCLE	360.0
+#define TWO_PI		(2.0 * 3.14159265358979323846)
 
 #ifndef ABS
 #define ABS(x) ((x)<0?-(x):(x))

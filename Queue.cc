@@ -11,13 +11,6 @@ ENTRY POINTS:	Queue(), ~Queue()
 
 DESCRIPTION:	
 
-INPUT:		
-
-OUTPUT:		
-
-REFERENCES:	none
-
-REFERENCED BY:	none
 -------------------------------------------------------------------------
 */
 
