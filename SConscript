@@ -41,20 +41,28 @@ getmem.c
 gettext.cc
 hdrAPI.cc
 nc_time.c
-ntohf.cc
 pms_specs.c
 portable.c
 raf_queue.c
 strupr.c
 util.c
 validate.cc
+xml.cc
+Particle.cc
+Probe.cc
+PMS2D.cc
+Fast2D.cc
+CIP.cc
+TwoDS.cc
+HVPS.cc
 """)
 
 includes = Split("""
-ACconfig.h     PixMap.h      TextWindow.h  XmFile.h   adsIOrt.h    ntohf.h     rafTime.h
+ACconfig.h     PixMap.h      TextWindow.h  XmFile.h   adsIOrt.h    rafTime.h
 Application.h  PostScript.h  Window.h      XmQuery.h  constants.h  pgsql.h     raf_queue.h
 Canvas.h       Printer.h     XFonts.h      XmWarn.h   hdrAPI.h     pms.h       tapeIO.h
 Cursor.h       Queue.h       XPen.h        ac.h       header.h     portable.h
+Particle.h     Probe.h       PMS2D.h       Fast2D.h   TwoDS.h      CIP.h       HVPS.h
 PMSspex.h      SQLrt.h       XmError.h     adsIO.h    libraf.h     raf.h
 """)
 
