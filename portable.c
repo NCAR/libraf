@@ -26,5 +26,19 @@ float ntohf(float inF)
 
 }
 
+
+long long ntohll(long long *p)
+{
+  union {
+    long long v;
+    char b[8];
+  } u;
+
+  const char* cp = (const char*)p;
+  int i;
+  for (i = 7; i >= 0; i--) u.b[i] = *cp++;
+  return u.v;
+}
+
 #endif
 

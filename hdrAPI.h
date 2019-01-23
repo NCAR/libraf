@@ -12,7 +12,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1998-2005
 #define HDRAPI_H
 
 #include "header.h"
-#include "ntohf.h"
+#include "portable.h"
 
 #include <string>
 #include <sys/types.h>
