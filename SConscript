@@ -58,12 +58,11 @@ HVPS.cc
 """)
 
 includes = Split("""
-ACconfig.h     PixMap.h      TextWindow.h  XmFile.h   adsIOrt.h    rafTime.h
-Application.h  PostScript.h  Window.h      XmQuery.h  constants.h  pgsql.h     raf_queue.h
-Canvas.h       Printer.h     XFonts.h      XmWarn.h   hdrAPI.h     pms.h       tapeIO.h
-Cursor.h       Queue.h       XPen.h        ac.h       header.h     portable.h
-Particle.h     Probe.h       PMS2D.h       Fast2D.h   TwoDS.h      CIP.h       HVPS.h
-PMSspex.h      SQLrt.h       XmError.h     adsIO.h    libraf.h     raf.h
+ACconfig.h Application.h CIP.h Canvas.h Cursor.h Fast2D.h HVPS.h OAPUserConfig.h
+PMS2D.h PMSspex.h Particle.h PixMap.h PostScript.h Printer.h Probe.h Queue.h
+SQLrt.h TextWindow.h TwoDS.h Window.h XFonts.h XPen.h XmError.h XmFile.h
+XmQuery.h XmWarn.h ac.h adsIO.h adsIOrt.h constants.h hdrAPI.h header.h libraf.h
+pgsql.h pms.h portable.h raf.h rafTime.h raf_queue.h tapeIO.h
 """)
 
 # No mtio.h on macosx.
