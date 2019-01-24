@@ -8,8 +8,8 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 2018
 -------------------------------------------------------------------------
 */
 
-#ifndef _TWODS_H_
-#define _TWODS_H_
+#ifndef _OAP_TWODS_H_
+#define _OAP_TWODS_H_
 
 #include "Probe.h"
 
@@ -17,6 +17,9 @@ namespace OAP
 {
 
 /* -------------------------------------------------------------------- */
+/**
+ * Probe sub-class for SPEC 2DS and 3V-CPI probes.
+ */
 class TwoDS : public Probe
 {
 

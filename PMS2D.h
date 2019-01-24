@@ -8,8 +8,8 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 2018
 -------------------------------------------------------------------------
 */
 
-#ifndef _PMS2D_H_
-#define _PMS2D_H_
+#ifndef _OAP_PMS2D_H_
+#define _OAP_PMS2D_H_
 
 #include "Probe.h"
 
@@ -17,6 +17,9 @@ namespace OAP
 {
 
 /* -------------------------------------------------------------------- */
+/**
+ * Probe sub-class for original PMS 2D probes.
+ */
 class PMS2D : public Probe
 {
 

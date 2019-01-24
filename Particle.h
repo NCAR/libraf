@@ -8,8 +8,8 @@ COPYRIGHT:      University Corporation for Atmospheric Research, 1997-2018
 -------------------------------------------------------------------------
 */
 
-#ifndef _particle_h_
-#define _particle_h_
+#ifndef _oap_particle_h_
+#define _oap_particle_h_
 
 #include <stdint.h>
 #include <sys/types.h>
@@ -17,6 +17,9 @@ COPYRIGHT:      University Corporation for Atmospheric Research, 1997-2018
 namespace OAP
 {
 
+/**
+ * Class for Opitical Array Probe (OAP) particle information.
+ */
 class Particle
 {
 public:
@@ -30,7 +33,7 @@ public:
   bool  vert_gap;	// Was there a blank slice (i.e. multiple parts)
   bool  horiz_gap;	//   and in the hozizontal dir?
   bool  reject;
-  bool  dofReject;
+  bool  dofReject;	// Depth of Field rejected.  Some probes have a flag for this.
   unsigned char edge;	// particle touched either edge
   bool  timeReject;	// Nimbus will reject (because of bad timing bar)
 

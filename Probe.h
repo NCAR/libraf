@@ -2,6 +2,8 @@
 -------------------------------------------------------------------------
 OBJECT NAME:	Probe.h
 
+TYPE:		Base Class Optical Array Probes (OAP).
+
 FULL NAME:	Probe Information
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018

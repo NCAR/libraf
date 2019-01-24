@@ -8,12 +8,16 @@ COPYRIGHT:      University Corporation for Atmospheric Research, 1997-2018
 -------------------------------------------------------------------------
 */
 
-#ifndef _USERCONFIG_H_
-#define _USERCONFIG_H_
+#ifndef _OAP_USERCONFIG_H_
+#define _OAP_USERCONFIG_H_
 
 namespace OAP
 {
 
+/**
+ * These are the particle sizing algorithm options.  I wonder if this should
+ * be in Probe.h...
+ */
 enum Sizing { BASIC, ENTIRE_IN, CENTER_IN, RECONSTRUCTION };
 
 /**

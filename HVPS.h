@@ -1,15 +1,15 @@
 /*
 -------------------------------------------------------------------------
-OBJECT NAME:	PMS2D.h
+OBJECT NAME:	HVPS.h
 
-FULL NAME:	Old School 32 diode PMS2D probe data class
+FULL NAME:	SPEC HVPS Probe
 
 COPYRIGHT:	University Corporation for Atmospheric Research, 2018
 -------------------------------------------------------------------------
 */
 
-#ifndef _HVPS_H_
-#define _HVPS_H_
+#ifndef _OAP_HVPS_H_
+#define _OAP_HVPS_H_
 
 #include "Probe.h"
 
@@ -17,6 +17,9 @@ namespace OAP
 {
 
 /* -------------------------------------------------------------------- */
+/**
+ * Probe sub-class for SPEC HVPS probe.
+ */
 class HVPS : public Probe
 {
 

@@ -8,8 +8,8 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 2018
 -------------------------------------------------------------------------
 */
 
-#ifndef _FAST2D_H_
-#define _FAST2D_H_
+#ifndef _OAP_FAST2D_H_
+#define _OAP_FAST2D_H_
 
 #include "Probe.h"
 
@@ -17,6 +17,9 @@ namespace OAP
 {
 
 /* -------------------------------------------------------------------- */
+/*
+ * Probe sub-class for NCAR/RAF Fast2D probes.
+ */
 class Fast2D : public Probe
 {
 

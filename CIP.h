@@ -8,8 +8,8 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 2018
 -------------------------------------------------------------------------
 */
 
-#ifndef _CIP_H_
-#define _CIP_H_
+#ifndef _OAP_CIP_H_
+#define _OAP_CIP_H_
 
 #include "Probe.h"
 
@@ -17,6 +17,9 @@ namespace OAP
 {
 
 /* -------------------------------------------------------------------- */
+/**
+ * Probe sub-class for DMT CIP and PIP probes.
+ */
 class CIP : public Probe
 {
 
