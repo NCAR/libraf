@@ -287,8 +287,10 @@ void Probe::SetSampleArea()
 	_eaw	= nDiodes() * Resolution() * 0.001;	// in mm
 	_sampleArea = _armWidth * _eaw;
 
-  if (sampleArea == 0)
-    sampleArea = new float[NumberBins()];
+  if (sampleArea)
+    delete [] sampleArea;
+
+  sampleArea = new float[NumberBins()];
 
 //printf("SetSampleArea: %s: mag=%f _eaw=%f %d\n", _name.c_str(), mag, _eaw, _userConfig->GetConcentration());
   switch (_userConfig->GetConcentration())
