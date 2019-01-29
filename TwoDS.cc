@@ -13,7 +13,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 #include "TwoDS.h"
 #include "OAPUserConfig.h"
 
-long long ntohll(long long *p);
+#include "portable.h"
 
 using namespace OAP;
 
@@ -22,7 +22,7 @@ const unsigned char TwoDS::OverldString[] = { 0x55, 0x55, 0xaa };
 
 
 /* -------------------------------------------------------------------- */
-TwoDS::TwoDS(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(Probe::TWODS, cfg, xml_entry, recSize, 128)
+TwoDS::TwoDS(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(TWODS_T, cfg, xml_entry, recSize, 128)
 {
   _lrLen = recSize;
 

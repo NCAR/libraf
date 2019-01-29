@@ -11,6 +11,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 */
 
 #include "Probe.h"
+#include "hdrAPI.h"
 #include "OAPUserConfig.h"
 
 using namespace OAP;

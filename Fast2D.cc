@@ -13,7 +13,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 #include "Fast2D.h"
 #include "OAPUserConfig.h"
 
-long long ntohll(long long *p);
+#include "portable.h"
 
 using namespace OAP;
 
@@ -22,7 +22,7 @@ const unsigned char Fast2D::OverldString[] = { 0x55, 0x55, 0xaa };
 
 
 /* -------------------------------------------------------------------- */
-Fast2D::Fast2D(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(Probe::FAST2D, cfg, xml_entry, recSize, 64)
+Fast2D::Fast2D(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(FAST2D_T, cfg, xml_entry, recSize, 64)
 {
   _lrLen = recSize;
 

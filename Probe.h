@@ -18,48 +18,17 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 #include <cstdlib>
 #include <cstring>
 #include <stdint.h>
+#include <string>
 #include <vector>
 
-#include "hdrAPI.h"
+#include "OAP.h"
 #include "Particle.h"
 
 
-/* ID values for the id field in each record header.
- */
-// Traditional 32 diode PMS2D probes.
-#define PMS2DC1         0x4331
-#define PMS2DC2         0x4332
-#define PMS2DP1         0x5031
-#define PMS2DP2         0x5032
-
-// 64 diode Fast 2DC, 25um.
-#define PMS2DC4         0x4334
-#define PMS2DC5         0x4335
-// 64 diode Fast 2DC, 10um.
-#define PMS2DC6         0x4336
-// 64 diode Fast 2DP, 200um.
-#define PMS2DP4         0x5034
-
-// 64 diode DMT CIP, 25um.
-#define PMS2DC8         0x4338
-// 64 diode DMT PIP, 100um.
-#define PMS2DP8         0x5038
-
-// Greyscale which we never flew.
-#define PMS2DG1         0x4731
-#define PMS2DG2         0x4732
-
-// SPEC HVPS
-#define HVPS1           0x4831
-#define HVPS2           0x4832
-// SPEC 3V-CPI
-#define SPEC2D3H        0x3348
-#define SPEC2D3V        0x3356
-// SPEC 2DS
-#define SPEC2DSH        0x5348
-#define SPEC2DSV        0x5356
-
 std::string XMLgetAttributeValue(const char s[], const char target[]);
+
+struct Header;
+struct Pms2;
 
 namespace OAP
 {
@@ -94,7 +63,6 @@ struct recStats
 class Probe {
 
 public:
-  enum ProbeType { UNKNOWN, PMS2D, HVPS, GREYSCALE, FAST2D, TWODS, CIP };
 
   virtual ~Probe() { }
 
@@ -113,8 +81,10 @@ public:
   bool Display() const		{ return _displayed; }
   void setDisplay(bool b)	{ _displayed = b; }
 
+  void setUserConfig(UserConfig *cfg)	{ _userConfig = cfg; }
+
   virtual struct recStats
-  ProcessRecord(const P2d_rec * record, float version) = 0;
+  ProcessRecord(const OAP::P2d_rec * record, float version) = 0;
 
   virtual bool
   isSyncWord(const unsigned char *p) = 0;
@@ -171,7 +141,7 @@ protected:
   /// Common initialization for all constructors.
   void init();
 
-  void ClearStats(const P2d_rec *record);
+  void ClearStats(const OAP::P2d_rec *record);
   void checkEdgeDiodes(Particle * cp, const unsigned char *p);
   size_t area(const unsigned char *p);
   size_t height(const unsigned char *p);

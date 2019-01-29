@@ -13,6 +13,8 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 #include "PMS2D.h"
 #include "OAPUserConfig.h"
 
+#include <arpa/inet.h>
+
 using namespace OAP;
 
 const uint32_t PMS2D::StandardSyncWord = 0x55000000;
@@ -20,7 +22,7 @@ const uint32_t PMS2D::SyncWordMask = 0xff000000;
 
 
 /* -------------------------------------------------------------------- */
-PMS2D::PMS2D(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(Probe::PMS2D, cfg, xml_entry, recSize, 32)
+PMS2D::PMS2D(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(PMS2D_T, cfg, xml_entry, recSize, 32)
 {
   _lrLen = recSize;
 
@@ -38,7 +40,7 @@ printf("PMS2D::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code
 }
 
 /* -------------------------------------------------------------------- */
-PMS2D::PMS2D(UserConfig *cfg, const char name[]) : Probe(Probe::PMS2D, cfg, name, 32)
+PMS2D::PMS2D(UserConfig *cfg, const char name[]) : Probe(PMS2D_T, cfg, name, 32)
 {
   pms2d_init();
 
@@ -46,7 +48,7 @@ printf("PMS2D::NoHdr id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _co
 }
 
 /* -------------------------------------------------------------------- */
-PMS2D::PMS2D(UserConfig *cfg, Header * hdr, const Pms2 * p, int cnt) : Probe(Probe::PMS2D, cfg, hdr, p, cnt, 32)
+PMS2D::PMS2D(UserConfig *cfg, Header * hdr, const Pms2 * p, int cnt) : Probe(PMS2D_T, cfg, hdr, p, cnt, 32)
 {
   pms2d_init();
 

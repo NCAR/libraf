@@ -22,7 +22,7 @@ const size_t HVPS::upperMask = 40;	// HVPS masks.
 
 
 /* -------------------------------------------------------------------- */
-HVPS::HVPS(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(Probe::HVPS, cfg, xml_entry, recSize, 256)
+HVPS::HVPS(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(HVPS_T, cfg, xml_entry, recSize, 256)
 {
   _lrLen = recSize;
 
@@ -40,7 +40,7 @@ printf("HVPS::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code,
 }
 
 /* -------------------------------------------------------------------- */
-HVPS::HVPS(UserConfig *cfg, const char name[]) : Probe(Probe::HVPS, cfg, name, 256)
+HVPS::HVPS(UserConfig *cfg, const char name[]) : Probe(HVPS_T, cfg, name, 256)
 {
   _resolution = 200;
 
@@ -50,7 +50,7 @@ printf("HVPS::NoHdr id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _cod
 }
 
 /* -------------------------------------------------------------------- */
-HVPS::HVPS(UserConfig *cfg, Header * hdr, const Pms2 * p, int cnt) : Probe(Probe::HVPS, cfg, hdr, p, cnt, 256)
+HVPS::HVPS(UserConfig *cfg, Header * hdr, const Pms2 * p, int cnt) : Probe(HVPS_T, cfg, hdr, p, cnt, 256)
 {
   hvps_init();
 

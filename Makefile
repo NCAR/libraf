@@ -66,6 +66,7 @@ PostScript.o:	PostScript.h
 rafTime.o:	rafTime.h
 
 # OAP Classes
+DataFile.o:	DataFile.h Particle.h Probe.h OAPUserConfig.h hdrAPI.h
 Particle.o:	Particle.h
 Probe.o:	Probe.h hdrAPI.h OAPUserConfig.h
 PMS2D.o:	PMS2D.h Probe.h OAPUserConfig.h

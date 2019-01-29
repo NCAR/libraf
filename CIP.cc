@@ -18,7 +18,7 @@ using namespace OAP;
 const unsigned long long CIP::SyncWord = 0xAAAAAAAAAAAAAAAALL;
 
 /* -------------------------------------------------------------------- */
-CIP::CIP(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(Probe::CIP, cfg, xml_entry, recSize, 64)
+CIP::CIP(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(CIP_T, cfg, xml_entry, recSize, 64)
 {
   _lrLen = recSize;
 
@@ -36,7 +36,7 @@ printf("CIP::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code, 
 }
 
 /* -------------------------------------------------------------------- */
-CIP::CIP(UserConfig *cfg, const char name[]) : Probe(Probe::CIP, cfg, name, 64)
+CIP::CIP(UserConfig *cfg, const char name[]) : Probe(CIP_T, cfg, name, 64)
 {
   _resolution = 25;
 
