@@ -14,6 +14,9 @@ COPYRIGHT:      University Corporation for Atmospheric Research, 2019
 #ifndef _OAP_OAP_H_
 #define _OAP_OAP_H_
 
+#include <stdint.h>
+#include <cstring>
+
 /* ADS image record types */
 #define ADS_WORD	0x4144
 #define HDR_WORD	0x5448
@@ -92,6 +95,10 @@ struct P2d_rec {
   int16_t overld;			/* overload time, msec */
   unsigned char data[OAP_BUFF_SIZE];	/* image buffer */
 };
+
+void swapPMS2D(OAP::P2d_rec *);
+ProbeType probeType(const unsigned char *);
+
 }
 
 #endif

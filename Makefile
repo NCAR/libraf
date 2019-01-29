@@ -28,7 +28,7 @@ OBJS=	chost.o strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 	raf_queue.o date.o portable.o ac.o get_ac_name.o util.o \
 	nc_time.o ACconfig.o adsIO.o adsIOrt.o Application.o Canvas.o Cursor.o\
         hdrAPI.o gettext.o PixMap.o PMSspex.o PostScript.o xml.o \
-	Particle.o Probe.o PMS2D.o Fast2D.o TwoDS.o CIP.o HVPS.o \
+	oap.o Particle.o Probe.o PMS2D.o Fast2D.o TwoDS.o CIP.o HVPS.o \
         Printer.o Queue.o TextWindow.o rafTime.o validate.o pms_specs.o\
         Window.o XFonts.o XPen.o XmError.o XmFile.o XmQuery.o XmWarn.o \
 	tapeIO.o tapeIO++.o
@@ -39,7 +39,7 @@ SRCS=	chost.c strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
 	raf_queue.c date.c portable.c ac.c get_ac_name.c util.c \
 	nc_time.c ACconfig.cc adsIO.cc adsIOrt.cc Application.cc Canvas.cc Cursor.cc\
         hdrAPI.cc gettext.cc PixMap.cc PMSspex.cc PostScript.cc xml.cc \
-	Particle.cc Probe.cc PMS2D.cc Fast2D.cc TwoDS.cc CIP.cc HVPS.cc \
+	oap.cc Particle.cc Probe.cc PMS2D.cc Fast2D.cc TwoDS.cc CIP.cc HVPS.cc \
         Printer.cc Queue.cc TextWindow.cc rafTime.cc validate.cc pms_specs.c\
         Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc \
 	tapeIO.c tapeIO++.c
@@ -66,7 +66,7 @@ PostScript.o:	PostScript.h
 rafTime.o:	rafTime.h
 
 # OAP Classes
-DataFile.o:	DataFile.h Particle.h Probe.h OAPUserConfig.h hdrAPI.h
+oap.o:		OAP.h portable.h
 Particle.o:	Particle.h
 Probe.o:	Probe.h hdrAPI.h OAPUserConfig.h
 PMS2D.o:	PMS2D.h Probe.h OAPUserConfig.h
