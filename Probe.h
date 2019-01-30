@@ -27,7 +27,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 
 std::string XMLgetAttributeValue(const char s[], const char target[]);
 
-struct Header;
+class Header;
 struct Pms2;
 
 namespace OAP
