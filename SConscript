@@ -48,6 +48,7 @@ strupr.c
 util.c
 validate.cc
 xml.cc
+oap.cc
 Particle.cc
 Probe.cc
 PMS2D.cc
@@ -60,7 +61,7 @@ HVPS.cc
 includes = Split("""
 ACconfig.h Application.h CIP.h Canvas.h Cursor.h Fast2D.h HVPS.h OAPUserConfig.h
 PMS2D.h PMSspex.h Particle.h PixMap.h PostScript.h Printer.h Probe.h Queue.h
-SQLrt.h TextWindow.h TwoDS.h Window.h XFonts.h XPen.h XmError.h XmFile.h
+SQLrt.h TextWindow.h TwoDS.h Window.h XFonts.h XPen.h XmError.h XmFile.h OAP.h
 XmQuery.h XmWarn.h ac.h adsIO.h adsIOrt.h constants.h hdrAPI.h header.h libraf.h
 pgsql.h pms.h portable.h raf.h rafTime.h raf_queue.h tapeIO.h
 """)
