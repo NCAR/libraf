@@ -50,7 +50,6 @@ validate.cc
 xml.cc
 oap.cc
 OAProbeFactory.cc
-OAPUserConfig.cc
 Particle.cc
 Probe.cc
 PMS2D.cc
