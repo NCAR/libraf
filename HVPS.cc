@@ -291,13 +291,12 @@ printf("\n");
     pSlice = slice;
     }
 
-  stats.tBarElapsedtime /= 1000;	// convert to milliseconds
-
   if (stats.nTimeBars > 0)
     stats.meanBar = stats.tBarElapsedtime / stats.nTimeBars;
 
 //stats.tBarElapsedtime += (uint32_t)(2048 * stats.frequency);
 
+  stats.tBarElapsedtime /= 1000;	// convert to milliseconds
   stats.frequency /= 1000;
 
 

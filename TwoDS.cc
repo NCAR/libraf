@@ -174,11 +174,12 @@ struct recStats TwoDS::ProcessRecord(const P2d_rec *record, float version)
 
 
   stats.SampleVolume *= (stats.DASelapsedTime - overload) * 0.001;
-  stats.tBarElapsedtime = (_prevTimeWord - firstTimeWord) / 1000;
+  stats.tBarElapsedtime = (_prevTimeWord - firstTimeWord);
 
   if (stats.nTimeBars > 0)
     stats.meanBar = stats.tBarElapsedtime / stats.nTimeBars;
 
+  stats.tBarElapsedtime /= 1000;
   stats.frequency /= 1000;
 
 
