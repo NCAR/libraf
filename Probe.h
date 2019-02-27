@@ -206,7 +206,7 @@ protected:
   /// Sample area per bin in mm^2
   float *sampleArea;
 
-  /// Current Particle data.  Class member so it can carry across records.
+  /// Current Particle data.  Class member because a particle can/will cross into next record.
   Particle	*cp;
 
   static const float diodeDiameter;

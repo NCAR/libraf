@@ -149,7 +149,9 @@ struct recStats Fast2D::ProcessRecord(const P2d_rec *record, float version)
           cp->reject = true;
       }
 
-      // Close out particle.  Timeword belongs to previous particle.
+      /* Close out particle.  Timeword belongs to previous particle.
+       * cp should never be zero, this could almost be an assert().
+       */
       if (cp)
       {
         cp->timeWord = thisTimeWord;
@@ -162,15 +164,14 @@ struct recStats Fast2D::ProcessRecord(const P2d_rec *record, float version)
         if ((p[2] & _dofMask))
           cp->dofReject = cp->reject = true;
 
+        stats.minBar = std::min(stats.minBar, cp->deltaTime);
+        stats.maxBar = std::max(stats.maxBar, cp->deltaTime);
         stats.particles.push_back(cp);
         cp = new Particle();
       }
 
       _prevTimeWord = thisTimeWord;
-
       ++stats.nTimeBars;
-      stats.minBar = std::min(stats.minBar, cp->deltaTime);
-      stats.maxBar = std::max(stats.maxBar, cp->deltaTime);
       continue;
     }
 
