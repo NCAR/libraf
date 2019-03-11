@@ -64,7 +64,7 @@ class Probe {
 
 public:
 
-  virtual ~Probe() { }
+  virtual ~Probe();
 
   const std::string & Name() const	{ return _name; }
   const std::string & SerialNum() const	{ return _serialNumber; }
@@ -120,6 +120,9 @@ public:
   /// Statistics and derived data from current ProcessRecord()
   /// @TODO this should be refactored out of public.
   struct recStats stats;
+
+  /// Clear all particles from the stats.
+  void clearParticles();
 
 
 protected:

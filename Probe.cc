@@ -23,7 +23,7 @@ const unsigned char Probe::BlankSlice[] =
 
 
 /* -------------------------------------------------------------------- */
-Probe::Probe(ProbeType type, UserConfig *cfg, const char xml_entry[], int recSize, size_t ndiodes) : _userConfig(cfg), _type(type), _nDiodes(ndiodes)
+Probe::Probe(ProbeType type, UserConfig *cfg, const char xml_entry[], int recSize, size_t ndiodes) : _userConfig(cfg), _type(type), _nDiodes(ndiodes), sampleArea(0), cp(0)
 {
   _lrLen = recSize;
 
@@ -39,7 +39,7 @@ Probe::Probe(ProbeType type, UserConfig *cfg, const char xml_entry[], int recSiz
 }
 
 /* -------------------------------------------------------------------- */
-Probe::Probe(ProbeType type, UserConfig *cfg, const char name[], size_t ndiodes) : _userConfig(cfg), _type(type), _nDiodes(ndiodes)
+Probe::Probe(ProbeType type, UserConfig *cfg, const char name[], size_t ndiodes) : _userConfig(cfg), _type(type), _nDiodes(ndiodes), sampleArea(0), cp(0)
 {
   _name.push_back(name[0]);
   _name.push_back(name[1]);
@@ -64,7 +64,7 @@ Probe::Probe(ProbeType type, UserConfig *cfg, const char name[], size_t ndiodes)
 }
 
 /* -------------------------------------------------------------------- */
-Probe::Probe(ProbeType type, UserConfig *cfg, Header * hdr, const Pms2 * p, int cnt, size_t ndiodes) : _userConfig(cfg), _type(type), _nDiodes(ndiodes)
+Probe::Probe(ProbeType type, UserConfig *cfg, Header * hdr, const Pms2 * p, int cnt, size_t ndiodes) : _userConfig(cfg), _type(type), _nDiodes(ndiodes), sampleArea(0), cp(0)
 {
   // Extract stuff from Header.
   _name = hdr->VariableName(p);
@@ -101,6 +101,16 @@ void Probe::init()
 }
 
 
+void Probe::clearParticles()
+{
+  for (size_t i = 0; i < stats.particles.size(); ++i)
+  {
+    delete stats.particles[i];
+  }
+  stats.particles.clear();
+}
+
+
 /* -------------------------------------------------------------------- */
 void Probe::ClearStats(const P2d_rec *record)
 {
@@ -111,7 +121,7 @@ void Probe::ClearStats(const P2d_rec *record)
   stats.maxBar = 0;
   stats.area = 0;
   stats.duplicate = false;
-  stats.particles.clear();
+  clearParticles();
   stats.tas = (float)record->tas;
   stats.frequency = Resolution() / stats.tas;
   stats.prevTime = stats.thisTime;
@@ -340,5 +350,13 @@ void Probe::SetSampleArea()
 //printf("\n");
 
 }	/* END SETSAMPLEAREA */
+
+Probe::~Probe()
+{
+  delete cp;
+  delete[] sampleArea;
+  clearParticles();
+}
+
 
 // END PROBE.CC
