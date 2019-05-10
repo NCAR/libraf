@@ -55,7 +55,7 @@ void Fast2D::f2d_init()
   _clockMhz = 12;
   if (_name.find("v2") != std::string::npos)
   {
-    _clockMhz = 33;
+    _clockMhz = 33.333333333;
     _dofMask = 0x10;
     _timingMask = 0x000003ffffffffffLL;
   }

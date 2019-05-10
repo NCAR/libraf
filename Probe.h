@@ -173,7 +173,7 @@ protected:
    * Clock speed of the probe.  Not used by original PMS2D, but used by most modern
    * probes to decode the timing word.
    */
-  unsigned int	_clockMhz;
+  float		_clockMhz;
 
   /**
    * Number of bins being output for size-distribution. Values are nDiodes for
