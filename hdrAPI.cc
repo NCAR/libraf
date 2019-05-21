@@ -10,7 +10,6 @@
 #include <cstring>
 #include <cstdlib>
 #include <sys/stat.h>
-#include <sys/uio.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <iostream>
