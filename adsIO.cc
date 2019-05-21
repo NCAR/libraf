@@ -53,7 +53,7 @@ bool ADS_DataFile::NextSyncRecord(char buff[])
       if (NextPhysicalRecord(physRecord) <= 0)
         return(false);
       }
-    while (ntohs(((ushort *)physRecord)[0]) != SDI_WORD);
+    while (ntohs(((uint16_t *)physRecord)[0]) != SDI_WORD);
 
     memcpy(syncPhysRecord, physRecord, hdr->lrLength() * hdr->lrPpr());
     currSyncLR = 0;
@@ -148,7 +148,7 @@ int ADS_DataFile::NextPhysicalRecord(char buff[])
   if (rc != 1)
     return(0);
 
-  idWord = ntohs(*((ushort *)buff));
+  idWord = ntohs(*((uint16_t *)buff));
 
   switch (idWord)
     {
