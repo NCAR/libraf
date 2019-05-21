@@ -67,8 +67,12 @@ XmFile.h OAP.h XmQuery.h XmWarn.h ac.h adsIO.h adsIOrt.h constants.h hdrAPI.h
 header.h libraf.h pgsql.h pms.h portable.h raf.h rafTime.h raf_queue.h tapeIO.h
 """)
 
+# No X11/Motif on Windows
+if env['PLATFORM'] != 'msys':
+  sources.append(['adsIOrt.cc', 'chost.c', 'Application.cc', 'Canvas.cc', 'Cursor.cc', 'gettext.cc', 'PixMap.cc', 'Printer.cc', 'PostScript.cc', 'TextWindow.cc', 'Window.cc', 'XFonts.cc', 'XPen.cc', 'Xerror.c', 'Xfile.c', 'XmError.cc', 'XmFile.cc', 'XmQuery.cc', 'XmWarn.cc', 'XmWarn.cc', 'Xquery.c', 'Xwarn.c', 'util.c', 'validate.cc'])
+
 # No mtio.h on macosx.
-if env['PLATFORM'] != 'darwin':
+if env['PLATFORM'] == 'posix':
   sources.append(['tapeIO.c', 'tapeIO++.cc'])
 
 libraf = env.StaticLibrary('raf' , sources)
