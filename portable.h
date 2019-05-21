@@ -3,7 +3,7 @@
 #define PORTABLE_H
 
 #include <sys/types.h>
-#include <netinet/in.h>
+#include <stdint.h>
 
 #undef ntohll
 #undef htonll
@@ -14,8 +14,10 @@
 extern "C" {
 #endif
 
+uint16_t	ntohs(uint16_t);
+uint32_t	ntohl(uint32_t);
+uint64_t	ntohll(uint64_t *);
 float		ntohf(float);
-long long	ntohll(long long *);
 
 #ifdef __cplusplus
 }
@@ -24,11 +26,15 @@ long long	ntohll(long long *);
 
 #else
 
+#define ntohs(x)	(x)
+#define ntohl(x)	(x)
 #define ntohf(x)	(x)
-#define ntohll(x)	(x)
+#define ntohll(x)	(*x)
 
 #endif
 
+#define htons		ntohs
+#define htonl		ntohl
 #define htonf		ntohf
 #define htonll		ntohll
 
