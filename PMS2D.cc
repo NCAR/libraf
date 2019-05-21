@@ -12,8 +12,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 
 #include "PMS2D.h"
 #include "OAPUserConfig.h"
-
-#include <arpa/inet.h>
+#include "portable.h"
 
 using namespace OAP;
 
