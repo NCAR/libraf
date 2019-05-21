@@ -17,7 +17,7 @@
 #undef ntohll
 #undef htonll
 
-#if defined(__LITTLE_ENDIAN) || defined(_LITTLE_ENDIAN) || defined(LITTLE_ENDIAN)
+#if defined(__LITTLE_ENDIAN) || defined(_LITTLE_ENDIAN) || defined(LITTLE_ENDIAN) || defined(_WIN64)
 
 #ifdef __cplusplus
 extern "C" {
