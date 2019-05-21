@@ -1,10 +1,19 @@
+/*
+ * Windows/MinGW does not have the typical byte swapping routines, so roll our
+ * own.  I suppose we could try and use boost, but that library gets dragged
+ * in everywhere.  Not happy about this....
+ */
 
-#ifndef PORTABLE_H
-#define PORTABLE_H
+#ifndef _PORTABLE_H_
+#define _PORTABLE_H_
 
 #include <sys/types.h>
 #include <stdint.h>
 
+#undef ntohs
+#undef htons
+#undef ntohl
+#undef htonl
 #undef ntohll
 #undef htonll
 
