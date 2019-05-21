@@ -16,7 +16,6 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1998-2005
 
 #include <string>
 #include <sys/types.h>
-#include <netinet/in.h>
 #include <sys/stat.h>
 #include <unistd.h>
 

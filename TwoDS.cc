@@ -43,10 +43,10 @@ printf("TwoDS::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code
 
 
 /* -------------------------------------------------------------------- */
-unsigned long long TwoDS::TimeWord_Microseconds(const unsigned char *p)
+uint64_t TwoDS::TimeWord_Microseconds(const unsigned char *p)
 {
   // SPEC uses a 48 bit timing word.
-  return (ntohll((long long *)p) & 0x0000ffffffffffffLL) / _clockMhz;
+  return (ntohll((uint64_t *)p) & 0x0000ffffffffffffLL) / _clockMhz;
 }
 
 /* -------------------------------------------------------------------- */
@@ -68,7 +68,7 @@ struct recStats TwoDS::ProcessRecord(const P2d_rec *record, float version)
   unsigned long startMilliSec;
   double	sampleVolume[(nDiodes()<<1)+1], totalLiveTime;
 
-  unsigned long long    firstTimeWord = 0;
+  uint64_t	firstTimeWord = 0;
 
   ClearStats(record);
   stats.DASelapsedTime = stats.thisTime - _prevTime;
@@ -110,7 +110,7 @@ struct recStats TwoDS::ProcessRecord(const P2d_rec *record, float version)
      */
     if (isSyncWord(p) || isOverloadWord(p))
     {
-      unsigned long long thisTimeWord = TimeWord_Microseconds(&p[8]);
+      uint64_t thisTimeWord = TimeWord_Microseconds(&p[8]);
 
       if (firstTimeWord == 0)
         firstTimeWord = thisTimeWord;

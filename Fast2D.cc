@@ -65,10 +65,10 @@ void Fast2D::f2d_init()
 
 
 /* -------------------------------------------------------------------- */
-unsigned long long Fast2D::TimeWord_Microseconds(const unsigned char *p)
+uint64_t Fast2D::TimeWord_Microseconds(const unsigned char *p)
 {
   // Fast2D uses 40 bit timing word; v2 uses 42 bits.
-  return (ntohll((long long *)p) & _timingMask) / _clockMhz;
+  return (ntohll((uint64_t *)p) & _timingMask) / _clockMhz;
 }
 
 /* -------------------------------------------------------------------- */
@@ -90,7 +90,7 @@ struct recStats Fast2D::ProcessRecord(const P2d_rec *record, float version)
   unsigned long	startMilliSec;
   double	sampleVolume[(nDiodes()<<1)+1], totalLiveTime;
 
-  unsigned long long	firstTimeWord = 0;
+  uint64_t	firstTimeWord = 0;
 
   ClearStats(record);
   stats.DASelapsedTime = stats.thisTime - _prevTime;
@@ -125,13 +125,13 @@ struct recStats Fast2D::ProcessRecord(const P2d_rec *record, float version)
   startMilliSec = _prevHdr.msec;
 
   // Loop through all slices in record.
-  for (size_t i = 0; i < nSlices(); ++i, p += sizeof(long long))
+  for (size_t i = 0; i < nSlices(); ++i, p += sizeof(uint64_t))
   {
     /* Have particle, will travel.
      */
     if (isSyncWord(p) || isOverloadWord(p))
     {
-      unsigned long long thisTimeWord = TimeWord_Microseconds(p);
+      uint64_t thisTimeWord = TimeWord_Microseconds(p);
 
       if (firstTimeWord == 0)
         firstTimeWord = thisTimeWord;

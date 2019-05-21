@@ -39,11 +39,11 @@ protected:
 
   void f2d_init();
 
-  unsigned long long
+  uint64_t
   TimeWord_Microseconds(const unsigned char *p);
 
   // Mask for timing word.  40 bits v1, 42 bits v2.
-  unsigned long long _timingMask;
+  uint64_t _timingMask;
 
   // DOF flag is in different position of sync byte 3 for v1 and v2 of probe.
   unsigned char _dofMask;

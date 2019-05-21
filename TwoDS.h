@@ -42,7 +42,7 @@ public:
 
 protected:
 
-  unsigned long long
+  uint64_t
   TimeWord_Microseconds(const unsigned char *p);
 
 };
