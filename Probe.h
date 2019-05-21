@@ -24,6 +24,9 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 #include "OAP.h"
 #include "Particle.h"
 
+#ifndef M_PI
+#define M_PI (3.14159265)
+#endif
 
 std::string XMLgetAttributeValue(const char s[], const char target[]);
 
