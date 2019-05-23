@@ -1,6 +1,6 @@
 #include "portable.h"
 
-#if defined(__LITTLE_ENDIAN) || defined(_LITTLE_ENDIAN) || defined(LITTLE_ENDIAN)
+#if defined(__LITTLE_ENDIAN) || defined(_LITTLE_ENDIAN) || defined(LITTLE_ENDIAN) || defined(_WIN64)
 
 void SwapBytes(void *pv, size_t n)
 {
