@@ -11,7 +11,7 @@ COPYRIGHT:      University Corporation for Atmospheric Research, 1997-2018
 #ifndef _oap_particle_h_
 #define _oap_particle_h_
 
-#include <stdint.h>
+#include <cstdint>
 #include <sys/types.h>
 
 namespace OAP

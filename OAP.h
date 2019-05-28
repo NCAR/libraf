@@ -14,7 +14,7 @@ COPYRIGHT:      University Corporation for Atmospheric Research, 2019
 #ifndef _OAP_OAP_H_
 #define _OAP_OAP_H_
 
-#include <stdint.h>
+#include <cstdint>
 #include <cstring>
 
 /* ADS image record types */

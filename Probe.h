@@ -17,7 +17,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <stdint.h>
+#include <cstdint>
 #include <string>
 #include <vector>
 
