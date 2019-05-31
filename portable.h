@@ -2,6 +2,10 @@
  * Windows/MinGW does not have the typical byte swapping routines, so roll our
  * own.  I suppose we could try and use boost, but that library gets dragged
  * in everywhere.  Not happy about this....
+ *
+ * Since we are defining our own routines that will take the place of any
+ * system ntoh?(), make sure this include file comes AFTER netinet/in.h or
+ * arpa/inet.h
  */
 
 #ifndef _PORTABLE_H_
