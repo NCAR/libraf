@@ -31,7 +31,7 @@ uint32_t ntohl(uint32_t l)
 
 float ntohf(float f)
 {
-  SwapBytes(&f, 2);
+  SwapBytes(&f, 4);
   return f;
 }
 
