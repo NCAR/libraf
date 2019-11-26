@@ -21,7 +21,7 @@ util.c -- utility operations - operations on strings, files, etc.
 #include "constants.h"
 #include "libraf.h"
 
-#define MAX_FLNM_LNGTH 128
+#define MAX_FLNM_LNGTH 256
 
 static int StringPosn;
 
