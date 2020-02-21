@@ -143,7 +143,7 @@ year-month-day, with leading zero if needed
 */
 {
 struct tm *time_info;
-static char base_date[9];
+static char base_date[16];
 
  time_info=(struct tm *)gmtime(&basetime);
  (void)sprintf(base_date,"%02d%02d%02d",
@@ -160,7 +160,7 @@ given a base time since the epoch, initialize a tm struct with
 integers representing date and time and return a string with formatted date
 */
 {
-static char base_date[9];
+static char base_date[16];
 long basetime;
 struct tm *time_info;
 
@@ -180,7 +180,7 @@ given a base time since the epoch, initialize a tm struct with
 integers representing date and time and return a string with formatted time
 */
 {
-static char time[9];
+static char time[16];
 long basetime;
 struct tm *time_info;
 

@@ -786,9 +786,9 @@ char *ListFilesLargerThan(int threshold, char *directory)
 /************************************************************************/
 char *GetFileDate(char *filename)
 {
-static char filedate[32];
-char fdate[32];
-char ftime[32];
+static char filedate[64];
+char fdate[30];
+char ftime[30];
 int basetime;
 
  basetime=TimeOfLastUpdate(filename);

@@ -29,16 +29,16 @@ static int	inUse[nWarnings];
 /* -------------------------------------------------------------------- */
 void CancelWarning(Widget w, XtPointer clientData, XtPointer callData)
 {
-  XtUnmanageChild(warnBox[(int)clientData]);
-  XtPopdown(XtParent(warnBox[(int)clientData]));
-  inUse[(int)clientData] = FALSE;
+  XtUnmanageChild(warnBox[(size_t)clientData]);
+  XtPopdown(XtParent(warnBox[(size_t)clientData]));
+  inUse[(size_t)clientData] = FALSE;
 
 }	/* END CANCELWARNING */
 
 /* -------------------------------------------------------------------- */
 void WarnUser(char str[], XtCallbackProc okCB, XtCallbackProc cancelCB)
 {
-  int		i;
+  size_t	i;
   Widget	label;
   Arg		args[5];
   XmString	xStr;
