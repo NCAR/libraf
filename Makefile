@@ -31,7 +31,7 @@ OBJS=	chost.o strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 	oap.o Particle.o Probe.o PMS2D.o Fast2D.o TwoDS.o CIP.o HVPS.o \
         Printer.o Queue.o TextWindow.o rafTime.o validate.o pms_specs.o\
         Window.o XFonts.o XPen.o XmError.o XmFile.o XmQuery.o XmWarn.o \
-	tapeIO.o tapeIO++.o OAProbeFactory.o
+	tapeIO.o tapeIO++.o OAProbeFactory.o TextFile.o
 
 # cio.o flote.o sendhc.o sendpr.o 
 
@@ -42,7 +42,7 @@ SRCS=	chost.c strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
 	oap.cc Particle.cc Probe.cc PMS2D.cc Fast2D.cc TwoDS.cc CIP.cc HVPS.cc \
         Printer.cc Queue.cc TextWindow.cc rafTime.cc validate.cc pms_specs.c\
         Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc \
-	tapeIO.c tapeIO++.c OAProbeFactory.cc
+	tapeIO.c tapeIO++.c OAProbeFactory.cc TextFile.cc
 
 # cio.c flote.f sendhc.f sendpr.f 
 
@@ -59,6 +59,7 @@ hdrAPI.o:	hdrAPI.h portable.h
 adsIO.o:	adsIO.h hdrAPI.h
 adsIOrt.o:	adsIOrt.h hdrAPI.h
 PMSspex.o:	PMSspex.h
+TextFile.o:	TextFile.h
 portable.o:	portable.h
 
 Queue.o:	Queue.h

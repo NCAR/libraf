@@ -28,11 +28,11 @@ public:
 
   size_t size() { return _lines.size(); }
 
-  const std::string& Line(int index) { return _lines[index]; }
-  const char * Line(int index) { return _lines[index].c_str(); }
+  std::string Line(int index) { return _lines[index]; }
+//  const char * Line(int index) { return _lines[index].c_str(); }
 
 protected:
-  std::vector<const std::string>  _lines;
+  std::vector<std::string>  _lines;
 
   static const char COMMENT;
 
