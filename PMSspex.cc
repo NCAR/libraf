@@ -10,7 +10,7 @@ ENTRY POINTS:	InitPMSspecs()
 
 DESCRIPTION:	
 
-COPYRIGHT:	University Corporation for Atmospheric Research, 1995-2014
+COPYRIGHT:	University Corporation for Atmospheric Research, 1995-2020
 -------------------------------------------------------------------------
 */
 
@@ -21,6 +21,8 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1995-2014
 #include <iostream>
 
 #include "PMSspex.h"
+
+const char PMSspex::COMMENT = '#';
 
 
 /* -------------------------------------------------------------------- */

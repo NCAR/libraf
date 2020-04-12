@@ -28,7 +28,7 @@ public:
 
   size_t size() { return _lines.size(); }
 
-  std::string Line(int index) { return _lines[index]; }
+  std::string& Line(int index) { return _lines[index]; }
 //  const char * Line(int index) { return _lines[index].c_str(); }
 
 protected:

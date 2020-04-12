@@ -4,16 +4,14 @@ OBJECT NAME:	PMSspex.h
 
 DESCRIPTION:	Header file for PMSspec's files.
 
-COPYRIGHT:	University Corporation for Atmospheric Research, 1998
+COPYRIGHT:	University Corporation for Atmospheric Research, 1998-2020
 -------------------------------------------------------------------------
 */
 
-#ifndef PMSSPEX_H
-#define PMSSPEX_H
+#ifndef _libraf_pmsspex_h_
+#define _libraf_pmsspex_h_
 
 #include <string>
-
-#define COMMENT		'#'
 
 
 /* -------------------------------------------------------------------- */
@@ -42,6 +40,8 @@ public:
 
 private:
   char	**PMSfile;
+
+  static const char COMMENT;
 
 };
 
