@@ -1,12 +1,14 @@
 #!python
 
-# This SConstruct does nothing more than load the SConscript in this dir
-# The Environment() is created in the SConstruct script
-# This dir can be built standalone by executing scons here, or together
-# by executing scons in a parent directory
+# This SConstruct wraps the raf tool file in this directory with the
+# conventional --prefix option.  The raf library can be built standalone by
+# executing scons here, or it can be built as part of a larger source tree.
 
 import os
 import sys
+
+# eol_scons will be found either in the parent source tree or in the
+# default system locations.
 sys.path.append('../site_scons')
 import eol_scons
 
@@ -20,16 +22,16 @@ AddOption('--prefix',
   help='installation prefix')
 
 def Raf_utils(env):
-    if GetOption('prefix') != "#":
-        env.Replace(DEFAULT_INSTALL_PREFIX = GetOption('prefix'))
-        env.Replace(DEFAULT_OPT_PREFIX = GetOption('prefix'))
-    else:
-        env['DEFAULT_INSTALL_PREFIX']="#"
-        env.Require(['prefixoptions'])
+    # This just enforces that the --prefix setting is the default for both
+    # the OPT_PREFIX and INSTALL_PREFIX.  Both can still be overridden
+    # individually if needed.
+    env['DEFAULT_INSTALL_PREFIX'] = GetOption('prefix')
+    env['DEFAULT_OPT_PREFIX'] = GetOption('prefix')
+    env.Require(['prefixoptions'])
 
 env = Environment(GLOBAL_TOOLS = [Raf_utils])
 
-SConscript('SConscript')
+SConscript('tool_raf.py')
 
 variables = env.GlobalVariables()
 variables.Update(env)

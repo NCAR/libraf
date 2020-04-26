@@ -1,6 +1,16 @@
 # -*- python -*-
 
-env = Environment(tools=['default','prefixoptions'])
+# This tool_raf.py file will be loaded by other SConscript files in the
+# same source tree which depend on the raf library.  It both calls the
+# scons builders to build the raf library, and it defines the raf() tool
+# function so that other source can find the header files and library from
+# this build directory.
+#
+# When this tool file is not in a source tree, then any sconscript
+# requiring the 'raf' tool will instead load the raf tool from eol_scons,
+# and that tool links against the installed raf library.
+
+env = Environment(tools=['default', 'prefixoptions'])
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
 env.Append(CXXFLAGS='-g -Wall -std=c++11 -Wno-write-strings -Wno-deprecated-register ')
@@ -63,8 +73,10 @@ il = env.Alias('install-lib', "$INSTALL_PREFIX/lib")
 ii = env.Alias('install-inc', "$INSTALL_PREFIX/include/raf")
 env.Alias('install', [il, ii])
 
+incdir = env.Dir('..')
+
 def raf(env):
     env.AppendLibrary('raf')
-    env.Append(CPPPATH=env.Dir('..'))
+    env.Append(CPPPATH=incdir)
 
 Export('raf')
