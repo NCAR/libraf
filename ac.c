@@ -44,7 +44,7 @@ void InitAircraftSpecs(const char fileName[])
     }
 
   strcpy(ACbuffer, p);
-  strcat(ACbuffer, "/Configuration/raf/");
+  strcat(ACbuffer, "/Configuration/");
   strcat(ACbuffer, fileName);
 
   if ((fp = fopen(ACbuffer, "r")) == NULL)
