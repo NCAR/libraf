@@ -49,7 +49,7 @@ void InitAircraftSpecs(const char fileName[])
 
   if ((fp = fopen(ACbuffer, "r")) == NULL)
     {
-    fprintf(stderr, "Can't open %s\n", fileName);
+    fprintf(stderr, "Can't open %s\n", ACbuffer);
     exit(1);
     }
 
