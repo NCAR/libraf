@@ -67,7 +67,7 @@ if env['PLATFORM'] == 'posix':
 
 libraf = env.StaticLibrary('raf' , sources)
 env.Default(libraf)
-if env['INSTALL_RAF']:
+if env.get('INSTALL_RAF') and env['INSTALL_RAF']:
   env.Install("$INSTALL_PREFIX/lib", libraf)
   env.Install("$INSTALL_PREFIX/include/raf", includes)
   il = env.Alias('install-lib', "$INSTALL_PREFIX/lib")
