@@ -67,11 +67,12 @@ if env['PLATFORM'] == 'posix':
 
 libraf = env.StaticLibrary('raf' , sources)
 env.Default(libraf)
-env.Install("$INSTALL_PREFIX/lib", libraf)
-env.Install("$INSTALL_PREFIX/include/raf", includes)
-il = env.Alias('install-lib', "$INSTALL_PREFIX/lib")
-ii = env.Alias('install-inc', "$INSTALL_PREFIX/include/raf")
-env.Alias('install', [il, ii])
+if env['INSTALL_RAF']:
+  env.Install("$INSTALL_PREFIX/lib", libraf)
+  env.Install("$INSTALL_PREFIX/include/raf", includes)
+  il = env.Alias('install-lib', "$INSTALL_PREFIX/lib")
+  ii = env.Alias('install-inc', "$INSTALL_PREFIX/include/raf")
+  env.Alias('install', [il, ii])
 
 incdir = env.Dir('..')
 

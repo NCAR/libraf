@@ -12,22 +12,14 @@ import sys
 sys.path.append('../site_scons')
 import eol_scons
 
-AddOption('--prefix',
-  dest='prefix',
-  type='string',
-  nargs=1,
-  action='store',
-  metavar='DIR',
-  default='#',
-  help='installation prefix')
-
 def Raf_utils(env):
-    # This just enforces that the --prefix setting is the default for both
-    # the OPT_PREFIX and INSTALL_PREFIX.  Both can still be overridden
-    # individually if needed.
-    env['DEFAULT_INSTALL_PREFIX'] = GetOption('prefix')
-    env['DEFAULT_OPT_PREFIX'] = GetOption('prefix')
+    env['INSTALL_RAF'] = install_raf
     env.Require(['prefixoptions'])
+
+
+install_raf = False
+if Dir('#') == Dir('.') :
+  install_raf = True
 
 env = Environment(GLOBAL_TOOLS = [Raf_utils])
 
