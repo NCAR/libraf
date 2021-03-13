@@ -32,6 +32,7 @@ get_ac_name.c
 getmem.c
 hdrAPI.cc
 nc_time.c
+opener.cc
 pms_specs.c
 portable.c
 raf_queue.c
@@ -53,8 +54,8 @@ ACconfig.h Application.h CIP.h Canvas.h Cursor.h Fast2D.h HVPS.h OAProbeFactory.
 OAPUserConfig.h PMS2D.h PMSspex.h Particle.h PixMap.h PostScript.h Printer.h
 Probe.h Queue.h SQLrt.h TextFile.h TextWindow.h TwoDS.h Window.h XFonts.h XPen.h
 XmError.h XmFile.h OAP.h XmQuery.h XmWarn.h ac.h adsIO.h adsIOrt.h constants.h
-hdrAPI.h header.h libraf.h pgsql.h pms.h portable.h raf.h rafTime.h raf_queue.h
-tapeIO.h
+hdrAPI.h header.h libraf.h opener.h pgsql.h pms.h portable.h raf.h rafTime.h raf_queue.h
+tapeIO.h ctape.h hdr_api.h
 """)
 
 # No X11/Motif on Windows
