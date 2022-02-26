@@ -15,9 +15,6 @@ env = Environment(tools=['default', 'prefixoptions'])
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
 env.Append(CXXFLAGS='-g -Wall -std=c++11 -Wno-write-strings -Wno-deprecated-register ')
 env.Append(CPPDEFINES=['PNG'])
-if env['PLATFORM'] == 'darwin':
-  env.Append(CPPPATH=['/opt/X11/include'])
-
 
 sources = Split("""
 ACconfig.cc
