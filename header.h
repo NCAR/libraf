@@ -214,7 +214,8 @@ typedef char strnam[LEN_8];             /* variable name string type */
 #define P2D_C_STR	"2D-C"		/* Pms 2d 'C' probe name */
 #define P2D_P_STR	"2D-P"		/* Pms 2d 'P' probe name */
 #define P2D_G_STR	"2D-G"		/* Pms 2d grey scale probe name */
-#define P2D_H_STR       "2D-H"          /* Spec hvps probe name */
+#define P2D_H_STR       "2D-H"          /* SPEC hvps probe name */
+#define P2D_S_STR       "2D-S"          /* SPEC 2ds probe name */
 
 #define SAMPLED_ID	0x8681		/* sampled data id word */
 #define C1_STR          "C1"		/* pms 2d 'C' probe #1 data id string */
@@ -225,6 +226,8 @@ typedef char strnam[LEN_8];             /* variable name string type */
 #define G2_STR          "G2"		/* grey scale probe #2 data id string */
 #define H1_STR          "H1"            /* hvps probe #1 data id string */
 #define H2_STR          "H2"            /* hvps probe #2 data id string */
+#define S1_STR          "S1"            /* 2DS probe #1 data id string */
+#define S2_STR          "S2"            /* 2DS probe #2 data id string */
 
 #define ASAS		0
 #define FSSP		1
