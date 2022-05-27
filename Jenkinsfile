@@ -17,7 +17,7 @@ pipeline {
   }
   post {
     always {
-      mail(subject: 'libraf build successful', body: 'libraf build successful', to: 'cjw@ucar.edu taylort@ucar.edu')
+      mail(subject: 'Jenkinsfile libraf build successful', body: 'Jenkinsfile libraf build successful', to: 'cjw@ucar.edu taylort@ucar.edu')
     }
 
   }
