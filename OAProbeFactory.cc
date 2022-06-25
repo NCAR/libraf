@@ -12,6 +12,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 2003-19
 #include "PMS2D.h"
 #include "Fast2D.h"
 #include "TwoDS.h"
+#include "F2DS.h"
 #include "HVPS.h"
 #include "CIP.h"
 
@@ -57,6 +58,8 @@ Probe *OAProbeFactory::create(const char specifier[], UserConfig *cfg)
       return new HVPS(cfg, specifier, size);
     case OAP::CIP_T:
       return new CIP(cfg, specifier, size);
+    case OAP::F2DS_T:
+      return new F2DS(cfg, specifier, sizeof(OAP::TwoDS_rec));
     default:
       fprintf(stderr, "OAProbeFactory: Unknown probe type, [%c%c]\n", id[0], id[1]);
       fprintf(stderr, "OAProbeFactory: [%s]\n", specifier);
