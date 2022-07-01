@@ -16,10 +16,12 @@ pipeline {
     }
   }
   post {
-    always {
-      mail(subject: 'Jenkinsfile libraf build successful', body: 'Jenkinsfile libraf build successful', to: 'cjw@ucar.edu taylort@ucar.edu')
+    failure {
+      emailext to: "cjw@ucar.edu janine@ucar.edu cdewerd@ucar.edu taylort@ucar.edu",
+      subject: "Jenkinsfile libraf build failed",
+      body: "See console output attached",
+      attachLog: true
     }
-
   }
   options {
     buildDiscarder(logRotator(numToKeepStr: '10'))
