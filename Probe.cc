@@ -14,6 +14,8 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 #include "hdrAPI.h"
 #include "OAPUserConfig.h"
 
+#include <iostream>
+
 using namespace OAP;
 
 const float	Probe::diodeDiameter = 0.2;
@@ -80,6 +82,17 @@ Probe::Probe(ProbeType type, UserConfig *cfg, Header * hdr, const Pms2 * p, int 
 
   _lrLen = hdr->lrLength(p);
   _lrPpr = hdr->lrPpr(p);
+
+  std::cout << "Probe ctor\n";
+  std::cout << "name = [" << _name << "]\n";
+  std::cout << "s/n = [" << _serialNumber << "]\n";
+  std::cout << "code = [" << _code << "]\n";
+  std::cout << "resolution = [" << _resolution << "]\n";
+  std::cout << "numBins = [" << _numBins << "] = nDiodes\n";
+  std::cout << "nSlices = [" << _nSlices << "]\n";
+  std::cout << "resolution = [" << _resolution << "]\n";
+  std::cout << "eaw = [" << _eaw << "]\n";
+  std::cout << "dof_const = [" << _dof_const << "]\n";
 }
 
 void Probe::init()
