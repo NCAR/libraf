@@ -36,7 +36,7 @@ public:
   bool isSyncWord(const unsigned char *p);
   bool isOverloadWord(const unsigned char *p);
 
-  static const unsigned char SyncString[3];
+  static const unsigned char SyncString[4];
   static const unsigned char OverldString[3];
 
 
