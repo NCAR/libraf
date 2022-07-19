@@ -60,7 +60,7 @@ COPYRIGHT:      University Corporation for Atmospheric Research, 2019
 
 namespace OAP
 {
-enum ProbeType { UNKNOWN_T, PMS2D_T, HVPS_T, GREYSCALE_T, FAST2D_T, TWODS_T, CIP_T };
+enum ProbeType { UNKNOWN_T, PMS2D_T, HVPS_T, GREYSCALE_T, FAST2D_T, TWODS_T, F2DS_T, CIP_T };
 
 const size_t OAP_BUFF_SIZE = 4096;
 const size_t nSlices_32bit = 1024;
@@ -94,6 +94,33 @@ struct P2d_rec {
   int16_t msec;				/* msec of this record */
   int16_t overld;			/* overload time, msec */
   unsigned char data[OAP_BUFF_SIZE];	/* image buffer */
+};
+
+
+// Header Structure SPEC Fast2DS File Format.  For SourceF2DS.
+struct TwoDS_hdr {
+  int16_t year;
+  int16_t month;
+  int16_t dayOfWeek;
+  int16_t day;
+  int16_t hour;
+  int16_t minute;
+  int16_t second;
+  int16_t msec;				/* millisecond of this record */
+};
+
+// Record Structure SPEC Fast2DS File Format.  For SourceF2DS.
+struct TwoDS_rec {
+  int16_t year;
+  int16_t month;
+  int16_t dayOfWeek;
+  int16_t day;
+  int16_t hour;
+  int16_t minute;
+  int16_t second;
+  int16_t msec;				/* millisecond of this record */
+  unsigned char data[OAP_BUFF_SIZE];	/* image buffer	*/
+  int16_t chkSum;			/* checksum	*/
 };
 
 void swapPMS2D(OAP::P2d_rec *);
