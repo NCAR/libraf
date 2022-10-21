@@ -21,6 +21,7 @@ extern "C" {
 void	InitPMSspecs(const char fileName[]), ReleasePMSspecs(void);
 char	*GetPMSparameter(const char serialNumber[], const char parameter[]);
 int	GetPMSlist(char *list[]);
+bool	isPMSspecsLegacyZeroBin();
 #ifdef __cplusplus
 }
 #endif
