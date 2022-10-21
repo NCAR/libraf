@@ -27,6 +27,15 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1995
 
 static char	**PMSfile = NULL;
 
+/**
+ * true is old processing, prior to 2022.  false is new.
+ * Difference in the PMSspecs file is that FIRST_BIN & LAST_BIN will be one less
+ * for new processing (e.g.  0 & 30 instead of 1 and 31).
+ *
+ * New PMSspecs files are marked with a line "NoLegacyZeroBin".
+ */
+static bool legacyZeroBin = TRUE;
+
 char	*GetMemory(size_t);
 
 /* -------------------------------------------------------------------- */
@@ -55,6 +64,9 @@ void InitPMSspecs(const char fileName[])
       fclose(fp[fCnt--]);
       continue;
       }
+
+    if (strstr(PMSbuffer, "NoLegacyZeroBin") )
+      legacyZeroBin = FALSE;
 
     if (strncmp(PMSbuffer, "#include", 8) == 0)
       {
@@ -126,8 +138,7 @@ void InitPMSspecs(const char fileName[])
     PMSfile[i] = file[i];
 
   PMSfile[i] = NULL;
-
-}	/* END INITPMSSPECS */
+}
 
 /* -------------------------------------------------------------------- */
 char *GetPMSparameter(const char serialNumber[], const char parameter[])
@@ -167,8 +178,7 @@ char *GetPMSparameter(const char serialNumber[], const char parameter[])
     }
 
   return(NULL);
-
-}	/* END GETPMSPARAMETER */
+}
 
 /* -------------------------------------------------------------------- */
 void ReleasePMSspecs()
@@ -184,8 +194,13 @@ void ReleasePMSspecs()
 
     PMSfile = NULL;
     }
+}
 
-}	/* END RELEASEPMSSPECS */
+/* -------------------------------------------------------------------- */
+bool isPMSspecsLegacyZeroBin()
+{
+  return legacyZeroBin;
+}
 
 /* -------------------------------------------------------------------- */
 int GetPMSlist(char *list[]) /* returns list of serial numbers */
@@ -207,7 +222,4 @@ int GetPMSlist(char *list[]) /* returns list of serial numbers */
       }
 
   return(cnt);
-
-}	/* END GETPMSLIST */
-
-/* END INIT.C */
+}
