@@ -133,7 +133,7 @@ char *GetAircraftParameter(const char tailNumber[], const char parameter[])
 
         for (; ACfile[i]; ++i)
           {
-          if (strcmp(ACfile[i], "END") == 0)
+          if (strcmp(ACfile[i], "END_AIRCRAFT") == 0)
             return 0;
 
           if (strncmp(ACfile[i], parameter, len) == 0)

@@ -81,7 +81,7 @@ ACconfig::ACconfig(const std::string& fileName)
 
         int end = _file[i].find_first_of(" \t");
         std::string	key = thisTail + "." + _file[i].substr(0, end);
-        
+
         int start = _file[i].find_first_not_of(" \t", end);
         std::string value = _file[i].substr(start);
 
@@ -123,7 +123,7 @@ std::string ACconfig::LocateMyTailNumber(const std::string& serverName)
     {
       return(key.substr(0, key.find_first_of('.')));
     }
-  } 
+  }
 
   return(NO_SERVER);
 
