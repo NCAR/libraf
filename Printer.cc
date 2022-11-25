@@ -155,7 +155,7 @@ Printer::Printer(Widget parent) : WinForm(parent, "print", RowColumn)
   width = 11.0;
   height = 8.5;
   shape = LANDSCAPE;
-  color = false;
+  color = true;
   lineWidth = 1;
 
 }	/* END CONSTRUCTOR */
