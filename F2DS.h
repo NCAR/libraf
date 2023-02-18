@@ -37,6 +37,7 @@ public:
   bool isSyncWord(const unsigned char *p);
 
   static const uint16_t SyncWord;
+  static const unsigned char SyncString[3];
 
 
 protected:

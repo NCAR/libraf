@@ -17,7 +17,11 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 2018-2022
 
 using namespace OAP;
 
+// This is start of particle in the SPEC compressed world.
 const uint16_t F2DS::SyncWord = 0x5332;
+
+// Standard sync word in the OAP file format world.
+const unsigned char F2DS::SyncString[] = { 0xaa, 0xaa, 0xaa };
 
 
 /* -------------------------------------------------------------------- */
@@ -54,7 +58,7 @@ uint64_t F2DS::TimeWord_Microseconds(const unsigned char *p)
 /* -------------------------------------------------------------------- */
 bool F2DS::isSyncWord(const unsigned char *p)
 {
-  return memcmp(p, (void *)&SyncWord, 2) == 0;
+  return memcmp(p, (void *)&SyncString, 3) == 0;
 }
 
 /* -------------------------------------------------------------------- */
