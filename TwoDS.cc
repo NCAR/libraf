@@ -6,7 +6,7 @@ FULL NAME:	SPEC TwoDS Probe Class
 
 DESCRIPTION:	
 
-COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
+COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2023
 -------------------------------------------------------------------------
 */
 
@@ -17,7 +17,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
 
 using namespace OAP;
 
-const unsigned char TwoDS::SyncString[] = { 0xaa, 0xaa, 0xaa, 0xaa };
+const unsigned char TwoDS::SyncString[] = { 0xaa, 0xaa, 0xaa };
 const unsigned char TwoDS::OverldString[] = { 0x55, 0x55, 0xaa };
 
 
@@ -52,8 +52,7 @@ uint64_t TwoDS::TimeWord_Microseconds(const unsigned char *p)
 /* -------------------------------------------------------------------- */
 bool TwoDS::isSyncWord(const unsigned char *p)
 {
-  //  16 bytes.  First eight are the timing word, second eight bytes are the sync.
-  return memcmp(&p[8], (void *)&SyncString, 4) == 0;
+  return memcmp(p, (void *)&SyncString, 3) == 0;
 }
 
 /* -------------------------------------------------------------------- */
