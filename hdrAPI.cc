@@ -217,7 +217,7 @@ const char *Header::ProjectName()
       FILE	*fp;
       char	tmp[256];
 
-      sprintf(tmp, "%s/%s/ProjectName", p, ProjectNumber());
+      snprintf(tmp, 256, "%s/%s/ProjectName", p, ProjectNumber());
 
       if ((fp = fopen(tmp, "r")))
         {

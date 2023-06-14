@@ -32,7 +32,7 @@ PostScript::PostScript(const char *outFile, const char progName[], const string&
       {
       char buff[256];
 
-      sprintf(buff, "PostScript: Can't open output file %s", outFile);
+      snprintf(buff, 256, "PostScript: Can't open output file %s", outFile);
       ErrorMsg(buff);
       return;
       }

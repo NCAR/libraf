@@ -146,7 +146,7 @@ struct tm *time_info;
 static char base_date[16];
 
  time_info=(struct tm *)gmtime(&basetime);
- (void)sprintf(base_date,"%02d%02d%02d",
+ (void)snprintf(base_date,16,"%02d%02d%02d",
   time_info->tm_mon+1,time_info->tm_mday,time_info->tm_year);
  return base_date;
 }
@@ -166,7 +166,7 @@ struct tm *time_info;
 
  basetime=base;
  time_info=(struct tm *)gmtime(&basetime);
- (void)sprintf(base_date,"%s-%02d-%02d",
+ (void)snprintf(base_date,16,"%s-%02d-%02d",
   months[time_info->tm_mon],time_info->tm_mday,time_info->tm_year);
  return base_date;
 }
@@ -186,7 +186,7 @@ struct tm *time_info;
 
  basetime=base;
  time_info=(struct tm *)gmtime(&basetime);
- (void)sprintf(time,"%02d:%02d:%02d",
+ (void)snprintf(time,16,"%02d:%02d:%02d",
   time_info->tm_hour,time_info->tm_min,time_info->tm_sec);
  return time;
 }
@@ -225,7 +225,7 @@ int GetBaseFromMDYHMS(int month,int day,int year,int hr,int min,int sec)
  time_info.tm_hour=hr;
  time_info.tm_min=min;
  time_info.tm_sec=sec;
- (void)sprintf(TZstring,"%s","TZ=GMT");
+ (void)snprintf(TZstring,16,"%s","TZ=GMT");
  (void)putenv(TZstring);
  basetime=(int)mktime(&time_info);
  return basetime;

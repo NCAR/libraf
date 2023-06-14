@@ -308,12 +308,12 @@ int SetCurrentDir(char *dir)
 /******************************  GetCurrentDir()  ************************/
 char *GetCurrentDir()
 {
-static char currentdir[MAXPATHLEN];
+  static char currentdir[MAXPATHLEN];
 
  if (!getcwd(currentdir,MAXPATHLEN+1)) {
   (void)fprintf(stderr,"problem with getwd: ");
   perror("");
-  return NULL; 
+  return NULL;
  }
  return currentdir;
 }
@@ -323,12 +323,12 @@ char *GetUnixCleanFilename(char *string)
 {
 static char CleanFilename[MAX_FLNM_LNGTH];
 
- (void)sprintf(CleanFilename,"%s",&string[strspn(string," ")]);
- (void)sprintf(CleanFilename,"%s",(char *)ReplaceChar(CleanFilename,'/','-'));
- (void)sprintf(CleanFilename,"%s",(char *)ReplaceChar(CleanFilename,'\'','-'));
- (void)sprintf(CleanFilename,"%s",(char *)ReplaceChar(CleanFilename,'"','-'));
+ (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",&string[strspn(string," ")]);
+ (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",(char *)ReplaceChar(CleanFilename,'/','-'));
+ (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",(char *)ReplaceChar(CleanFilename,'\'','-'));
+ (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",(char *)ReplaceChar(CleanFilename,'"','-'));
  TrimTrailingBlanks(CleanFilename);
- (void)sprintf(CleanFilename,"%s",(char *)ReplaceChar(CleanFilename,' ','-'));
+ (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",(char *)ReplaceChar(CleanFilename,' ','-'));
  return CleanFilename;
 }
 
@@ -338,8 +338,8 @@ void trim_trailing_zeros(char *s)
    rightmost zero is decimal point, restore that zero
 */
 {
-int i;
- 
+  int i;
+
  for (i=strlen(s)-1; i>0; i--)
   if (s[i]!='0') {
    if (s[i]=='.') {
@@ -655,7 +655,7 @@ int index;
   index=StringLength(FileList);
   FileList=(char *)realloc((void *)FileList,
    (size_t)(index+strlen(filename)+16));
-  (void)sprintf(&FileList[index],"%s %d\n",filename,FileSize(filename)); 
+  (void)sprintf(&FileList[index],"%s %d\n",filename,FileSize(filename));
  }
 }
 
@@ -677,14 +677,14 @@ void LogToStdErr(char msg[])
 {
  (void)fprintf(stderr,"%s",msg);
 }
- 
+
 /************************************************************************/
 char * GetTimeStamp()
 {
   static char timestamp[32];
- 
+
   init_date();
-  sprintf(timestamp,"%s %s %s",get_month(),get_day(),GetTime());
+  snprintf(timestamp,32,"%s %s %s",get_month(),get_day(),GetTime());
   return timestamp;
 }
 
@@ -697,7 +697,7 @@ char **GetDirectoryNames(char *parentdir)
  int dir,dirnum=0;
  static int DirSize=0;
  char pathname[512];
- 
+
  dirp=opendir(parentdir);
  if (dirp==NULL) {
   (void)fprintf(stderr,"WARNING: directory open (%s) failed; errno: %d\n",
@@ -707,27 +707,27 @@ char **GetDirectoryNames(char *parentdir)
  errno=0;
  while ( (dp = readdir( dirp )) != NULL ) {
   if (strcmp(dp->d_name,".") && strcmp(dp->d_name,"..")) {
-   (void)sprintf(pathname,"%s/%s",parentdir,dp->d_name);
+   (void)snprintf(pathname,512,"%s/%s",parentdir,dp->d_name);
    if (IsDirectory(pathname)) {
     int needsize=dirnum+1;
     if (needsize>DirSize) {
      Dir=(char **)ResizeMem(Dir,needsize*sizeof(char *));
      for (dir=DirSize; dir<needsize; dir++) {
-      Dir[dir]=NULL; 
+      Dir[dir]=NULL;
      }
      DirSize=needsize;
-    } 
+    }
     if (Dir[dirnum]) {
      free ((void *)Dir[dirnum]);
      Dir[dirnum]=NULL;
-    } 
+    }
     Dir[dirnum]=(char *)malloc((unsigned int)strlen(dp->d_name)+1);
     strcpy(Dir[dirnum++],dp->d_name);
    } else {
     continue;
    }
-  } 
- } 
+  }
+ }
  closedir(dirp);
  if (dirnum+1>DirSize) {
   Dir=(char **)ResizeMem(Dir,(dirnum+1)*sizeof(char *));
@@ -747,7 +747,7 @@ char errmsg[256];
 
  dirp=opendir(directory);
  if (dirp==NULL) {
-  (void)sprintf(errmsg,"WARNING: directory open (%s) failed; errno: %d\n",
+  (void)snprintf(errmsg,256,"WARNING: directory open (%s) failed; errno: %d\n",
    directory,errno);
   if (errorfunc)
    (*errorfunc)(errmsg);
@@ -756,7 +756,7 @@ char errmsg[256];
  }
  while ( (dp = readdir( dirp )) != NULL ) {
   if (strcmp(dp->d_name,".") && strcmp(dp->d_name,"..")) {
-   (void)sprintf(pathname,"%s/%s",directory,dp->d_name);
+   (void)snprintf(pathname,MAX_FLNM_LNGTH,"%s/%s",directory,dp->d_name);
    if (IsDirectory(pathname)) {
     FindFiles(filename,pathname,opfunc,errorfunc,lengthcmp);
    } else {
@@ -769,12 +769,12 @@ char errmsg[256];
     }
    }
   }
- } 
+ }
  closedir(dirp);
 }
 
 /************************************************************************/
-char *ListFilesLargerThan(int threshold, char *directory) 
+char *ListFilesLargerThan(int threshold, char *directory)
 {
  SetThreshold(threshold);
  if (FileList)
@@ -792,9 +792,9 @@ char ftime[30];
 int basetime;
 
  basetime=TimeOfLastUpdate(filename);
- (void)sprintf(fdate,"%s",(char *)get_date_from_base(basetime));
- (void)sprintf(ftime,"%s",(char *)get_time_from_base(basetime));
- (void)sprintf(filedate,"%s-%s",fdate,ftime);
+ (void)snprintf(fdate,30,"%s",(char *)get_date_from_base(basetime));
+ (void)snprintf(ftime,30,"%s",(char *)get_time_from_base(basetime));
+ (void)snprintf(filedate,64,"%s-%s",fdate,ftime);
  return filedate;
 }
 
@@ -824,7 +824,7 @@ int index;
 /*
 lose the trailing line feed inherited from fgets()
 */
-/*** is this a good idea? 
+/*** is this a good idea?
   (void)sprintf(&string[strlen(string)-1],"\0");
 *******/
   if (reportfunc) {
@@ -833,10 +833,10 @@ lose the trailing line feed inherited from fgets()
    if (output)
     index=strlen(output);
    output=(char *)realloc ((void *)output,
-    ((output?strlen(output):0)+strlen(string)+5)); 
+    ((output?strlen(output):0)+strlen(string)+5));
    (void)sprintf(&output[index],"%s",string);
   }
- } 
+ }
  pclose(pipe);
  if (!reportfunc)
   return output;
@@ -845,23 +845,23 @@ lose the trailing line feed inherited from fgets()
 }
 
 /************************************************************************/
- 
+
 void LogMsgToStdErr(msg)
 char *msg;
 {
  (void)fprintf(stderr,"%s",msg);
  fflush(stderr);
 }
- 
+
 /************************************************************************/
- 
+
 void LogMsgToStdOut(msg)
 char *msg;
 {
  (void)printf("%s",msg);
  fflush(stdout);
 }
- 
+
 /************************************************************************/
 
 #include <fmtmsg.h>
@@ -877,16 +877,16 @@ char *host,*source,*message;
  if (!message)
   return;
  remote=(strlen((char*)GetComputeHost())&&strcmp((char*)GetComputeHost(),host)); if (remote) {
-  (void)sprintf(rshcmd,
+  (void)snprintf(rshcmd, 1024,
    "rsh %s \"fmtmsg -u console,print '%s'\"",host,message);
   pipe=popen(rshcmd,"r");
   pclose(pipe);
  } else {
   fmtmsg(MM_PRINT|MM_CONSOLE,(char *)NULL,MM_NOSEV,message,
-   (char *)NULL,(char *)NULL); 
+   (char *)NULL,(char *)NULL);
  }
 }
- 
+
 /************************************************************************/
 
 char *
@@ -896,7 +896,7 @@ char *filename;
 char command[MAX_FLNM_LNGTH+16];
 char *filetype;
 
- (void)sprintf(command,"file %s",filename);
+ (void)snprintf(command,MAX_FLNM_LNGTH,"file %s",filename);
  filetype=(substring((char *)GetShellOutput(command,NULL),'\n'));
  if (filetype)
   return filetype;
@@ -913,7 +913,7 @@ char *filename;
 char command[MAX_FLNM_LNGTH+128];
 char *coretype;
 
- (void)sprintf(command,"file %s | awk '{print $11}'",filename);
+ (void)snprintf(command,MAX_FLNM_LNGTH+128,"file %s | awk '{print $11}'",filename);
  coretype=(substring((char *)GetShellOutput(command,NULL),'\n'));
  if (coretype)
   return coretype;
@@ -930,7 +930,7 @@ char *filename;
 char command[MAX_FLNM_LNGTH+128];
 char *gdbinfo;
 
- (void)sprintf(command,"%s/bin/gdb -q -c %s -x %s/scripts/gdb-batch",
+ (void)snprintf(command,MAX_FLNM_LNGTH+128,"%s/bin/gdb -q -c %s -x %s/scripts/gdb-batch",
   (char *)getenv("GNU"),filename,(char *)getenv("WINDS"));
  gdbinfo=(substring((char *)GetShellOutput(command,NULL),'\n'));
  if (gdbinfo)
@@ -946,7 +946,7 @@ char *source,*dest;
 {
 char command[MAX_FLNM_LNGTH+128];
 
- (void)sprintf(command,"/bin/mv %s %s",source,dest);
+ (void)snprintf(command,MAX_FLNM_LNGTH+128,"/bin/mv %s %s",source,dest);
  ExecuteShellCommand(command);
 }
 
@@ -996,20 +996,20 @@ void ListLimits()
  }
  if (getrlimit(RLIMIT_STACK,&rlp)==-1) {
   (void)fprintf(stderr,"getrlimit RLIMIT_DATA failed, errno %d\n",errno);
- } else { 
+ } else {
   (void)fprintf(stderr,"got RLIMIT_STACK\n");
  }
 /*
  if (getrlimit(RLIMIT_VMEM,&rlp)==-1) {
   (void)fprintf(stderr,"getrlimit RLIMIT_DATA failed, errno %d\n",errno);
- } else { 
+ } else {
   (void)fprintf(stderr,"got RLIMIT_VMEM\n");
  }
 */
 }
 
 /********************************************************************/
- 
+
 void LeftJustify(char *string,char *target,int fieldlen)
 {
  int c;
@@ -1021,7 +1021,7 @@ void LeftJustify(char *string,char *target,int fieldlen)
 }
 
 /***********************  PadWithBlanks()  **************************/
- 
+
 void PadWithBlanks(char *string,int length)
 {
  int c;
@@ -1030,10 +1030,10 @@ void PadWithBlanks(char *string,int length)
 }
 
 /***********************  GetStringPosition()  **************************/
- 
+
 int GetStringPosition()
 /*
-return the most recent value of word position in string sent in call 
+return the most recent value of word position in string sent in call
 to GetNextString()
 */
 {

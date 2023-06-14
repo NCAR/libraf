@@ -101,11 +101,11 @@ Printer::Printer(Widget parent) : WinForm(parent, "print", RowColumn)
     plRC[i] = XmCreateRowColumn(RC[0], (char *)"plRC", args, n);
 
     n = 0;
-    sprintf(buffer, "lbl%d", cnt);
+    snprintf(buffer, 128, "lbl%d", cnt);
     label = XmCreateLabel(plRC[i], buffer, args, n);
 
     n = 0;
-    sprintf(buffer, "txt%d", cnt);
+    snprintf(buffer, 128, "txt%d", cnt);
     parmsText[cnt] = XmCreateTextField(plRC[i], buffer, args, n);
 
     XtManageChild(label);
@@ -167,10 +167,10 @@ void Printer::setParms()
 
   XmTextFieldSetString(parmsText[0], lpCommand());
 
-  sprintf(buffer, "%.3f", width);
+  snprintf(buffer, 128, "%.3f", width);
   XmTextFieldSetString(parmsText[1], buffer);
 
-  sprintf(buffer, "%.3f", height);
+  snprintf(buffer, 128, "%.3f", height);
   XmTextFieldSetString(parmsText[2], buffer);
 
   switch (shape)
