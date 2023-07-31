@@ -13,7 +13,7 @@
 env = Environment(tools=['default', 'prefixoptions'])
 
 env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
-env.Append(CXXFLAGS='-g -Wall -std=c++11 -Wno-write-strings -Wno-deprecated-register ')
+env.Append(CXXFLAGS='-g -Wall -std=c++11 -Wno-write-strings')
 env.Append(CPPDEFINES=['PNG'])
 
 sources = Split("""
