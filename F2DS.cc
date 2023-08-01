@@ -6,7 +6,7 @@ FULL NAME:	SPEC Fast2DS Probe Class
 
 DESCRIPTION:	
 
-COPYRIGHT:	University Corporation for Atmospheric Research, 2018-2022
+COPYRIGHT:	University Corporation for Atmospheric Research, 2018-2023
 -------------------------------------------------------------------------
 */
 
@@ -51,7 +51,7 @@ printf("F2DS::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code,
 /* -------------------------------------------------------------------- */
 uint64_t F2DS::TimeWord_Microseconds(const unsigned char *p)
 {
-  // SPEC uses a 48 bit timing word.
+  // SPEC Type48 uses a 48 bit timing word.
   return (ntohll((uint64_t *)p) & 0x0000ffffffffffffLL) / _clockMhz;
 }
 

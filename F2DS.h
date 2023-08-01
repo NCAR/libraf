@@ -26,8 +26,8 @@ class F2DS : public Probe
 
 public:
   /**
-   * Probe constructor for new F2DS data files.  New means starting
-   * in 2007 with PACDEX project.
+   * Probe constructor for new F2DS data files.  New means starting in
+   * 2007 with PACDEX project.
    */
   F2DS(UserConfig *cfg, const char xml_string[], int recSize);
 

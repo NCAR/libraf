@@ -19,6 +19,12 @@ namespace OAP
 /* -------------------------------------------------------------------- */
 /**
  * Probe sub-class for SPEC HVPS probe.
+ *
+ * Original version (up to 8/1/2023) was for the HVPS-1, a 200um 256 diode
+ * probe.  We flew that once or twice as far as I can remember.
+ *
+ * As of 8/1/2023 I am converting this to support the HVPS-3, which is what
+ * RAF owns at this time.  150um 128 diode probe.
  */
 class HVPS : public Probe
 {
@@ -43,10 +49,16 @@ public:
 
   bool isSyncWord(const unsigned char *p);
 
+  static const uint16_t SyncWord;
+  static const unsigned char SyncString[3];
+
 
 protected:
 
   void hvps_init();
+
+  uint64_t
+  TimeWord_Microseconds(const unsigned char *p);
 
   static const size_t lowerMask, upperMask;
 

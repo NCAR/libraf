@@ -6,14 +6,23 @@ FULL NAME:	HVPS Probe Class
 
 DESCRIPTION:	
 
-COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
+COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2023
 -------------------------------------------------------------------------
 */
 
 #include "HVPS.h"
 #include "OAPUserConfig.h"
 
+#include "portable.h"
+
 using namespace OAP;
+
+// This is start of particle in the SPEC compressed world.
+const uint16_t HVPS::SyncWord = 0x5332;
+
+// Standard sync word in the OAP file format world.
+const unsigned char HVPS::SyncString[] = { 0xaa, 0xaa, 0xaa };
+
 
 static const float	TAS_COMPENSATE = 1.0;
 
@@ -22,7 +31,7 @@ const size_t HVPS::upperMask = 40;	// HVPS masks.
 
 
 /* -------------------------------------------------------------------- */
-HVPS::HVPS(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(HVPS_T, cfg, xml_entry, recSize, 256)
+HVPS::HVPS(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(HVPS_T, cfg, xml_entry, recSize, 128)
 {
   _lrLen = recSize;
 
@@ -40,9 +49,9 @@ printf("HVPS::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code,
 }
 
 /* -------------------------------------------------------------------- */
-HVPS::HVPS(UserConfig *cfg, const char name[]) : Probe(HVPS_T, cfg, name, 256)
+HVPS::HVPS(UserConfig *cfg, const char name[]) : Probe(HVPS_T, cfg, name, 128)
 {
-  _resolution = 200;
+  _resolution = 150;
 
   hvps_init();
 
@@ -50,7 +59,7 @@ printf("HVPS::NoHdr id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _cod
 }
 
 /* -------------------------------------------------------------------- */
-HVPS::HVPS(UserConfig *cfg, Header * hdr, const Pms2 * p, int cnt) : Probe(HVPS_T, cfg, hdr, p, cnt, 256)
+HVPS::HVPS(UserConfig *cfg, Header * hdr, const Pms2 * p, int cnt) : Probe(HVPS_T, cfg, hdr, p, cnt, 128)
 {
   hvps_init();
 
@@ -66,9 +75,16 @@ void HVPS::hvps_init()
 
 
 /* -------------------------------------------------------------------- */
+uint64_t HVPS::TimeWord_Microseconds(const unsigned char *p)
+{
+  // SPEC Type32 uses a 32 bit timing word.
+  return (ntohll((uint64_t *)p) & 0x00000000ffffffffLL) / _clockMhz;
+}
+
+/* -------------------------------------------------------------------- */
 bool HVPS::isSyncWord(const unsigned char *p)
 {
-  return *p & 0x55;
+  return memcmp(p, (void *)&SyncString, 3) == 0;
 }
 
 /* -------------------------------------------------------------------- */
