@@ -5,7 +5,7 @@ pipeline {
         }
   }
   triggers {
-  pollSCM('H/30 * * * *')
+  pollSCM('H/30 5-21 * * *')
   }
   stages {
     stage('checkout scm') {
@@ -28,6 +28,6 @@ pipeline {
     }
   }
   options {
-    buildDiscarder(logRotator(numToKeepStr: '10'))
+    buildDiscarder(logRotator(numToKeepStr: '8'))
   }
 }
