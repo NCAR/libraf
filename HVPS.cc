@@ -69,6 +69,7 @@ printf("HVPS::ADS2 %s - %s\n", _name.c_str(), _code);
 void HVPS::hvps_init()
 {
   _armWidth = 203.0;
+  _clockMhz = 20;
 
   SetSampleArea();
 }
