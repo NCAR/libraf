@@ -36,7 +36,8 @@ SpecProbe::SpecProbe(ProbeType type, UserConfig *cfg, const char xml_entry[], in
   _resolution = atoi(::XMLgetAttributeValue(xml_entry, "resolution").c_str());
   _armWidth = 50.8;
   _dof_const = 5.13;
-  _clockMhz = 20;
+  _clockMhz = 0;	// Unused in SPEC world.  Use _freq
+  _freq = 0.0;		// resolution / (1.0e6 * tas) --- so it's changing
 
   SetSampleArea();
 }
@@ -46,7 +47,8 @@ SpecProbe::SpecProbe(ProbeType type, UserConfig *cfg, const char xml_entry[], in
 uint64_t SpecProbe::TimeWord_Microseconds(const unsigned char *p)
 {
   // SPEC Type48 uses a 48 bit timing word.
-  return (ntohll((uint64_t *)p) & 0x0000ffffffffffffLL) / _clockMhz;
+  double timeInt = (double)(ntohll((uint64_t *)p) & 0x0000ffffffffffffLL) * _freq;
+  return((uint64_t)(timeInt * 1000.0));
 }
 
 /* -------------------------------------------------------------------- */
@@ -73,6 +75,7 @@ struct recStats SpecProbe::ProcessRecord(const P2d_rec *record, float version)
   ClearStats(record);
   stats.DASelapsedTime = stats.thisTime - _prevTime;
   stats.SampleVolume = SampleArea() * stats.tas;
+  _freq = _resolution / (1.0e6 * stats.tas);
 
   if (version == -1)    // This means set time stamp only
   {

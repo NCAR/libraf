@@ -34,7 +34,7 @@ printf("HVPS::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code,
 uint64_t HVPS::TimeWord_Microseconds(const unsigned char *p)
 {
   // SPEC Type32 uses a 32 bit timing word.
-  return (ntohll((uint64_t *)p) & 0x00000000ffffffffLL) / _clockMhz;
+  return (ntohll((uint64_t *)p) & 0x00000000ffffffffLL) * _freq;
 }
 
 // END HVPS.CC

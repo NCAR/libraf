@@ -46,6 +46,8 @@ protected:
   virtual uint64_t
   TimeWord_Microseconds(const unsigned char *p);
 
+  double _freq;		// Timing word scale factor.
+
 };
 }
 
