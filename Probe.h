@@ -6,7 +6,7 @@ TYPE:		Base Class Optical Array Probes (OAP).
 
 FULL NAME:	Probe Information
 
-COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2018
+COPYRIGHT:	University Corporation for Atmospheric Research, 1997-2024
 -------------------------------------------------------------------------
 */
 
@@ -176,7 +176,7 @@ protected:
    *  Fast2DC - 40 bits v1, 42 bits v2.
    *  SPEC - Type32 vs Type48; 32 bit and 48 bit timing words
    */
-  uint64_t _timingMask;
+  uint64_t	_timingMask;
 
   /**
    * Clock speed of the probe.  Not used by original PMS2D, but used by most modern
@@ -210,7 +210,7 @@ protected:
   // Store prevtime and hdr for ProcessRecord, so we can compute elapsed time.
   P2d_hdr	_prevHdr;
   int		_prevTime;
-  unsigned long long _prevTimeWord;
+  uint64_t	_prevTimeWord;
 
   /// Crude sample area - as opposed to the 'per bin' sample area.
   float		_sampleArea;
