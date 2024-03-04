@@ -172,6 +172,12 @@ protected:
   /// Number of diodes in the array
   size_t	_nDiodes;
 
+  /* Mask for timing word.
+   *  Fast2DC - 40 bits v1, 42 bits v2.
+   *  SPEC - Type32 vs Type48; 32 bit and 48 bit timing words
+   */
+  uint64_t _timingMask;
+
   /**
    * Clock speed of the probe.  Not used by original PMS2D, but used by most modern
    * probes to decode the timing word.
@@ -197,7 +203,7 @@ protected:
   size_t	_nSlices;
 
 
-  /// IS this probe being displayed.
+  /// Is this probe being displayed.
   bool		_displayed;
 
 
