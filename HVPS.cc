@@ -25,16 +25,20 @@ HVPS::HVPS(UserConfig *cfg, const char xml_entry[], int recSize)
 {
   _armWidth = 203.0;
 
+  // SPEC Type32 uses a 32 bit timing word.
+  _packetFormat = Type32;
+  _timingMask = 0x00000000ffffffffLL;
+
   SetSampleArea();
 printf("HVPS::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code, _name.c_str(), _resolution, _armWidth, _eaw);
 }
 
-
 /* -------------------------------------------------------------------- */
-uint64_t HVPS::TimeWord_Microseconds(const unsigned char *p)
+uint64_t HVPS::timeWordDiff(uint64_t val1, uint64_t val2)
 {
-  // SPEC Type32 uses a 32 bit timing word.
-  return (ntohll((uint64_t *)p) & 0x00000000ffffffffLL) * _freq;
+  if (val1 < val2)
+    val2 = 4294967296 - val2;
+  return val1 - val2;
 }
 
 // END HVPS.CC

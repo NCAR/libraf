@@ -36,8 +36,10 @@ SpecProbe::SpecProbe(ProbeType type, UserConfig *cfg, const char xml_entry[], in
   _resolution = atoi(::XMLgetAttributeValue(xml_entry, "resolution").c_str());
   _armWidth = 50.8;
   _dof_const = 5.13;
-  _clockMhz = 0;	// Unused in SPEC world.  Use _freq
-  _freq = 0.0;		// resolution / (1.0e6 * tas) --- so it's changing
+
+  // Default to SPEC Type48.  Uses a 48 bit timing word.
+  _packetFormat = Type48;
+  _timingMask = 0x0000ffffffffffffLL;
 
   SetSampleArea();
 }
@@ -46,9 +48,7 @@ SpecProbe::SpecProbe(ProbeType type, UserConfig *cfg, const char xml_entry[], in
 /* -------------------------------------------------------------------- */
 uint64_t SpecProbe::TimeWord_Microseconds(const unsigned char *p)
 {
-  // SPEC Type48 uses a 48 bit timing word.
-  double timeInt = (double)(ntohll((uint64_t *)p) & 0x0000ffffffffffffLL) * _freq;
-  return((uint64_t)(timeInt * 1000.0));
+  return (ntohll((uint64_t *)p) & _timingMask) * stats.frequency;
 }
 
 /* -------------------------------------------------------------------- */
@@ -64,6 +64,12 @@ bool SpecProbe::isOverloadWord(const unsigned char *p)
 }
 
 /* -------------------------------------------------------------------- */
+uint64_t SpecProbe::timeWordDiff(uint64_t val1, uint64_t val2)
+{
+  return val1 - val2;
+}
+
+/* -------------------------------------------------------------------- */
 struct recStats SpecProbe::ProcessRecord(const P2d_rec *record, float version)
 {
   int		startTime, overload = 0;
@@ -75,7 +81,6 @@ struct recStats SpecProbe::ProcessRecord(const P2d_rec *record, float version)
   ClearStats(record);
   stats.DASelapsedTime = stats.thisTime - _prevTime;
   stats.SampleVolume = SampleArea() * stats.tas;
-  _freq = _resolution / (1.0e6 * stats.tas);
 
   if (version == -1)    // This means set time stamp only
   {
@@ -85,7 +90,7 @@ struct recStats SpecProbe::ProcessRecord(const P2d_rec *record, float version)
   }
 
 #ifdef DEBUG
-  printf("C4 %02d:%02d:%02d.%d - ", record->hour, record->minute, record->second, record->msec);
+  printf("SPEC %02d:%02d:%02d.%d - ", record->hour, record->minute, record->second, record->msec);
 #endif
 
   totalLiveTime = 0.0;
@@ -118,6 +123,7 @@ struct recStats SpecProbe::ProcessRecord(const P2d_rec *record, float version)
       if (firstTimeWord == 0)
         firstTimeWord = thisTimeWord;
 
+
       if (isOverloadWord(p))
       {
         // Set 'overload' variable here.  There is no way to determine overload.
@@ -138,7 +144,7 @@ struct recStats SpecProbe::ProcessRecord(const P2d_rec *record, float version)
         unsigned long msec = startMilliSec + ((thisTimeWord - firstTimeWord) / 1000);
         cp->time = startTime + (msec / 1000);
         cp->msec = msec % 1000;
-        cp->deltaTime = cp->timeWord - _prevTimeWord;
+        cp->deltaTime = timeWordDiff(cp->timeWord, _prevTimeWord);
         cp->timeWord /= 1000;	// Store as millseconds for this probe, since this is not a 48 bit word
         totalLiveTime += checkRejectionCriteria(cp, stats);
         stats.particles.push_back(cp);
@@ -177,7 +183,7 @@ struct recStats SpecProbe::ProcessRecord(const P2d_rec *record, float version)
 
 
   stats.SampleVolume *= (stats.DASelapsedTime - overload) * 0.001;
-  stats.tBarElapsedtime = (_prevTimeWord - firstTimeWord);
+  stats.tBarElapsedtime = timeWordDiff(_prevTimeWord, firstTimeWord);
 
   if (stats.nTimeBars > 0)
     stats.meanBar = stats.tBarElapsedtime / stats.nTimeBars;

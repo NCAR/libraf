@@ -4,7 +4,7 @@ OBJECT NAME:	HVPS.h
 
 FULL NAME:	SPEC HVPS Probe
 
-COPYRIGHT:	University Corporation for Atmospheric Research, 2018
+COPYRIGHT:	University Corporation for Atmospheric Research, 2018-2024
 -------------------------------------------------------------------------
 */
 
@@ -39,8 +39,7 @@ public:
 
 protected:
 
-  uint64_t
-  TimeWord_Microseconds(const unsigned char *p);
+  virtual uint64_t timeWordDiff(uint64_t val1, uint64_t val2);
 
 };
 }
