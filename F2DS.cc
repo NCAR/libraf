@@ -29,15 +29,14 @@ F2DS::F2DS(UserConfig *cfg, const char xml_entry[], int recSize) : Probe(F2DS_T,
 {
   _lrLen = recSize;
 
-//  std::string id = ::XMLgetAttributeValue(xml_entry, "id");
+// This class is in-progress.  Nothing is using it yet.  Needs full SPEC decompression, etc.
+// This will be a useful class for aeros to open/display raw SPEC files without the conversion.
+
   std::string id("S1");
   strcpy(_code, id.c_str());
 
-//  _name = ::XMLgetAttributeValue(xml_entry, "type");
-//  _name += ::XMLgetAttributeValue(xml_entry, "suffix");
   _name = "Fast2DS";
 
-//  _resolution = atoi(::XMLgetAttributeValue(xml_entry, "resolution").c_str());
   _resolution = 10;
   _armWidth = 50.8;
   _dof_const = 5.13;
@@ -62,7 +61,7 @@ bool F2DS::isSyncWord(const unsigned char *p)
 }
 
 /* -------------------------------------------------------------------- */
-struct recStats F2DS::ProcessRecord(const P2d_rec *in_rec, float version)
+struct recStats F2DS::ProcessRecord(const P2d_rec *in_rec, float tas)
 {
   const TwoDS_rec *record = (const TwoDS_rec *)in_rec;
 
@@ -72,11 +71,11 @@ struct recStats F2DS::ProcessRecord(const P2d_rec *in_rec, float version)
 
   uint64_t	firstTimeWord = 0;
 
-  ClearStats(record);
+  ClearStats(record, tas);
   stats.DASelapsedTime = stats.thisTime - _prevTime;
   stats.SampleVolume = SampleArea() * stats.tas;
 
-  if (version == -1)    // This means set time stamp only
+  if (tas == -1)    // This means set time stamp only
   {
     _prevTime = stats.thisTime;
     memcpy((char *)&_prev2dsHdr, (char *)record, sizeof(TwoDS_hdr));
