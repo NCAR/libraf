@@ -42,7 +42,7 @@ public:
 
 protected:
 
-  void ClearStats(const OAP::TwoDS_rec *record);
+  void ClearStats(const OAP::TwoDS_rec *record, float tas);
 
   uint64_t
   TimeWord_Microseconds(const unsigned char *p);

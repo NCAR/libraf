@@ -52,7 +52,7 @@ printf("F2DS::OAP id=%s, name=%s, resolution=%zu, armWidth=%f, eaw=%f\n", _code,
 uint64_t F2DS::TimeWord_Microseconds(const unsigned char *p)
 {
   // SPEC Type48 uses a 48 bit timing word.
-  return (ntohll((uint64_t *)p) & 0x0000ffffffffffffLL) / _clockMhz;
+  return (ntohll((uint64_t *)p) & 0x0000ffffffffffffLL) * stats.frequency;
 }
 
 /* -------------------------------------------------------------------- */
@@ -186,7 +186,7 @@ struct recStats F2DS::ProcessRecord(const P2d_rec *in_rec, float version)
 }	// END PROCESSRECORD
 
 /* -------------------------------------------------------------------- */
-void F2DS::ClearStats(const TwoDS_rec *record)
+void F2DS::ClearStats(const TwoDS_rec *record, float tas)
 {
   stats.tBarElapsedtime = 0;
   stats.nTimeBars = 0;
@@ -196,8 +196,7 @@ void F2DS::ClearStats(const TwoDS_rec *record)
   stats.area = 0;
   stats.duplicate = false;
   clearParticles();
-//  stats.tas = (float)record->tas;
-  stats.tas = 150;
+  stats.tas = tas;
   stats.frequency = Resolution() / stats.tas;
   stats.prevTime = stats.thisTime;
   stats.thisTime = (record->hour * 3600 + record->minute * 60 + record->second) * 1000 + record->msec; // in milliseconds
