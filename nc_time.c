@@ -50,6 +50,7 @@ time_t InitFlightTime(int ncid)
     if (nc_get_att_text(ncid, id, "strptime_format", units_frmt) != NC_NOERR)
       strcpy(units_frmt, "seconds since %F %T %z");
 
+    memset(&StartFlight, 0, sizeof(struct tm));
     strptime(t_units, units_frmt, &StartFlight);
 
     _start_t = mktime(&StartFlight);
