@@ -9,10 +9,7 @@ FULL NAME:	Header file for Queue
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#ifndef NULL
-#define NULL	((void *)0)
-#endif
-
+#include <cstdio>
 
 class Queue
 {

@@ -1,4 +1,4 @@
-/* 
+/*
 date.c -- date utility operations
 */
 
@@ -29,7 +29,7 @@ static int date_init=0;
 
 void init_date()
 {
-long clock;
+time_t clock;
 struct timeval *tp;
 struct timezone *tzp;
 struct tm *time;
@@ -136,7 +136,7 @@ get_date()
 
 /************************* GetYYMMDDfromBase() ****************************/
 
-char *GetYYMMDDfromBase(long basetime)
+char *GetYYMMDDfromBase(time_t basetime)
 /*
 given a base time, return a string formatted as YYMMDD representing the
 year-month-day, with leading zero if needed
@@ -154,14 +154,14 @@ static char base_date[16];
 /************************  GET_DATE_FROM_BASE()  ******************************/
 
 char *
-get_date_from_base(long base)
+get_date_from_base(time_t base)
 /*
 given a base time since the epoch, initialize a tm struct with
 integers representing date and time and return a string with formatted date
 */
 {
 static char base_date[16];
-long basetime;
+time_t basetime;
 struct tm *time_info;
 
  basetime=base;
@@ -174,14 +174,14 @@ struct tm *time_info;
 /************************  GET_TIME_FROM_BASE()  ******************************/
 
 char *
-get_time_from_base(long base)
+get_time_from_base(time_t base)
 /*
 given a base time since the epoch, initialize a tm struct with
 integers representing date and time and return a string with formatted time
 */
 {
 static char time[16];
-long basetime;
+time_t basetime;
 struct tm *time_info;
 
  basetime=base;
@@ -200,9 +200,9 @@ int GetTimeIntFromHMS(int hr,int min,int sec)
 
 /*******************************************************************/
 
-int GetTimeIntFromBase(long base)
+time_t GetTimeIntFromBase(time_t base)
 {
-long basetime;
+time_t basetime;
 struct tm *time_info;
 
  basetime=base;
@@ -214,10 +214,10 @@ static char TZstring[16];
 
 /*******************************************************************/
 
-int GetBaseFromMDYHMS(int month,int day,int year,int hr,int min,int sec)
+time_t GetBaseFromMDYHMS(int month,int day,int year,int hr,int min,int sec)
 {
  struct tm time_info;
- int basetime;
+ time_t basetime;
 
  time_info.tm_mon=month;
  time_info.tm_mday=day;

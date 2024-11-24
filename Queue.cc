@@ -16,7 +16,6 @@ DESCRIPTION:
 
 #include "Queue.h"
 
-#include <cstdio>
 
 /* -------------------------------------------------------------------- */
 Queue::Queue()
