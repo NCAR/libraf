@@ -13,6 +13,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 #ifndef XMFILE_H
 #define XMFILE_H
 
+#define register
 #include <Xm/Xm.h>
 #include <Xm/FileSB.h>
 

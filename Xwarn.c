@@ -17,6 +17,7 @@ AUTHOR:		websterc@ncar
 
 #include <stdio.h>
 
+#define register
 #include <Xm/Xm.h>
 #include <Xm/MessageB.h>
 

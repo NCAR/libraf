@@ -15,6 +15,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#define register
 #include <Xm/Form.h>
 #include <Xm/RowColumn.h>
 

@@ -16,6 +16,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1998
 #define TEXTWIN_H
 
 
+#define register
 #include <Xm/Text.h>
 #include "Window.h"
 

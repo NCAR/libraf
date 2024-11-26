@@ -15,6 +15,7 @@ OUTPUT:		Error message in its own tidy little window.
 -------------------------------------------------------------------------
 */
 
+#define register
 #include <Xm/Xm.h>
 #include <Xm/FileSB.h>
 

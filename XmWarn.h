@@ -13,6 +13,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 #ifndef XMWARN_H
 #define XMWARN_H
 
+#define register
 #include <Xm/Xm.h>
 #include <Xm/MessageB.h>
 

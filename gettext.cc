@@ -19,6 +19,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1998
 #include <cstdlib>
 #include <string>
 
+#define register
 #include <Xm/TextF.h>
 
 using namespace std;

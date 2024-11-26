@@ -18,6 +18,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 
 #include "Window.h"
 
+#define register
 #include <Xm/Frame.h>
 #include <Xm/Label.h>
 #include <Xm/PushB.h>

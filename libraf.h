@@ -21,7 +21,7 @@ char *get_time_from_base(long);
 char * getAircraftName(int proj_num);
 char *get_month(), *get_day(), *GetTime();
 void init_date();
-char *strupr();
+char *strupr(char *);
 
 #if defined(__cplusplus)
 }

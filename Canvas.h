@@ -15,6 +15,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 #ifndef CANVAS_H
 #define CANVAS_H
 
+#define register
 #include <Xm/Xm.h>
 
 /* -------------------------------------------------------------------- */

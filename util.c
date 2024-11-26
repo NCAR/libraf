@@ -1084,7 +1084,7 @@ TRUE, else return FALSE
 {
 int word;
 
- for (word=0; word<numlistwords; word++) { 
+ for (word=0; word<numlistwords; word++) {
   if (!(strcmp(string,list[word])))
    return TRUE;
  }
@@ -1106,7 +1106,7 @@ string s2. If caps is TRUE, consider case-sensitivity, else do not.
     return FALSE;
 
   if (!caps) {
-    s1a=(char *)strdup(s1); 
+    s1a=(char *)strdup(s1);
     s2a=(char *)strdup(s2);
     return (strstr(strupr(s2a),strupr(s1a))!=NULL);
   }

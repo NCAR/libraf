@@ -23,6 +23,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 #include <cstdio>
 #include <cstdlib>
 
+#define register
 #include <Xm/TextF.h>
 
 /* -------------------------------------------------------------------- */

@@ -13,6 +13,7 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 #ifndef XMERROR_H
 #define XMERROR_H
 
+#define register
 #include <Xm/Xm.h>
 #include <Xm/MessageB.h>
 
