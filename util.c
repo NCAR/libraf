@@ -323,12 +323,12 @@ char *GetUnixCleanFilename(char *string)
 {
 static char CleanFilename[MAX_FLNM_LNGTH];
 
- (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",&string[strspn(string," ")]);
- (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",(char *)ReplaceChar(CleanFilename,'/','-'));
- (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",(char *)ReplaceChar(CleanFilename,'\'','-'));
- (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",(char *)ReplaceChar(CleanFilename,'"','-'));
+ strcpy(CleanFilename, &string[strspn(string," ")]);
+ (void )ReplaceChar(CleanFilename,'/','-');
+ (void )ReplaceChar(CleanFilename,'\'','-');
+ (void )ReplaceChar(CleanFilename,'"','-');
  TrimTrailingBlanks(CleanFilename);
- (void)snprintf(CleanFilename,MAX_FLNM_LNGTH,"%s",(char *)ReplaceChar(CleanFilename,' ','-'));
+ (void )ReplaceChar(CleanFilename,' ','-');
  return CleanFilename;
 }
 
@@ -742,7 +742,7 @@ void FindFiles(char filename[], char directory[], void (*opfunc)(char *), void (
 {
 DIR *dirp;
 struct dirent *dp;
-char pathname[MAX_FLNM_LNGTH];
+char pathname[MAX_FLNM_LNGTH+2];
 char errmsg[256];
 
  dirp=opendir(directory);
@@ -756,7 +756,7 @@ char errmsg[256];
  }
  while ( (dp = readdir( dirp )) != NULL ) {
   if (strcmp(dp->d_name,".") && strcmp(dp->d_name,"..")) {
-   (void)snprintf(pathname,MAX_FLNM_LNGTH,"%s/%s",directory,dp->d_name);
+   (void)snprintf(pathname,MAX_FLNM_LNGTH+2,"%s/%s",directory,dp->d_name);
    if (IsDirectory(pathname)) {
     FindFiles(filename,pathname,opfunc,errorfunc,lengthcmp);
    } else {
@@ -913,7 +913,7 @@ char *filename;
 char command[MAX_FLNM_LNGTH+128];
 char *coretype;
 
- (void)snprintf(command,MAX_FLNM_LNGTH+128,"file %s | awk '{print $11}'",filename);
+ (void)snprintf(command,MAX_FLNM_LNGTH+127,"file %s | awk '{print $11}'",filename);
  coretype=(substring((char *)GetShellOutput(command,NULL),'\n'));
  if (coretype)
   return coretype;
@@ -930,7 +930,7 @@ char *filename;
 char command[MAX_FLNM_LNGTH+128];
 char *gdbinfo;
 
- (void)snprintf(command,MAX_FLNM_LNGTH+128,"%s/bin/gdb -q -c %s -x %s/scripts/gdb-batch",
+ (void)snprintf(command,MAX_FLNM_LNGTH+127,"%s/bin/gdb -q -c %s -x %s/scripts/gdb-batch",
   (char *)getenv("GNU"),filename,(char *)getenv("WINDS"));
  gdbinfo=(substring((char *)GetShellOutput(command,NULL),'\n'));
  if (gdbinfo)
@@ -946,7 +946,7 @@ char *source,*dest;
 {
 char command[MAX_FLNM_LNGTH+128];
 
- (void)snprintf(command,MAX_FLNM_LNGTH+128,"/bin/mv %s %s",source,dest);
+ (void)snprintf(command,MAX_FLNM_LNGTH+127,"/bin/mv %s %s",source,dest);
  ExecuteShellCommand(command);
 }
 

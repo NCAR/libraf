@@ -150,7 +150,7 @@ public:
 private:
   Fl	*_header;
   char	*_hdr;
-  int	_currentIndx;
+  uint32_t	_currentIndx;
   char	*_currentPtr;
 
   char	_projName[80];

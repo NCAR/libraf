@@ -15,16 +15,14 @@
 #include <iostream>
 
 /* -------------------------------------------------------------------- */
-Header::Header(const std::string fileName)
+Header::Header(const std::string fileName) : _currentIndx(0), _valid(false)
 {
-  _valid = false;
   readHeader(fileName.c_str());
 }
 
 /* -------------------------------------------------------------------- */
-Header::Header(const char fileName[])
+Header::Header(const char fileName[]) : _currentIndx(0), _valid(false)
 {
-  _valid = false;
   readHeader(fileName);
 }
 
