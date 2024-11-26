@@ -846,8 +846,7 @@ lose the trailing line feed inherited from fgets()
 
 /************************************************************************/
 
-void LogMsgToStdErr(msg)
-char *msg;
+void LogMsgToStdErr(char *msg)
 {
  (void)fprintf(stderr,"%s",msg);
  fflush(stderr);
@@ -855,8 +854,7 @@ char *msg;
 
 /************************************************************************/
 
-void LogMsgToStdOut(msg)
-char *msg;
+void LogMsgToStdOut(char *msg)
 {
  (void)printf("%s",msg);
  fflush(stdout);
@@ -866,8 +864,7 @@ char *msg;
 
 #include <fmtmsg.h>
 
-void LogMsgToConsole(host,source,message)
-char *host,*source,*message;
+void LogMsgToConsole(char *host,char *source,char *message)
 {
  int remote;
  FILE *pipe;
@@ -889,9 +886,7 @@ char *host,*source,*message;
 
 /************************************************************************/
 
-char *
-GetFileType(filename)
-char *filename;
+char *GetFileType(char *filename)
 {
 char command[MAX_FLNM_LNGTH+16];
 char *filetype;
@@ -906,9 +901,7 @@ char *filetype;
 
 /************************************************************************/
 
-char *
-GetCoreType(filename)
-char *filename;
+char * GetCoreType(char *filename)
 {
 char command[MAX_FLNM_LNGTH+128];
 char *coretype;
@@ -923,9 +916,7 @@ char *coretype;
 
 /************************************************************************/
 
-char *
-ShowWINDSStack(filename)
-char *filename;
+char * ShowWINDSStack(char *filename)
 {
 char command[MAX_FLNM_LNGTH+128];
 char *gdbinfo;
@@ -941,8 +932,7 @@ char *gdbinfo;
 
 /************************************************************************/
 
-void MoveFile(source,dest)
-char *source,*dest;
+void MoveFile(char *source, char *dest)
 {
 char command[MAX_FLNM_LNGTH+128];
 
@@ -951,8 +941,7 @@ char command[MAX_FLNM_LNGTH+128];
 }
 
 /************************************************************************/
-bool MountingFromNFSServer(server)
-char *server;
+bool MountingFromNFSServer(char *server)
 {
   return(FALSE);
 /*
@@ -1041,7 +1030,7 @@ to GetNextString()
 }
 
 /***********************  SetStringPosition()  **************************/
- 
+
 void SetStringPosition(int posn)
 /*
 set the value of word position in string sent in call to GetNextString()
@@ -1051,7 +1040,7 @@ set the value of word position in string sent in call to GetNextString()
 }
 
 /***********************  GetNextString()  **************************/
- 
+
 char *
 GetNextString(int *posn, char *record)
 /*
@@ -1087,9 +1076,7 @@ static char *string;
 }
 
 /***********************  StringInList()  **************************/
-bool StringInList(string,list,numlistwords)
-char *list[],*string;
-int numlistwords;
+bool StringInList(char *string, char *list[], int numlistwords)
 /*
 if string is found in character *list[numlistwords], return
 TRUE, else return FALSE
