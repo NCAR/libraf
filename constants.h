@@ -9,7 +9,8 @@ typedef unsigned char   bool;
 #endif
 
 #define ERROR		-1
-#define NONE		-1
+// Conflicts with NIDAS in nimbus.  Not sure if it's used anywhere anymore.
+// #define NONE		-1  <== conflicts with NIDAS not sure if it's used anywhere anymore.
 #define BYTE_LEN	8
 #define BYTESPERWORD	4
 #define BITSPERWORD	(BYTESPERWORD * BYTE_LEN)
