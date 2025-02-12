@@ -46,6 +46,7 @@ SpecProbe.cc
 F2DS.cc
 TwoDS.cc
 HVPS.cc
+NCExtensions.cc
 """)
 
 includes = Split("""
@@ -54,7 +55,7 @@ OAPUserConfig.h PMS2D.h PMSspex.h Particle.h PixMap.h PostScript.h Printer.h F2D
 Probe.h Queue.h SQLrt.h TextFile.h TextWindow.h TwoDS.h Window.h XFonts.h XPen.h
 XmError.h XmFile.h OAP.h XmQuery.h XmWarn.h ac.h adsIO.h adsIOrt.h constants.h
 hdrAPI.h header.h libraf.h opener.h pgsql.h pms.h portable.h raf.h rafTime.h raf_queue.h
-SpecProbe.h tapeIO.h ctape.h hdr_api.h
+SpecProbe.h tapeIO.h ctape.h hdr_api.h NCExtensions.h
 """)
 
 # No X11/Motif on Windows
