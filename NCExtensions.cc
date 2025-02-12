@@ -118,3 +118,30 @@ bool getVectorOfFloatAttributes(netCDF::NcVar& var, const char target[], std::ve
   }
   return true;
 }
+/* -------------------------------------------------------------------- */
+bool getVectorOfDoubleAttributes(netCDF::NcVar& var, const char target[], std::vector<double>& output)
+{
+  netCDF::NcVarAtt attr;
+  try
+  {
+    attr = var.getAtt(target);
+
+    if (!attr.isNull())
+    {
+      int len = attr.getAttLength();
+      float vals[len];
+      attr.getValues(vals);
+      for (int i = 0; i < len; ++i)
+        output.push_back(vals[i]);
+      output.shrink_to_fit();
+    }
+  }
+  catch(const netCDF::exceptions::NcException& e)
+  {
+    output.clear();
+    // is target null terminated?
+    //std::cerr << "Probe::getVecorOfDoubleAttributes returning false. Attribute " << target << " not found" << std::endl;
+    return false;
+  }
+  return true;
+}
