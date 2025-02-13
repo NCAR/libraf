@@ -28,5 +28,6 @@ bool getIntAttribute(netCDF::NcVar& var, const char target[], int& output, int d
 bool getFloatAttribute(netCDF::NcVar& var, const char target[], float& output, float defaultValue = 0.0);
 bool getVectorOfFloatAttributes(netCDF::NcVar& var, const char target[], std::vector<float>& output);
 bool getVectorOfDoubleAttributes(netCDF::NcVar& var, const char target[], std::vector<double>& output);
+bool getVectorOfIntAttributes(netCDF::NcVar& var, const char target[], std::vector<int>& output);
 
 #endif
