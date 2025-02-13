@@ -59,7 +59,7 @@ SpecProbe.h tapeIO.h ctape.h hdr_api.h NCExtensions.h
 """)
 
 # No X11/Motif on Windows
-if env['PLATFORM'] != 'msys':
+if env['PLATFORM'] not in ['msys', 'win32']:
   sources.append(['adsIOrt.cc', 'chost.c', 'Application.cc', 'Canvas.cc', 'Cursor.cc', 'gettext.cc', 'PixMap.cc', 'Printer.cc', 'PostScript.cc', 'TextWindow.cc', 'Window.cc', 'XFonts.cc', 'XPen.cc', 'Xerror.c', 'Xfile.c', 'XmError.cc', 'XmFile.cc', 'XmQuery.cc', 'XmWarn.cc', 'XmWarn.cc', 'Xquery.c', 'Xwarn.c', 'util.c', 'validate.cc'])
 
 # No mtio.h on macosx.
