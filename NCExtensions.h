@@ -23,16 +23,10 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 2025
 
 #include <netcdf>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 bool getStringAttribute(netCDF::NcVar& var, const char target[], std::string& output);
 bool getIntAttribute(netCDF::NcVar& var, const char target[], int& output, int defaultValue = 0);
 bool getFloatAttribute(netCDF::NcVar& var, const char target[], float& output, float defaultValue = 0.0);
 bool getVectorOfFloatAttributes(netCDF::NcVar& var, const char target[], std::vector<float>& output);
 bool getVectorOfDoubleAttributes(netCDF::NcVar& var, const char target[], std::vector<double>& output);
-#ifdef __cplusplus
-}
-#endif
 
 #endif
