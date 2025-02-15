@@ -28,7 +28,7 @@ static Widget	queryBox;
 
 
 /* -------------------------------------------------------------------- */
-void QueryUser(char str[], int maxlen, XtCallbackProc callBack)
+void QueryUser(const char str[], int maxlen, XtCallbackProc callBack)
 {
   Widget	w;
   Arg	args[5];

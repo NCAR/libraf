@@ -23,7 +23,7 @@ static Widget	fileBox;
 
 
 /* -------------------------------------------------------------------- */
-void QueryFile(char *prompt, char *directory, XtCallbackProc callBack)
+void QueryFile(const char *prompt, const char *directory, XtCallbackProc callBack)
 {
   XmString	xmdir, xmprompt;
   Arg		args[4];

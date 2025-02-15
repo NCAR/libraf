@@ -37,7 +37,7 @@ void CancelWarning(Widget w, XtPointer clientData, XtPointer callData)
 }	/* END CANCELWARNING */
 
 /* -------------------------------------------------------------------- */
-void WarnUser(char str[], XtCallbackProc okCB, XtCallbackProc cancelCB)
+void WarnUser(const char str[], XtCallbackProc okCB, XtCallbackProc cancelCB)
 {
   size_t	i;
   Widget	label;

@@ -23,7 +23,7 @@ static Widget	errorBox;
 
 
 /* -------------------------------------------------------------------- */
-void ShowError(char str[])
+void ShowError(const char str[])
 {
   Widget	label;
   Arg		args[5];
