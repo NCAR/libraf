@@ -133,8 +133,8 @@ bool getVectorOfDoubleAttributes(netCDF::NcVar& var, const char target[], std::v
     if (!attr.isNull())
     {
       int len = attr.getAttLength();
-      float vals[len];
-      attr.getValues(vals);
+      std::vector<double> vals(len);
+      attr.getValues(vals.data());
       for (int i = 0; i < len; ++i)
         output.push_back(vals[i]);
       output.shrink_to_fit();
@@ -160,8 +160,8 @@ bool getVectorOfIntAttributes(netCDF::NcVar& var, const char target[], std::vect
     if (!attr.isNull())
     {
       int len = attr.getAttLength();
-      float vals[len];
-      attr.getValues(vals);
+      std::vector<int> vals(len);
+      attr.getValues(vals.data());
       for (int i = 0; i < len; ++i)
         output.push_back(vals[i]);
       output.shrink_to_fit();
