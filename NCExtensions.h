@@ -14,6 +14,8 @@ DESCRIPTION:	NetCDF-4 common functions between ncpp and aeros. Methods
 		@param defaultValue is the value to use if the attribute does not exist
 		@returns true/false as to success of reading attribute (i.e. did it exist)
 
+NOTE:		Any of the functions filling a vector, the vector is cleared upon entry.
+
 COPYRIGHT:	University Corporation for Atmospheric Research, 2025
 -------------------------------------------------------------------------
 */

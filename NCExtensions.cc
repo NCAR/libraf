@@ -100,21 +100,17 @@ bool getVectorOfFloatAttributes(netCDF::NcVar& var, const char target[], std::ve
   netCDF::NcVarAtt attr;
   try
   {
+    output.clear();
     attr = var.getAtt(target);
 
     if (!attr.isNull())
     {
-      int len = attr.getAttLength();
-      float vals[len];
-      attr.getValues(vals);
-      for (int i = 0; i < len; ++i)
-        output.push_back(vals[i]);
-      output.shrink_to_fit();
+      output.resize(attr.getAttLength());
+      attr.getValues(output.data());
     }
   }
   catch(const netCDF::exceptions::NcException& e)
   {
-    output.clear();
     // is target null terminated?
     //std::cerr << "Probe::getVecorOfFloatAttribute returning false. Attribute " << target << " not found" << std::endl;
     return false;
@@ -128,21 +124,17 @@ bool getVectorOfDoubleAttributes(netCDF::NcVar& var, const char target[], std::v
   netCDF::NcVarAtt attr;
   try
   {
+    output.clear();
     attr = var.getAtt(target);
 
     if (!attr.isNull())
     {
-      int len = attr.getAttLength();
-      std::vector<double> vals(len);
-      attr.getValues(vals.data());
-      for (int i = 0; i < len; ++i)
-        output.push_back(vals[i]);
-      output.shrink_to_fit();
+      output.resize(attr.getAttLength());
+      attr.getValues(output.data());
     }
   }
   catch(const netCDF::exceptions::NcException& e)
   {
-    output.clear();
     // is target null terminated?
     //std::cerr << "Probe::getVecorOfDoubleAttributes returning false. Attribute " << target << " not found" << std::endl;
     return false;
@@ -155,21 +147,17 @@ bool getVectorOfIntAttributes(netCDF::NcVar& var, const char target[], std::vect
   netCDF::NcVarAtt attr;
   try
   {
+    output.clear();
     attr = var.getAtt(target);
 
     if (!attr.isNull())
     {
-      int len = attr.getAttLength();
-      std::vector<int> vals(len);
-      attr.getValues(vals.data());
-      for (int i = 0; i < len; ++i)
-        output.push_back(vals[i]);
-      output.shrink_to_fit();
+      output.resize(attr.getAttLength());
+      attr.getValues(output.data());
     }
   }
   catch(const netCDF::exceptions::NcException& e)
   {
-    output.clear();
     // is target null terminated?
     //std::cerr << "Probe::getVecorOfDoubleAttributes returning false. Attribute " << target << " not found" << std::endl;
     return false;
