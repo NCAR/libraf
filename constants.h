@@ -4,7 +4,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#ifndef __cplusplus
+#if !defined __cplusplus && __STDC_VERSION__ < 202311L
 typedef unsigned char   bool;
 #endif
 
