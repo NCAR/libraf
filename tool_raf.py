@@ -12,7 +12,7 @@
 
 env = Environment(tools=['default', 'prefixoptions'])
 
-env.Append(CCFLAGS='-g -Wall -Wno-write-strings')
+env.Append(CFLAGS='-g -Wall -Wno-write-strings')
 env.Append(CXXFLAGS='-g -Wall -std=c++17 -Wno-write-strings')
 env.Append(CPPDEFINES=['PNG'])
 
