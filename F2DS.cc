@@ -67,7 +67,8 @@ struct recStats F2DS::ProcessRecord(const P2d_rec *in_rec, float tas)
 
   int		startTime, overload = 0;
   unsigned long startMilliSec;
-  double	sampleVolume[(nDiodes()<<1)+1], totalLiveTime;
+  double	totalLiveTime;
+  std::vector<double>	sampleVolume((nDiodes()<<1)+1);
 
   uint64_t	firstTimeWord = 0;
 

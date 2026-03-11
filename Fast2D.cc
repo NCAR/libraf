@@ -88,7 +88,8 @@ struct recStats Fast2D::ProcessRecord(const P2d_rec *record, float version)
 {
   int		startTime, overload = 0;
   unsigned long	startMilliSec;
-  double	sampleVolume[(nDiodes()<<1)+1], totalLiveTime;
+  double	totalLiveTime;
+  std::vector<double>	sampleVolume((nDiodes()<<1)+1);
 
   uint64_t	firstTimeWord = 0;
 

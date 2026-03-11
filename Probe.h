@@ -151,7 +151,7 @@ protected:
   void checkEdgeDiodes(Particle * cp, const unsigned char *p);
   size_t area(const unsigned char *p);
   size_t height(const unsigned char *p);
-  void computeDerived(double sv[], double liveTime);
+  void computeDerived(const std::vector<double>& sv, double liveTime);
   size_t checkRejectionCriteria(Particle * cp, recStats & stats);
 
   /// Keep a copy of user config.

@@ -78,7 +78,8 @@ struct recStats PMS2D::ProcessRecord(const P2d_rec *record, float version)
   int		startTime, overload;
   uint32_t	*p, pSlice, syncWord, startMilliSec;
   bool		overloadAdded = false;
-  double	sampleVolume[(nDiodes()<<1)+1], totalLiveTime;
+  double	totalLiveTime;
+  std::vector<double>	sampleVolume((nDiodes()<<1)+1);
 
   ClearStats(record);
   stats.DASelapsedTime = stats.thisTime - _prevTime;

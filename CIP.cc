@@ -73,7 +73,8 @@ struct recStats CIP::ProcessRecord(const P2d_rec *record, float version)
   int		startTime, overload = 0;
   const unsigned char	*p;
   unsigned long		startMilliSec;
-  double	sampleVolume[(nDiodes()<<1)+1], totalLiveTime;
+  double		totalLiveTime;
+  std::vector<double>	sampleVolume((nDiodes()<<1)+1);
 
   unsigned long long	firstTimeWord = 0;
 

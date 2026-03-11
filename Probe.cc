@@ -272,7 +272,7 @@ size_t Probe::checkRejectionCriteria(Particle * cp, recStats & stats)
 }
 
 /* -------------------------------------------------------------------- */
-void Probe::computeDerived(double sampleVolume[], double totalLiveTime)
+void Probe::computeDerived(const std::vector<double>& sampleVolume, double totalLiveTime)
 {
   double	diameter, z, conc;
   stats.concentration = stats.lwc = stats.dbz = z = 0.0;

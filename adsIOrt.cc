@@ -28,7 +28,7 @@ ADS_rtFile::ADS_rtFile()
   gethostname(host, 80);
   if ((p = strchr(host, '.')) ) *p = '\0';
 
-  sprintf(rtFileFileName, "%s/hosts/%s/rtdata.filename", projDir, host);
+  snprintf(rtFileFileName, 80, "%s/hosts/%s/rtdata.filename", projDir, host);
 
   fpSync = fp2D = fpGrey = fpMCR = fpAVAPS = NULL;
   checkFileName();

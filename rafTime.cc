@@ -126,7 +126,7 @@ char *FlightClock::c_str()
 //  if (hour > 23)
 //    hour -= 24;
 
-  sprintf(label, "%02d:%02d:%02d", hour, min, sec);
+  snprintf(label, 9, "%02d:%02d:%02d", hour, min, sec);
 
   return(label);
 

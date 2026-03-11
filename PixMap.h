@@ -48,7 +48,7 @@ private:
   Pixmap	pixMap;
 
   short		width, height;
-  int		depth;
+//  int		depth;
 
   unsigned long	foreground, background;
 
