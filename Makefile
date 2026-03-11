@@ -38,7 +38,7 @@ OBJS=	chost.o strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 	oap.o Particle.o Probe.o PMS2D.o Fast2D.o TwoDS.o CIP.o HVPS.o \
         Printer.o Queue.o TextWindow.o rafTime.o validate.o pms_specs.o\
         Window.o XFonts.o XPen.o XmError.o XmFile.o XmQuery.o XmWarn.o \
-	tapeIO.o tapeIO++.o OAProbeFactory.o TextFile.o F2DS.o NCExtensions.o
+	OAProbeFactory.o TextFile.o F2DS.o NCExtensions.o
 
 # cio.o flote.o sendhc.o sendpr.o 
 
@@ -49,7 +49,12 @@ SRCS=	chost.c strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
 	oap.cc Particle.cc Probe.cc PMS2D.cc Fast2D.cc TwoDS.cc CIP.cc HVPS.cc \
         Printer.cc Queue.cc TextWindow.cc rafTime.cc validate.cc pms_specs.c\
         Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc \
-	tapeIO.c tapeIO++.cc OAProbeFactory.cc TextFile.cc F2DS.cc NCExtensions.o
+	OAProbeFactory.cc TextFile.cc F2DS.cc NCExtensions.o
+
+ifneq ($(UNAME_S), Darwin)
+  OBJS += tapeIO.o tapeIO++.o
+  SRCS += tapeIO.c tapeIO++.cc
+endif
 
 # cio.c flote.f sendhc.f sendpr.f 
 
