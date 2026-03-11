@@ -7,6 +7,8 @@
                 Time:strptime_format = "seconds since %F %T %z" ;
 */
 
+#define _POSIX_C_SOURCE 200112L
+
 #include <netcdf.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -30,7 +32,7 @@ time_t InitFlightTime(int ncid)
   int id;
   char version[32];
 
-  putenv("TZ=UTC");	// Force all time routines to work in UTC.
+  setenv("TZ", "UTC", 1);	// Force all time routines to work in UTC.
 
   if (nc_get_att_text(ncid, NC_GLOBAL, "ConventionsVersion", version) == NC_NOERR)
     _file_nc_version = atoi(&version[2]);

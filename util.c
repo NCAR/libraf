@@ -2,6 +2,8 @@
 util.c -- utility operations - operations on strings, files, etc.
 */
 
+#define _POSIX_C_SOURCE 200112L
+
 #include <stdio.h>
 #include <ctype.h>
 #include <dirent.h>

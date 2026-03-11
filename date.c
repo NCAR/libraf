@@ -2,6 +2,8 @@
 date.c -- date utility operations
 */
 
+#define _POSIX_C_SOURCE 200112L
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,12 +33,10 @@ void init_date()
 {
 time_t clock;
 struct timeval *tp;
-struct timezone *tzp;
 struct tm *time;
 
  tp = (struct timeval *)malloc(sizeof(struct timeval));
- tzp = (struct timezone *)malloc(sizeof(struct timezone));
- gettimeofday(tp,tzp);
+ gettimeofday(tp,NULL);
  clock=(long)tp->tv_sec;
  time=localtime(&clock);
  date=asctime(time);
@@ -47,7 +47,6 @@ struct tm *time;
   date[8]='0';
  date_init=1;
  (void)free(tp);
- (void)free(tzp);
 }
 
 /****************************  GET_MONTH()  **********************************/
@@ -226,7 +225,7 @@ time_t GetBaseFromMDYHMS(int month,int day,int year,int hr,int min,int sec)
  time_info.tm_min=min;
  time_info.tm_sec=sec;
  (void)snprintf(TZstring,16,"%s","TZ=GMT");
- (void)putenv(TZstring);
+ (void)setenv("TZ", "GMT", 1);
  basetime=(int)mktime(&time_info);
  return basetime;
 }
