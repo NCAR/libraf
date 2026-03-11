@@ -14,7 +14,7 @@ CC=	gcc
 CXX=	g++
 
 # Linux
-CFLAGS=		-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing
+CFLAGS=		-Werror -Wall -g -O2 -Wno-write-strings -Wstrict-aliasing
 CXXFLAGS=	-std=c++17 -Wall -g -O2 -Wno-write-strings -Wstrict-aliasing ${DEFINES}
 NCH_DEP=	/usr/include/netcdf.h
 

@@ -31,7 +31,7 @@ void QueryFile(const char *prompt, const char *directory, XtCallbackProc callBac
 
   if (prompt)
     {
-    xmprompt = XmStringCreateLocalized(prompt);
+    xmprompt = XmStringCreateLocalized((char *)prompt);
 
     XtSetArg(args[n], XmNselectionLabelString, xmprompt); ++n;
     XtSetValues(fileBox, args, n);
@@ -40,7 +40,7 @@ void QueryFile(const char *prompt, const char *directory, XtCallbackProc callBac
 
   if (directory)
     {
-    xmdir = XmStringCreateLocalized(directory);
+    xmdir = XmStringCreateLocalized((char *)directory);
     XmFileSelectionDoSearch(fileBox, xmdir);
     XmStringFree(xmdir);
     }

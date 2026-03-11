@@ -30,7 +30,7 @@ void ShowError(const char str[])
   XmString	xStr;
 
   label = XmMessageBoxGetChild(errorBox, XmDIALOG_MESSAGE_LABEL);
-  xStr = XmStringCreateLocalized(str);
+  xStr = XmStringCreateLocalized((char *)str);
   XtSetArg(args[0], XmNlabelString, xStr);
   XtSetValues(label, args, 1);
   XmStringFree(xStr);
