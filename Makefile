@@ -14,15 +14,20 @@ CC=	gcc
 CXX=	g++
 
 # Linux
-CFLAGS=		-Werror -Wall -g -O2 -Wno-write-strings -Wstrict-aliasing
-CXXFLAGS=	-std=c++17 -Wall -g -O2 -Wno-write-strings -Wstrict-aliasing ${DEFINES}
+FLAGS=		-Werror -Wall -g -O2 -Wno-write-strings -Wstrict-aliasing
+CFLAGS=		-std=c2x ${FLAGS}
+CXXFLAGS=	-std=c++17 ${FLAGS} ${DEFINES}
 NCH_DEP=	/usr/include/netcdf.h
 
 # macosx
 # mtio.h does not exist on Mac, comment out two tapeIO files below.
-#CFLAGS=		-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing -I/opt/X11/include
-#CXXFLAGS=	-Wall -g -O2 -Wno-write-strings -Wstrict-aliasing ${DEFINES} -I/opt/X11/include
-#NCH_DEP=	/usr/local/include/netcdf.h
+#
+ifeq ($(OS), Darwin)
+  CFLAGS+=	-I/opt/X11/include
+  CXXFLAGS+=	-I/opt/X11/include
+# Eventually /opt/homebrew/include/netcdf.h
+  NCH_DEP=	/usr/local/include/netcdf.h
+endif
 
 OBJS=	chost.o strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
 	raf_queue.o date.o portable.o ac.o get_ac_name.o util.o \
