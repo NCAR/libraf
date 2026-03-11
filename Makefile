@@ -13,6 +13,8 @@ DEFINES=	-DPNG
 CC=	gcc
 CXX=	g++
 
+UNAME_S := $(shell uname -s)
+
 # Linux
 FLAGS=		-Werror -Wall -g -O2 -Wno-write-strings -Wstrict-aliasing
 CFLAGS=		-std=c2x ${FLAGS}
@@ -22,7 +24,7 @@ NCH_DEP=	/usr/include/netcdf.h
 # macosx
 # mtio.h does not exist on Mac, comment out two tapeIO files below.
 #
-ifeq ($(OS), Darwin)
+ifeq ($(UNAME_S), Darwin)
   CFLAGS+=	-I/opt/X11/include
   CXXFLAGS+=	-I/opt/X11/include
 # Eventually /opt/homebrew/include/netcdf.h
@@ -47,7 +49,7 @@ SRCS=	chost.c strupr.c getmem.c Xerror.c Xquery.c Xfile.c Xwarn.c \
 	oap.cc Particle.cc Probe.cc PMS2D.cc Fast2D.cc TwoDS.cc CIP.cc HVPS.cc \
         Printer.cc Queue.cc TextWindow.cc rafTime.cc validate.cc pms_specs.c\
         Window.cc XFonts.cc XPen.cc XmError.cc XmFile.cc XmQuery.cc XmWarn.cc \
-	tapeIO.c tapeIO++.c OAProbeFactory.cc TextFile.cc F2DS.cc NCExtensions.o
+	tapeIO.c tapeIO++.cc OAProbeFactory.cc TextFile.cc F2DS.cc NCExtensions.o
 
 # cio.c flote.f sendhc.f sendpr.f 
 
