@@ -32,6 +32,11 @@ time_t InitFlightTime(int ncid)
   int id;
   char version[32];
 
+#ifdef _WIN32
+  _putenv("TZ=UTC");
+#else
+ (void)setenv("TZ", "UTC", 1);
+#endif
   setenv("TZ", "UTC", 1);	// Force all time routines to work in UTC.
 
   if (nc_get_att_text(ncid, NC_GLOBAL, "ConventionsVersion", version) == NC_NOERR)

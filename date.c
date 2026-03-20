@@ -224,8 +224,12 @@ time_t GetBaseFromMDYHMS(int month,int day,int year,int hr,int min,int sec)
  time_info.tm_hour=hr;
  time_info.tm_min=min;
  time_info.tm_sec=sec;
- (void)snprintf(TZstring,16,"%s","TZ=GMT");
- (void)setenv("TZ", "GMT", 1);
+ (void)snprintf(TZstring,16,"%s","TZ=UTC");
+#ifdef _WIN32
+  _putenv(TZstring);
+#else
+ (void)setenv("TZ", "UTC", 1);
+#endif
  basetime=(int)mktime(&time_info);
  return basetime;
 }
