@@ -27,8 +27,11 @@ NCH_DEP=	/usr/include/netcdf.h
 ifeq ($(UNAME_S), Darwin)
   CFLAGS+=	-I/opt/X11/include
   CXXFLAGS+=	-I/opt/X11/include
-# Eventually /opt/homebrew/include/netcdf.h
-  NCH_DEP=	/usr/local/include/netcdf.h
+  ifeq ($(ARCH), arm64)
+    NCH_DEP=	/opt/homebrew/include/netcdf.h
+  else
+    NCH_DEP=	/usr/local/include/netcdf.h
+  endif
 endif
 
 OBJS=	chost.o strupr.o getmem.o Xerror.o Xquery.o Xfile.o Xwarn.o \
