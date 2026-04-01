@@ -21,7 +21,7 @@ TextFile::TextFile(const std::string& filename)
 
   while ( getline(file, line) )
   {
-    if (line[0] == COMMENT || line.size() == 0)
+    if (line.size() == 0 || line[0] == COMMENT)
       continue;
 
     _lines.push_back(line);

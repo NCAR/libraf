@@ -43,9 +43,7 @@ void InitAircraftSpecs(const char fileName[])
     exit(1);
     }
 
-  strcpy(ACbuffer, p);
-  strcat(ACbuffer, "/Configuration/");
-  strcat(ACbuffer, fileName);
+  snprintf(ACbuffer, sizeof(ACbuffer), "%s/Configuration/%s", p, fileName)
 
   if ((fp = fopen(ACbuffer, "r")) == NULL)
     {
@@ -61,7 +59,7 @@ void InitAircraftSpecs(const char fileName[])
     if (ACbuffer[0] == COMMENT || strlen(ACbuffer) < 2)
       continue;
 
-    ACbuffer[strlen(ACbuffer)] = '\0';		/* Ditch newline	*/
+    ACbuffer[strlen(ACbuffer)-1] = '\0';		/* Ditch newline	*/
 
     if ( (p = strchr(ACbuffer, COMMENT)) )
       *p = '\0';
@@ -226,16 +224,12 @@ main()
 */
 
 /* -------------------------------------------------------------------- */
-char *GetAircraftFullyQualifiedName(const char tailNumber[], char * result)
+char *GetAircraftFullyQualifiedName(const char tailNumber[], char *result)
 {
   char * model = GetAircraftParameter(tailNumber, "MODEL");
 
   if (model)
-  {
-    strcpy(result, model);
-    strcat(result, "_");
-    strcat(result, tailNumber);
-  }
+    snprintf(result, 32, "%s_%s", model, tailNumber);
   else
     strcpy(result, "");
 

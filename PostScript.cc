@@ -61,13 +61,14 @@ void PostScript::PSheader(const char progName[], const string& title, float scal
   time_t        printTime = time((time_t *)NULL);
 
   user = (getpwuid(getuid()))->pw_gecos;
+  if (user == 0) user = "Unknown";
   date = ctime(&printTime);
 
   /* Print standard header info, and convert to 100 dpi.
    */
   fprintf(fp, "%%!PS-Adobe-3.0 EPSF-3.0\n");
   fprintf(fp, "%%%%Creator: %s\n", progName);
-  fprintf(fp, "%%%%For: %s\n", (getpwuid(getuid()))->pw_gecos);
+  fprintf(fp, "%%%%For: %s\n", user);
   fprintf(fp, "%%%%Title: %s\n", title.c_str());
   fprintf(fp, "%%%%CreationDate: %s", ctime(&printTime));
   fprintf(fp, "%%%%Pages: 1\n");

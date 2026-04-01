@@ -22,9 +22,9 @@ COPYRIGHT:	University Corporation for Atmospheric Research, 1997
 /* -------------------------------------------------------------------- */
 WinForm::WinForm(Widget parent, const char name[], winType wt)
 {
-  char		buff[32];
+  char		buff[64];
 
-  strcpy(buff, name); strcat(buff, "Shell");
+  snprintf(buff, sizeof(buff), "%sShell", name);
   shell = XtCreatePopupShell(buff, topLevelShellWidgetClass, parent, NULL, 0);
 
   strcpy(buff, name);
