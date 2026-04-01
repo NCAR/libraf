@@ -43,7 +43,7 @@ void InitAircraftSpecs(const char fileName[])
     exit(1);
     }
 
-  snprintf(ACbuffer, sizeof(ACbuffer), "%s/Configuration/%s", p, fileName)
+  snprintf(ACbuffer, sizeof(ACbuffer), "%s/Configuration/%s", p, fileName);
 
   if ((fp = fopen(ACbuffer, "r")) == NULL)
     {
