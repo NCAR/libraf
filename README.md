@@ -2,7 +2,7 @@
 Library of C and C++ routines for EOL/RAF projects.  Used by external projects ncpp and xpms2d.
 
 ## Documentation ###
-Functions and subrouties in the libraf library.
+Functions and subroutines in the libraf library.
 
 | Function | Language | Install location          | Description         |
 | -------- | -------- | ------------------------- | ------------------- |
