@@ -45,6 +45,6 @@ XmWarn::XmWarn(Widget parent, const char warning[], XtCallbackProc okCB, XtCallb
   XtManageChild(warnBox);
   XtPopup(XtParent(warnBox), XtGrabNone);
 
-}	/* END CONTRUCTOR */
+}	/* END CONSTRUCTOR */
 
 /* END XMWARN.C */

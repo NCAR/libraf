@@ -40,7 +40,7 @@ void XPen::SetClipping(int x, int y, int h, int w)
 {
   XRectangle  clip_area[1];
 
-  /* Set clipping so that graph data cannot exceed box boundries
+  /* Set clipping so that graph data cannot exceed box boundaries
    */
   clip_area[0].x = x;
   clip_area[0].y = y;

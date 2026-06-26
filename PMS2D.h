@@ -25,7 +25,7 @@ class PMS2D : public Probe
 
 public:
   /**
-   * Probe conctructor for ADS2 header.
+   * Probe constructor for ADS2 header.
    */
   PMS2D(UserConfig *cfg, Header *hdr, const Pms2 *p, int cnt);
   /**

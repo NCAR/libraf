@@ -44,7 +44,7 @@ opener(const char *url)
     const char *platform = operating_system();
     const char *cmd = NULL;
 
-    // Hanlde macOS
+    // Handle macOS
     if (!strcmp(platform, "macOS")) {
       cmd = "open";
 

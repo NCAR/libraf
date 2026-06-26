@@ -74,7 +74,7 @@ Defines the new ads tape header.
 #define MX_EVT		8		/* max number event blocks */
 #define MX_GREY		2		/* max number of grey scale probes */
 #define MX_HVPS		2                    /* max number of hvps probes */
-#define MX_HSKP		30		/* max number houskeeping channels */
+#define MX_HSKP		30		/* max number housekeeping channels */
 #define MX_IRS		2		/* max number irs blocks */
 #define MX_P1D		4		/* max number old intfc pms 1d probes */
 #define MX_P1DV2	3		/* max # vme pms 1d probes per intfc */
@@ -429,7 +429,7 @@ struct Pms1v2 {
   int32_t intf_chan;			/* interface channel 0, 1, or 2	*/
   str8 name;				/* probe name, FSSP, 200X,...	*/
   str8 hsk_name[P1DV2_AUX];		/* housekeeping parameter names	*/
-  float hsk_cof[P1DV2_AUX][P1DV2_COF];  /* houskeeping cal coefs array */
+  float hsk_cof[P1DV2_AUX][P1DV2_COF];  /* housekeeping cal coefs array */
   str8 locn;				/* probe location */
   str8 serial_num;			/* probe serial number */
   str8 dsm_locn;			/* sampling module location */
@@ -469,7 +469,7 @@ struct Masp {
   int32_t length;			/* block length in bytes */
   int32_t rate;				/* sample rate		*/
   str8 hsk_name[P1DV2_AUX];		/* housekeeping parameter names	*/
-  float hsk_cof[P1DV2_AUX][P1DV2_COF];  /* houskeeping cal coefs array */
+  float hsk_cof[P1DV2_AUX][P1DV2_COF];  /* housekeeping cal coefs array */
   str8 locn;				/* probe location */
   str8 serial_num;			/* probe serial number */
   str8 dsm_locn;			/* sampling module location */
@@ -607,7 +607,7 @@ struct Pms2h {
   int32_t length;			/* block length in bytes */
   str8 name;				/* Probe name */
   str8 hsk_name[P2D_HOUSE];		/* housekeeping parameter names	*/
-  float hsk_cof[P2D_HOUSE][P1DV2_COF];  /* houskeeping cal coefs array */
+  float hsk_cof[P2D_HOUSE][P1DV2_COF];  /* housekeeping cal coefs array */
   str8 locn;                            /* Probe location */
   str8 serial_num;                      /* Probe serial number */
   str8 dsm_locn;                        /* sampling module location */
@@ -624,7 +624,7 @@ struct Greyh {
   int32_t length;			/* block length in bytes */
   str8 name;				/* Probe name */
   str8 hsk_name[GREY_HOUSE];		/* housekeeping parameter names */
-  float hsk_cof[GREY_HOUSE][P1DV2_COF];	/* houskeeping cal coefs array */
+  float hsk_cof[GREY_HOUSE][P1DV2_COF];	/* housekeeping cal coefs array */
   str8 locn;				/* Probe location */
   str8 serial_num;			/* Probe serial number */
   str8 dsm_locn;			/* sampling module location */

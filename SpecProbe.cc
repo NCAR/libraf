@@ -146,7 +146,7 @@ struct recStats SpecProbe::ProcessRecord(const P2d_rec *record, float version)
         cp->time = startTime + (msec / 1000);
         cp->msec = msec % 1000;
         cp->deltaTime = timeWordDiff(cp->timeWord, _prevTimeWord);
-        cp->timeWord /= 1000;	// Store as millseconds for this probe, since this is not a 48 bit word
+        cp->timeWord /= 1000;	// Store as milliseconds for this probe, since this is not a 48 bit word
         totalLiveTime += checkRejectionCriteria(cp, stats);
         stats.particles.push_back(cp);
         cp = new Particle();

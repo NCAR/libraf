@@ -39,7 +39,7 @@ void InitAircraftSpecs(const char fileName[])
 
   if ((p = getenv("PROJ_DIR")) == NULL)
     {
-    fprintf(stderr, "Environment variable PROJ_DIR non-existant\n");
+    fprintf(stderr, "Environment variable PROJ_DIR non-existent\n");
     exit(1);
     }
 

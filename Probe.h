@@ -130,7 +130,7 @@ public:
 
 protected:
   /**
-   * Probe conctructor for ADS2 header.  This will only ever have 32 diode
+   * Probe constructor for ADS2 header.  This will only ever have 32 diode
    * PMS2D probes an HVPS once.
    */
   Probe(ProbeType type, UserConfig *cfg, Header *hdr, const Pms2 *p, int cnt, size_t ndiodes);

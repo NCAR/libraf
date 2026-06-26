@@ -144,7 +144,7 @@ struct recStats CIP::ProcessRecord(const P2d_rec *record, float version)
       cp->time = startTime + (msec / 1000);
       cp->msec = msec % 1000;
       cp->deltaTime = cp->timeWord - _prevTimeWord;
-      cp->timeWord /= 1000;	// Store as millseconds... can move to microseconds...
+      cp->timeWord /= 1000;	// Store as milliseconds... can move to microseconds...
       totalLiveTime += checkRejectionCriteria(cp, stats);
       if ((p[7] & 0x01) == 0)
         cp->dofReject = true;

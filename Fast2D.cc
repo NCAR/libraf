@@ -160,7 +160,7 @@ struct recStats Fast2D::ProcessRecord(const P2d_rec *record, float version)
         cp->time = startTime + (msec / 1000);
         cp->msec = msec % 1000;
         cp->deltaTime = cp->timeWord - _prevTimeWord;
-        cp->timeWord /= 1000;	// Store as millseconds for this probe, since this is not a 48 bit word
+        cp->timeWord /= 1000;	// Store as milliseconds for this probe, since this is not a 48 bit word
         totalLiveTime += checkRejectionCriteria(cp, stats);
         if ((p[2] & _dofMask))
           cp->dofReject = cp->reject = true;

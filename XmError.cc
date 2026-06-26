@@ -40,6 +40,6 @@ XmError::XmError(Widget parent, const char str[])
   XtManageChild(errorBox);
   XtPopup(XtParent(errorBox), XtGrabNonexclusive);
 
-}	/* END CONTRUCTOR */
+}	/* END CONSTRUCTOR */
 
 /* END XMERROR.CC */

@@ -2,7 +2,7 @@
 -------------------------------------------------------------------------
 OBJECT NAME:	gettext.cc
 
-FULL NAME:	Retreive values from text widgets.
+FULL NAME:	Retrieve values from text widgets.
 
 ENTRY POINTS:	GetTextFloat()
 		GetTextInt()
